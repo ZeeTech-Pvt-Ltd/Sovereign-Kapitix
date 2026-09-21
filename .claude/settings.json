@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(node --input-type=module -e ' *)",
+      "Bash(grep -cE \"^\\\\s*$|warning\")",
+      "Bash(node .arttmp/verify-phone-ip.mjs)",
+      "Bash(node .arttmp/serve-dist.mjs)",
+      "Bash(node .arttmp/shot-row1.mjs)"
+    ]
+  }
+}
