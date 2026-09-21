@@ -68,17 +68,16 @@ export default function RegistrationForm() {
     if (Object.keys(nextErrors).length) return
     setProcessing(true)
     try {
-      const res = await submitLead({
-        firstName: String(data.get('first_name') ?? '').trim(),
-        lastName: String(data.get('last_name') ?? '').trim(),
-        email: String(data.get('email') ?? '').trim(),
-        phone: phoneE164(),
-      })
-      // submitLead resolves { ok, demo } - the old `status === 'success'` check
-      // came from the third-party endpoint that used to back it, and never
-      // matched this implementation, so every valid submission fell into the
-      // error branch below. Always read the documented return shape: see the
-      // header comment in src/lib/submitLead.js.
+      // Send everything the form declares, so the hidden id/country/
+      // phone_code/subid/language inputs go with it - they were part of the
+      // original payload this form was built against. The phone input holds a
+      // national-format number, so replace it with its E.164 form.
+      const payload = Object.fromEntries(data.entries())
+      payload.phone = phoneE164()
+      const res = await submitLead(payload)
+      // submitLead normalizes the endpoint's { status, message } envelope into
+      // { ok, message }. Read only `ok` here - see the header comment in
+      // src/lib/submitLead.js for the wire format.
       if (res?.ok) {
         navigateTo('/thank-you')
       } else {

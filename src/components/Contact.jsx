@@ -33,10 +33,9 @@ export default function Contact() {
     setErrMsg('')
     try {
       const res = await submitLead({ firstName, lastName, email, phone: phoneE164() })
-      // submitLead resolves { ok, demo } - the old `status === 'success'` check
-      // came from the third-party endpoint that used to back it, and never
-      // matched this implementation. Always read the documented return shape:
-      // see the header comment in src/lib/submitLead.js.
+      // submitLead normalizes the endpoint's { status, message } envelope into
+      // { ok, message }. Read only `ok` here - see the header comment in
+      // src/lib/submitLead.js for the wire format.
       if (res?.ok) navigateTo('/thank-you')
       else {
         setStatus('err')
