@@ -2,7 +2,11 @@
 <html lang="en-AU">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%230F766E'/><text x='50' y='70' font-size='58' font-family='Arial' font-weight='800' fill='white' text-anchor='middle'>S</text></svg>" />
+    <!-- Inline "SK" hexagon favicon - the browser-tab icon. Kept as a data URI
+         so it costs no request. Mirrors public/favicon.svg and .logo-hex in
+         src/index.css; all three must stay in step. `#` is written as %23
+         inside a data URI. -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><defs><linearGradient id='g' x1='0' y1='0' x2='1' y2='1'><stop offset='0' stop-color='%230F766E'/><stop offset='0.55' stop-color='%230B5D57'/><stop offset='1' stop-color='%2305332F'/></linearGradient></defs><polygon points='50,1 92.4,25.5 92.4,74.5 50,99 7.6,74.5 7.6,25.5' fill='url(%23g)'/><text x='50' y='64' font-family='Arial' font-weight='800' font-size='40' letter-spacing='-1.5' fill='white' text-anchor='middle'>SK</text></svg>" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- Marks the document as JS-enabled so .reveal content hides only when a
          script will actually reveal it; without JS everything stays visible

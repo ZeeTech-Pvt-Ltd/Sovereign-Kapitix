@@ -128,10 +128,26 @@ mark {
 .header.scrolled { box-shadow: 0 6px 24px -12px rgba(5, 51, 47,.16); }
 .header-inner { display: flex; align-items: center; justify-content: space-between; gap: 20px; min-height: 72px; }
 .logo { display: inline-flex; align-items: center; gap: 11px; }
+/* "SK" hexagon monogram. The hexagon is a clipped layer rather than a shape on
+   .logo-mark itself, so the drop-shadow on the wrapper traces the hexagon
+   outline instead of a square box. The same mark is mirrored in
+   public/favicon.svg and the inline favicon in index.html - change all three
+   together. */
 .logo-mark {
-  width: 40px; height: 40px; border-radius: 13px; background: var(--grad);
-  display: grid; place-items: center; color: #fff; font-weight: 800; font-size: 22px;
-  box-shadow: 0 8px 18px -6px rgba(15, 118, 110,.5);
+  position: relative; width: 40px; height: 40px; display: grid; place-items: center;
+  filter: drop-shadow(0 7px 12px rgba(15, 118, 110, .34));
+  transition: transform .25s ease;
+}
+.logo-hex {
+  position: absolute; inset: 0; background: var(--grad);
+  clip-path: polygon(50% 0%, 92.4% 25.5%, 92.4% 74.5%, 50% 100%, 7.6% 74.5%, 7.6% 25.5%);
+}
+/* On the dark footer the deep end of --grad sinks into the background, so the
+   mark switches to the lighter teal there. */
+.logo-mark.on-dark .logo-hex { background: linear-gradient(158deg, #2DD4BF, var(--primary) 72%); }
+.logo-initials {
+  position: relative; color: #fff; font-weight: 800; font-size: 16px;
+  letter-spacing: -0.04em; line-height: 1;
 }
 .logo-text { font-size: 21px; font-weight: 800; letter-spacing: -0.02em; }
 .logo-text span { color: var(--primary); }
@@ -643,7 +659,6 @@ body.menu-open { overflow: hidden; }
 :focus-visible { outline: 2px solid var(--primary-light); outline-offset: 2px; border-radius: 6px; }
 
 /* logo mark hover */
-.logo-mark { transition: transform .25s ease; }
 .logo:hover .logo-mark { transform: rotate(-4deg) scale(1.06); }
 
 /* orb drift for depth */
