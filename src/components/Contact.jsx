@@ -33,7 +33,11 @@ export default function Contact() {
     setErrMsg('')
     try {
       const res = await submitLead({ firstName, lastName, email, phone: phoneE164() })
-      if (res?.status === 'success') navigateTo('/thank-you')
+      // submitLead resolves { ok, demo } - the old `status === 'success'` check
+      // came from the third-party endpoint that used to back it, and never
+      // matched this implementation. Always read the documented return shape:
+      // see the header comment in src/lib/submitLead.js.
+      if (res?.ok) navigateTo('/thank-you')
       else {
         setStatus('err')
         setErrMsg(res?.message || 'Something went wrong. Please try again.')

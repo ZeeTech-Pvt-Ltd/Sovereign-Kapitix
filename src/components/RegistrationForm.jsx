@@ -74,7 +74,12 @@ export default function RegistrationForm() {
         email: String(data.get('email') ?? '').trim(),
         phone: phoneE164(),
       })
-      if (res?.status === 'success') {
+      // submitLead resolves { ok, demo } - the old `status === 'success'` check
+      // came from the third-party endpoint that used to back it, and never
+      // matched this implementation, so every valid submission fell into the
+      // error branch below. Always read the documented return shape: see the
+      // header comment in src/lib/submitLead.js.
+      if (res?.ok) {
         navigateTo('/thank-you')
       } else {
         setMessage({ kind: 'err', text: res?.message || 'Something went wrong. Please try again.' })

@@ -5,7 +5,10 @@
       "Bash(grep -cE \"^\\\\s*$|warning\")",
       "Bash(node .arttmp/verify-phone-ip.mjs)",
       "Bash(node .arttmp/serve-dist.mjs)",
-      "Bash(node .arttmp/shot-row1.mjs)"
+      "Bash(node .arttmp/shot-row1.mjs)",
+      "Bash(sort -t: -k3)",
+      "Bash(awk -F: '{print $3}')",
+      "Bash(node .arttmp/seo-audit.mjs)"
     ]
   }
 }
