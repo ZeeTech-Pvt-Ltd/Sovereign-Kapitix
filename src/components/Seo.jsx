@@ -1,7 +1,5 @@
 import { useEffect } from 'react'
-import { seo, OG_IMAGE } from '../data/seo.js'
-
-const SITE = 'https://sovereign-kapitix.net'
+import { seo, OG_IMAGE, SITE } from '../data/seo.js'
 
 /**
  * Seo - per-route head management for the Sovereign Kapitix SPA.

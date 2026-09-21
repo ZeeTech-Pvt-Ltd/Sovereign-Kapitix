@@ -163,8 +163,13 @@ export default function About() {
         </div>
       </section>
 
-      {/* Platform capabilities - replaces the numeric stats strip */}
+      {/* Platform capabilities - replaces the numeric stats strip.
+          The grid sits directly under the hero with no visible heading by
+          design, but the section still needs one: without it the cards' own
+          h3s are the first headings after the page h1 and the outline jumps a
+          level. Visually hidden rather than omitted. */}
       <section className="about-cards">
+        <h2 className="sr-only">Platform capabilities</h2>
         <div className="container about-cards-grid">
           {platformCards.map((c) => (
             <article className="about-pillar reveal" key={c.title}>

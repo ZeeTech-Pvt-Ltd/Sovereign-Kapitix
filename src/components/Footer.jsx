@@ -39,7 +39,9 @@ export default function Footer() {
           </div>
 
           <div>
-            <h3>Company</h3>
+            {/* h2, not h3 - on pages with no other h2 (the FAQ list, the 404)
+                a heading here would be the first one after the h1. */}
+            <h2>Company</h2>
             <ul>
               {footer.company.map((l) => (
                 <li key={l.label}><a href={l.href} data-scroll={l.scroll || undefined}>{l.label}</a></li>
@@ -48,7 +50,7 @@ export default function Footer() {
           </div>
 
           <div>
-            <h3>Legal</h3>
+            <h2>Legal</h2>
             <ul>
               {footer.legal.map((l) => (
                 <li key={l.label}><a href={l.href} data-scroll={l.scroll || undefined}>{l.label}</a></li>

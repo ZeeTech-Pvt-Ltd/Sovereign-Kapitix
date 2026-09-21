@@ -7,7 +7,12 @@
 // =========================================================
 import { faq } from './content.js'
 
-const SITE = 'https://sovereign-kapitix.net'
+// Single source of truth for the origin. Every absolute URL on the site -
+// canonicals, og:url, JSON-LD @id, the sitemap and the build's head writer -
+// derives from this. It was previously duplicated in three files and one copy
+// had already drifted to a domain that was not ours, so import it rather than
+// retyping it. www.sovereign-kapitix.net 301s here (see vercel.json).
+export const SITE = 'https://sovereign-kapitix.net'
 export const OG_IMAGE = `${SITE}/og-image.png`
 
 // ---------- JSON-LD builders (real site content only) ----------
@@ -128,12 +133,19 @@ function faqPageSchema() {
   return buildFaqPage(faq)
 }
 
+// Titles below are kept under ~60 characters where possible - Google truncates
+// the SERP snippet past roughly that width, and a cut-off title loses the tail
+// keyword. Descriptions target 70-160 for the same reason.
+//
+// The home pair is hoisted because the JSON-LD block below repeats them; two
+// copies of the same string is how they drift apart.
+const homeTitle = 'Sovereign Kapitix | AI Trading Platform for Australia'
 const homeDescription =
   'Sovereign Kapitix - AI-powered automated trading platform for Australia. 24/7 automated strategies, live signals, bank-grade security.'
 
 export const seo = {
   home: {
-    title: 'Sovereign Kapitix - AI-Powered Automated Trading Platform in Australia',
+    title: homeTitle,
     description: homeDescription,
     keywords:
       'automated trading platform australia, AI trading platform, automated crypto trading, Sovereign Kapitix, AI trading Australia',
@@ -141,11 +153,11 @@ export const seo = {
     robots: 'index, follow, max-image-preview:large, max-snippet:-1',
     type: 'website',
     ogImageAlt: 'Sovereign Kapitix - AI-powered automated trading platform for Australia',
-    schema: [organization, website, webPage('Sovereign Kapitix - AI-Powered Automated Trading Platform in Australia', `${SITE}/`, homeDescription), serviceSchema()],
+    schema: [organization, website, webPage(homeTitle, `${SITE}/`, homeDescription), serviceSchema()],
   },
 
   about: {
-    title: 'About Sovereign Kapitix - Automated Trading Without the Complexity',
+    title: 'About Sovereign Kapitix - Trading Without the Complexity',
     description:
       'Learn about Sovereign Kapitix, an AI-assisted trading platform offering automated analysis, bank-grade security, and 24/7 support for Australian traders.',
     keywords: 'about Sovereign Kapitix, Sovereign Kapitix trading platform, automated trading platform australia, AI trading company',
@@ -160,9 +172,9 @@ export const seo = {
   },
 
   contact: {
-    title: 'Contact Sovereign Kapitix - 24/7 Support for Australian Traders',
+    title: 'Contact Sovereign Kapitix | 24/7 Australian Support',
     description:
-      'Have a question about Sovereign Kapitix or automated trading? Contact our 24/7 support team by email or the registration form - we usually reply within a few hours.',
+      'Have a question about Sovereign Kapitix or automated trading? Contact our 24/7 support team by email or the registration form - we reply within hours.',
     keywords: 'contact Sovereign Kapitix, Sovereign Kapitix support, automated trading help, Sovereign Kapitix Australia support',
     canonical: `${SITE}/contact`,
     robots: 'index, follow, max-image-preview:large, max-snippet:-1',
@@ -192,9 +204,9 @@ export const seo = {
   },
 
   terms: {
-    title: 'Terms of Use - Sovereign Kapitix Automated Trading Platform',
+    title: 'Terms of Use - Sovereign Kapitix Trading Platform',
     description:
-      'Read the Sovereign Kapitix Terms of Use - the rules that govern use of the Sovereign Kapitix AI-powered automated trading platform and its services for users in Australia.',
+      'Read the Sovereign Kapitix Terms of Use - the rules that govern use of the AI-powered automated trading platform for users in Australia.',
     keywords: 'Sovereign Kapitix terms of use, automated trading terms, platform terms',
     canonical: `${SITE}/terms`,
     robots: 'index, follow, max-image-preview:large, max-snippet:-1',
@@ -207,7 +219,7 @@ export const seo = {
   },
 
   privacy: {
-    title: 'Privacy Policy - Sovereign Kapitix Automated Trading Platform',
+    title: 'Privacy Policy - Sovereign Kapitix Trading Platform',
     description:
       'Read the Sovereign Kapitix Privacy Policy - how Sovereign Kapitix collects, uses, and protects your personal information on the automated trading platform.',
     keywords: 'Sovereign Kapitix privacy policy, data protection, trading platform privacy',
@@ -222,9 +234,9 @@ export const seo = {
   },
 
   disclosure: {
-    title: 'Risk Disclosure - Sovereign Kapitix Automated Trading Platform',
+    title: 'Risk Disclosure - Sovereign Kapitix Trading Platform',
     description:
-      'Read the Sovereign Kapitix Risk Disclosure - important information about the risks of trading FX, CFDs, and cryptocurrencies on the automated trading platform.',
+      'Read the Sovereign Kapitix Risk Disclosure - important information about the risks of trading FX, CFDs, and cryptocurrencies on the platform.',
     keywords: 'Sovereign Kapitix risk disclosure, trading risk warning, CFD crypto risk',
     canonical: `${SITE}/disclosure`,
     robots: 'index, follow, max-image-preview:large, max-snippet:-1',
@@ -241,7 +253,9 @@ export const seo = {
     description:
       'Your Sovereign Kapitix registration has been received. Our team will review your details and contact you shortly to activate your account.',
     keywords: '',
-    canonical: `${SITE}/thank-you`,
+    // No canonical: a noindex page and a canonical tag are contradictory
+    // signals, and this page should never be indexed or appear in the sitemap.
+    canonical: null,
     robots: 'noindex, nofollow',
     type: 'website',
     ogImageAlt: 'Thank you - Sovereign Kapitix registration',

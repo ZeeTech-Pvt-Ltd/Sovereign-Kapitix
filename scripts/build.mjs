@@ -20,13 +20,12 @@ import { execSync } from 'node:child_process'
 import { mkdirSync, readFileSync, readdirSync, rmSync, writeFileSync } from 'node:fs'
 import path from 'node:path'
 import { fileURLToPath, pathToFileURL } from 'node:url'
-import { seo, OG_IMAGE } from '../src/data/seo.js'
+import { seo, OG_IMAGE, SITE } from '../src/data/seo.js'
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..')
 const dist = path.join(ROOT, 'dist')
 const assetsDir = path.join(dist, 'assets')
 const ssrDir = path.join(ROOT, '.ssr-dist')
-const SITE = 'https://sovereignkapitix.biz'
 
 const escA = (s) =>
   String(s).replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;').replace(/>/g, '&gt;')

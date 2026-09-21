@@ -1,5 +1,11 @@
 {
   "redirects": [
+    {
+      "source": "/(.*)",
+      "has": [{ "type": "host", "value": "www.sovereign-kapitix.net" }],
+      "destination": "https://sovereign-kapitix.net/$1",
+      "permanent": true
+    },
     { "source": "/How-It-Works", "destination": "/", "permanent": true },
     { "source": "/how-it-works", "destination": "/", "permanent": true },
     { "source": "/why-invest", "destination": "/", "permanent": true },
