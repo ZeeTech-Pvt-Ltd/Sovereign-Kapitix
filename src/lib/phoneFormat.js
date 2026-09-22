@@ -8,10 +8,9 @@
 //             input's placeholder, so the hint always matches the flag and
 //             dial code currently shown.
 //
-// Masks are written for the number the way it is normally typed locally, which
-// means they INCLUDE the trunk prefix (the leading 0 in 0412 345 678). The
-// submit path strips that prefix before building the E.164 value, so the
-// grouping here never reaches the wire - see RegistrationForm.handleSubmit.
+// Masks are written for the number the way it is normally dialled locally,
+// which means they INCLUDE the trunk prefix (the leading 0 in 0412 345 678).
+// getPhoneFormat() below strips that prefix for display - see its comment.
 //
 // This is a display aid, not a validator. formatNational() never drops a digit
 // and never blocks input, so a mask that does not match a country's real
@@ -106,13 +105,40 @@ const FORMATS = {
 }
 
 /**
- * The display format for a country.
+ * The display format for a country, with the local trunk prefix removed.
+ *
+ * The table above is written the way each country dials itself, so entries for
+ * trunk-prefix countries start with a 0. That 0 is redundant here: the country
+ * code is already shown in the selector next to the field, and keeping it would
+ * mean the visitor types 0 + their number while the +92 sits right beside it.
+ * So the placeholder drops the 0 (0301 2345678 becomes 301 2345678) and the mask
+ * loses the slot it occupied, which keeps what is typed looking exactly like the
+ * hint. Countries with no trunk prefix are returned untouched.
+ *
+ * The dropped slot is always the FIRST 'X', because the trunk prefix is the
+ * first digit. Not the first space-separated group - several masks (JP, KR, ID,
+ * MY) group with '-' instead, so the first group can be the whole mask.
+ *
  * @param {string} iso ISO 3166-1 alpha-2 code, e.g. 'AU'
  * @returns {{ mask: string, example: string }}
  */
 export function getPhoneFormat(iso) {
   const [mask, example] = FORMATS[iso] ?? [DEFAULT_MASK, DEFAULT_EXAMPLE]
-  return { mask, example }
+  if (!example.startsWith('0')) return { mask, example }
+  return { mask: mask.replace('X', ''), example: example.slice(1) }
+}
+
+/**
+ * Whether a national number still carries its country's trunk prefix.
+ *
+ * The field rejects these rather than silently dropping the 0, so the visitor
+ * can see why their number was not accepted. See hasTrunkPrefix's callers.
+ *
+ * @param {string} national whatever is in the input
+ * @returns {boolean}
+ */
+export function hasTrunkPrefix(national) {
+  return String(national).replace(/\D/g, '').startsWith('0')
 }
 
 /**
@@ -146,12 +172,18 @@ export function formatNational(raw, mask) {
 }
 
 /**
- * Build the E.164 value a form submits: the dial code followed by the national
- * number with its trunk prefix removed.
+ * Build the E.164 value a form submits: '+' then the dial code followed by the
+ * national number with its trunk prefix removed.
+ *
+ * The leading '+' is deliberate. E.164 numbers are written with it, and it is
+ * what marks a number as already-international to whatever reads it downstream -
+ * the template this form submits to sends its numbers that way, and the endpoint
+ * was verified accepting '+61412345678' back. Digits alone also parse, but a bare
+ * '61412345678' is indistinguishable from a national number with a stray prefix.
  *
  * @param {string} national whatever is in the input - formatted or not
  * @param {number|string} dial the selected country's calling code, e.g. 61
- * @returns {string} digits only, no leading '+', e.g. '61412345678'
+ * @returns {string} e.g. '+61412345678'
  */
 export function toE164(national, dial) {
   const code = String(dial ?? '').replace(/\D/g, '')
@@ -163,6 +195,6 @@ export function toE164(national, dial) {
 
   // Already carries the dial code (a pasted "+61 412 345 678"), so do not
   // prepend it a second time.
-  if (code && digits.startsWith(code)) return digits
-  return `${code}${digits}`
+  if (code && digits.startsWith(code)) return `+${digits}`
+  return `+${code}${digits}`
 }

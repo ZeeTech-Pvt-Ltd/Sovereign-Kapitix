@@ -5,6 +5,7 @@ import { ArrowRight, Icon } from './icons.jsx'
 import { submitLead } from '../lib/submitLead.js'
 import { navigateTo } from '../lib/navigate.js'
 import { usePhoneField } from '../lib/usePhoneField.js'
+import { hasTrunkPrefix } from '../lib/phoneFormat.js'
 
 // Layout follows the lyravestgrove contact reference; colors, fonts, and
 // components are Sovereign Kapitix's own design system. Content is Sovereign Kapitix-branded.
@@ -29,6 +30,14 @@ export default function Contact() {
     const lastName = String(data.get('lastName') ?? '').trim()
     const email = String(data.get('email') ?? '').trim()
     if (!firstName || !lastName || !email || !phone) return
+    // The country code is already selected beside this field, so a local trunk
+    // prefix is redundant - and left in, it would build an invalid
+    // international number. Say so rather than quietly dropping the digit.
+    if (hasTrunkPrefix(phone)) {
+      setStatus('err')
+      setErrMsg('Enter the number without the leading 0 — the country code is already selected.')
+      return
+    }
     setStatus('sending')
     setErrMsg('')
     try {
