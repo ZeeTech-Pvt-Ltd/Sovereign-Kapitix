@@ -7,6 +7,10 @@
 import { renderToString } from 'react-dom/server'
 import { renderRoute } from '../src/renderRoute.jsx'
 
+// Every route that needs baked HTML. This list and the OUTPUT map in build.mjs
+// both have to name a route for it to be written; a route in OUTPUT but not
+// here renders as the string "undefined" inside #root, which build.mjs now
+// refuses to write (see the guard there). Add new routes to both.
 const ROUTES = [
   'home',
   'about',
@@ -16,6 +20,9 @@ const ROUTES = [
   'disclosure',
   'thank-you',
   'faq',
+  'how-it-works',
+  'review',
+  'register',
   '404',
 ]
 

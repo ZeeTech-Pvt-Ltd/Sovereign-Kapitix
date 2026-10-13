@@ -5,7 +5,7 @@
 // cards, and JSON-LD structured data - consumed by <Seo/>.
 // Nothing here invents facts: all claims come from content.js.
 // =========================================================
-import { faq } from './content.js'
+import { faq, MIN_DEPOSIT } from './content.js'
 
 // Single source of truth for the origin. Every absolute URL on the site -
 // canonicals, og:url, JSON-LD @id, the sitemap and the build's head writer -
@@ -189,9 +189,9 @@ export const seo = {
   faq: {
     title: 'FAQ - Sovereign Kapitix Automated Trading Platform',
     description:
-      'Answers to the most common questions about Sovereign Kapitix - how the platform works, security, withdrawals, and how to spot fake Sovereign Kapitix apps.',
+      'Answers to the questions people ask most about Sovereign Kapitix: what it costs, how to open an account, and how to spot a fake site. Read the FAQ.',
     keywords:
-      'Sovereign Kapitix FAQ, Sovereign Kapitix help, automated trading questions, is Sovereign Kapitix legit, Sovereign Kapitix minimum deposit, Sovereign Kapitix withdrawal',
+      'Sovereign Kapitix FAQ, Sovereign Kapitix help, automated trading questions, is Sovereign Kapitix legit, Sovereign Kapitix minimum deposit, Sovereign Kapitix withdrawal, how to open a trading account australia',
     canonical: `${SITE}/faq`,
     robots: 'index, follow, max-image-preview:large, max-snippet:-1',
     type: 'website',
@@ -200,6 +200,57 @@ export const seo = {
       webPage('FAQ', `${SITE}/faq`, 'Answers to the most common questions about the Sovereign Kapitix automated trading platform - deposits, security, withdrawals, and account safety.'),
       breadcrumb('FAQ', '/faq'),
       faqPageSchema(),
+    ],
+  },
+
+  'how-it-works': {
+    title: 'How Sovereign Kapitix Works | AI Trading in Australia',
+    description:
+      'See how Sovereign Kapitix works, from your first sign up to your first trade. Five clear steps, no jargon. Open your account today.',
+    keywords:
+      'how Sovereign Kapitix works, how automated trading works, AI trading platform australia, Sovereign Kapitix sign up',
+    canonical: `${SITE}/how-it-works`,
+    robots: 'index, follow, max-image-preview:large, max-snippet:-1',
+    type: 'website',
+    ogImageAlt: 'How Sovereign Kapitix works, from sign up to your first trade',
+    schema: [
+      webPage('How Sovereign Kapitix Works', `${SITE}/how-it-works`, 'The five step journey from signing up to placing your first trade on Sovereign Kapitix, plus the two trading modes and what the platform costs.'),
+      breadcrumb('How It Works', '/how-it-works'),
+    ],
+  },
+
+  // The page that answers "is Sovereign Kapitix a scam". The title and
+  // description deliberately do not repeat that phrasing back as a claim about
+  // the platform; they describe what the page contains, which is an honest
+  // review carrying the downsides as well as the benefits.
+  review: {
+    title: 'Sovereign Kapitix Review | An Honest Look at the Platform',
+    description:
+      'An honest look at Sovereign Kapitix: how it works, what it costs, and the risks you should know before you deposit. Open your free account today.',
+    keywords:
+      'Sovereign Kapitix review, is Sovereign Kapitix a scam, Sovereign Kapitix legit, Sovereign Kapitix pros and cons, Sovereign Kapitix minimum deposit',
+    canonical: `${SITE}/review`,
+    robots: 'index, follow, max-image-preview:large, max-snippet:-1',
+    type: 'website',
+    ogImageAlt: 'An honest review of the Sovereign Kapitix trading platform',
+    schema: [
+      webPage('Sovereign Kapitix Review', `${SITE}/review`, 'A full review of the Sovereign Kapitix automated trading platform: the costs, the pros and cons, and how to check the site you are on is the real one.'),
+      breadcrumb('Reviews', '/review'),
+    ],
+  },
+
+  register: {
+    title: 'Open Your Sovereign Kapitix Account | Free Registration',
+    description: `Open your Sovereign Kapitix account in about two minutes. Registration is free and the minimum deposit is ${MIN_DEPOSIT}. Start today.`,
+    keywords:
+      'Sovereign Kapitix register, open trading account australia, free trading account, Sovereign Kapitix sign up',
+    canonical: `${SITE}/register`,
+    robots: 'index, follow, max-image-preview:large, max-snippet:-1',
+    type: 'website',
+    ogImageAlt: 'Open your Sovereign Kapitix trading account',
+    schema: [
+      webPage('Open Your Sovereign Kapitix Account', `${SITE}/register`, `Register for a Sovereign Kapitix account. Registration is free and takes about two minutes, with a minimum deposit of ${MIN_DEPOSIT}.`),
+      breadcrumb('Register', '/register'),
     ],
   },
 

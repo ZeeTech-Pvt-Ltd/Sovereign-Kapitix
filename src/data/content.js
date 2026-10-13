@@ -20,9 +20,14 @@ export const COLD_STORAGE = '98%'
 export const SIGNAL_ACCURACY = '85%'
 export const INSTRUMENTS = '300+'
 
+// Register is not a nav entry: it is the header's Sign Up button, which points
+// at /register. Adding it here as well would put the same destination in the
+// bar twice.
 export const nav = [
   { label: 'Home', href: '/' },
+  { label: 'How It Works', href: '/how-it-works' },
   { label: 'About Us', href: '/about' },
+  { label: 'Reviews', href: '/review' },
   { label: 'FAQ', href: '/faq' },
   { label: 'Contact', href: '/contact' },
 ]
@@ -243,6 +248,20 @@ export const portfolio = {
   visual: { label: 'Managed portfolio', sub: 'Live', balance: '$42,815.60', note: 'this quarter', bars: [28, 40, 36, 54, 48, 66, 62, 78, 72], badge: 'Data-driven' },
 }
 
+// ---------------------------------------------------------
+// FAQ - the site's only FAQPage structured data source.
+// ---------------------------------------------------------
+// <FaqPage/> renders this list, and seo.js buildFaqPage() derives the JSON-LD
+// from the same array, so an edit here moves the visible answer and the
+// structured data together and they cannot drift.
+//
+// Order runs from the questions a first-time visitor arrives with (is this
+// real, what does it cost, how do I start) through to the safety ones. `link`
+// is optional and appends a read-more anchor; the same anchor text is appended
+// to the structured answer so the two stay word for word.
+//
+// Copy rules: no dashes of any kind, Title Case on every question, and no
+// figure that is not defined at the top of this file.
 export const faq = [
   {
     q: 'Is Sovereign Kapitix Legit?',
@@ -250,10 +269,32 @@ export const faq = [
     // with verifiable facts - your entity name, AFSL status if you hold one,
     // and how a reader can check it.
     a: 'Sovereign Kapitix is an automated trading platform. We publish our terms, our risk disclosure, and how the platform works, so you can judge it on the facts rather than on ratings. Always verify any platform independently before depositing money.',
+    link: { text: 'Read our full review.', href: '/review' },
   },
   {
     q: 'How Much Do I Need to Start Trading on Sovereign Kapitix?',
-    a: `A minimum deposit of ${MIN_DEPOSIT} activates your trading account - with no subscription fees, hidden charges, or registration costs. Start small and grow at a pace that suits you.`,
+    a: `A minimum deposit of ${MIN_DEPOSIT} activates your trading account. There are no subscription fees, no hidden charges, and no registration costs. Start small and grow at a pace that suits you.`,
+  },
+  {
+    q: 'How Do I Open an Account?',
+    a: 'Fill in the registration form with your name, email and phone number. It takes about two minutes, and registering costs nothing. A member of our team then gets in touch to help you complete verification and fund your account.',
+    link: { text: 'See the full step by step guide.', href: '/how-it-works' },
+  },
+  {
+    q: 'What Happens After I Sign Up?',
+    a: 'A member of our team gets in touch to explain how the platform works, answer your questions and help you complete verification. Every account goes through KYC and AML checks. Once those are complete, your account is ready to fund.',
+  },
+  {
+    q: 'What Is the Difference Between Automated and Manual Trading?',
+    a: 'In automated mode the engine places trades on your behalf, which suits anyone who cannot watch the markets during the day. In manual mode the engine sends you the signal and you decide whether to act on it. You can switch between the two whenever you like.',
+  },
+  {
+    q: 'Which Markets Can I Trade on Sovereign Kapitix?',
+    a: 'Crypto, equities, forex, commodities and precious metals sit behind a single account and one login. The platform monitors them around the clock.',
+  },
+  {
+    q: 'What Fees Does Sovereign Kapitix Charge?',
+    a: 'There is no registration fee and no subscription. Costs apply to the positions you open, and we show our pricing up front rather than burying it in fine print. Always read the terms before you deposit.',
   },
   {
     q: 'Is There a Sovereign Kapitix App?',
@@ -261,19 +302,31 @@ export const faq = [
   },
   {
     q: 'How Secure Are My Money and Data on Sovereign Kapitix?',
-    a: `Security runs through every layer of the platform. ${COLD_STORAGE} of assets are held in cold storage, and your personal data is shielded by 256-bit encryption and two-factor authentication.`,
+    a: `Security runs through every layer of the platform. ${COLD_STORAGE} of assets are held in cold storage, and your personal data is shielded by 256 bit encryption and two factor authentication.`,
   },
   {
-    q: 'What Payment Methods Can I Use to Withdraw?',
-    a: 'Withdrawals follow the same channels as your deposit - including major credit cards, bank transfers, and PayPal. Most requests are processed within 24 hours.',
+    q: 'What Payment Methods Can I Use to Withdraw, and How Long Does It Take?',
+    a: 'Withdrawals follow the same channels as your deposit, including major credit cards, bank transfers and PayPal. Most requests are processed within 24 hours.',
   },
   {
-    q: 'How Does Sovereign Kapitix Maintain Transparency?',
-    a: 'Openness is built into how Sovereign Kapitix works. Every trade, signal, and balance change appears in your account in real time, supported by upfront pricing.',
+    q: 'Does Sovereign Kapitix Guarantee Profits?',
+    a: 'No, and no legitimate platform can. Trading carries risk and you may lose some or all of the money you deposit. Any platform promising fixed or guaranteed returns is a red flag.',
   },
   {
-    q: 'Why Are There So Many Copycat Versions of Your Platform Online?',
-    a: 'Our platform has drawn lookalike (scam) sites that aim to mislead visitors. Always double-check that you are on the official domain - sovereign-kapitix.net.',
+    q: 'Who Is Sovereign Kapitix For?',
+    a: 'It suits people who are new to trading and want clear signals, and anyone too busy to watch the markets all day. It is not for anyone who cannot afford to lose the money they deposit, or who wants guaranteed returns.',
+  },
+  {
+    q: 'Is Sovereign Kapitix Available Outside Australia?',
+    a: 'No. Accounts are limited to verified residents of Australia, and deposits are in Australian dollars.',
+  },
+  {
+    q: 'How Do I Spot a Fake Sovereign Kapitix Site?',
+    a: 'Check the address bar. The only official domain is sovereign-kapitix.net. Be suspicious of anyone promising guaranteed or fixed daily profits, anyone rushing you to deposit, anyone asking for remote access to your computer, and anyone requesting payment in gift cards or crypto to a personal wallet. We do not have a mobile app, so any Sovereign Kapitix app on an app store is not ours.',
+  },
+  {
+    q: 'What Should I Do If I Think I Have Been Contacted by a Scammer?',
+    a: 'Stop all contact and do not send any money. Contact your bank straight away if you have already paid. Report it to Scamwatch at scamwatch.gov.au and ReportCyber at cyber.gov.au, then let us know at support@sovereign-kapitix.net so we can warn other users.',
   },
 ]
 
@@ -335,11 +388,318 @@ export const toolkit = {
   ],
 }
 
+// ---------------------------------------------------------
+// DEDICATED PAGES - /how-it-works, /review, /register
+// ---------------------------------------------------------
+// Copy rules for everything below: no dashes of any kind, Title Case on every
+// heading, contractions, and no figure that is not already defined at the top
+// of this file or stated elsewhere on the site.
+//
+// Both /how-it-works and /review were once removed for being thin restatements
+// of a homepage section. They are back as full pages, so each one has to earn
+// its route: /how-it-works carries the five step journey, the two trading modes
+// and the cost table; /review carries the pros and cons, the scam checks and
+// the "who is this not for" section. Nothing here repeats a homepage block
+// verbatim.
+// ---------------------------------------------------------
+
+export const howPage = {
+  eyebrow: 'How It Works',
+  title: 'From Sign Up to Your ',
+  titleMark: 'First Trade',
+  lead: 'Five clear steps, no jargon, and nothing you have to work out on your own. Here is exactly what happens when you join Sovereign Kapitix.',
+  steps: [
+    {
+      no: '01',
+      icon: 'user',
+      title: 'Create Your Free Account',
+      text: 'Fill in a short form with your name, email and phone number. It takes about two minutes, and registering costs nothing.',
+    },
+    {
+      no: '02',
+      icon: 'headset',
+      title: 'Speak with Our Team',
+      text: 'A member of our team gets in touch to explain how the platform works, answer your questions and help you complete verification.',
+    },
+    {
+      no: '03',
+      icon: 'wallet',
+      title: 'Fund Your Account',
+      text: `Deposit a minimum of ${MIN_DEPOSIT} by credit card, bank transfer or PayPal. Your funds are protected from the moment they arrive.`,
+    },
+    {
+      no: '04',
+      icon: 'gauge',
+      title: 'Pick Your Mode',
+      text: 'Choose automated trading, where the engine places trades on your behalf, or manual mode, where you decide on every trade yourself.',
+    },
+    {
+      no: '05',
+      icon: 'chart',
+      title: 'Track and Adjust',
+      text: 'Every trade appears on your dashboard as it happens. Pause automation, change your settings or request a withdrawal whenever you like.',
+    },
+  ],
+  modes: {
+    eyebrow: 'Two Ways to Trade',
+    title: 'You Choose How Much ',
+    titleMark: 'Control You Keep',
+    lead: 'The platform can trade for you or alongside you. Switch between the two whenever you like.',
+    cards: [
+      {
+        icon: 'bot',
+        title: 'Automated Mode',
+        text: 'The engine places trades on your behalf and keeps working while you are away from the screen. Best if you cannot watch the markets during the day.',
+      },
+      {
+        icon: 'user',
+        title: 'Manual Mode',
+        text: 'The engine sends you the signal and you decide whether to act on it. Best if you want the final say on every trade you open.',
+      },
+    ],
+  },
+  control: {
+    eyebrow: 'You Stay in Control',
+    title: 'Built Around ',
+    titleMark: 'Your Decisions',
+    points: [
+      'Withdraw your funds whenever you choose',
+      'Switch between automated and manual trading at any time',
+      'See every trade, signal and balance change in real time',
+      'Reach a real person on support around the clock',
+    ],
+  },
+  costs: {
+    eyebrow: 'What It Costs',
+    title: 'Clear Pricing, ',
+    titleMark: 'No Surprises',
+    rows: [
+      { k: 'Registration', v: 'Free' },
+      { k: 'Minimum Deposit', v: MIN_DEPOSIT },
+      { k: 'Subscription Fees', v: 'None' },
+      { k: 'Hidden Charges', v: 'None' },
+    ],
+    note: 'Trading carries risk, and costs apply to the positions you open. Read our',
+    noteLink: { text: 'Risk Disclosure', href: '/disclosure' },
+    noteEnd: 'before you deposit.',
+  },
+  ready: {
+    eyebrow: 'Before You Start',
+    title: 'What You Need to ',
+    titleMark: 'Get Going',
+    items: [
+      'You live in Australia. Accounts are available to verified Australian residents.',
+      'An email address and a phone number, so we can reach you about your account.',
+      'Photo identification for verification. Every account goes through KYC and AML checks.',
+      `At least ${MIN_DEPOSIT} to fund your account when you are ready.`,
+    ],
+  },
+}
+
+export const reviewPage = {
+  eyebrow: 'Honest Review',
+  title: 'Sovereign Kapitix: An ',
+  titleMark: 'Honest Look',
+  lead: 'Thinking about joining? This page answers what most Australians ask before they sign up: what the platform is, how it works, what it costs and how to check it is safe. It covers the downsides too, because trading always carries risk.',
+  glance: [
+    { k: 'Platform Type', v: 'Browser Based AI Trading Platform' },
+    { k: 'Available In', v: 'Australia' },
+    { k: 'Minimum Deposit', v: MIN_DEPOSIT },
+    { k: 'Registration Fee', v: 'Free' },
+    { k: 'Markets', v: 'Crypto, Equities, Forex and Commodities' },
+    { k: 'Trading Modes', v: 'Automated and Manual' },
+    { k: 'App Needed', v: 'No, It Runs in Any Web Browser' },
+    { k: 'Support', v: 'Real People, 24/7' },
+  ],
+  whatIs: {
+    eyebrow: 'The Basics',
+    title: 'What Is ',
+    titleMark: 'Sovereign Kapitix?',
+  },
+  features: {
+    eyebrow: 'What You Get',
+    title: 'Key Features at a ',
+    titleMark: 'Glance',
+    cards: [
+      { icon: 'bot', title: 'Round the Clock Market Scanning', text: 'The engine keeps watching markets while you work or sleep, so you get signals on moves you might otherwise miss.' },
+      { icon: 'user', title: 'Two Ways to Trade', text: 'Automated mode suits busy people. Manual mode suits anyone who wants to approve every trade before it opens.' },
+      { icon: 'gauge', title: 'One Dashboard', text: 'Trades, signals, performance and your balance sit on a single screen, so you always know where you stand.' },
+      { icon: 'lock', title: 'No App to Download', text: 'The platform runs in your browser on desktop, tablet and phone. Nothing to install and nothing to keep updated.' },
+      { icon: 'headset', title: 'Real Human Support', text: 'A real support team is available around the clock to help with your account and funding questions.' },
+      { icon: 'shield', title: 'Layered Security', text: 'Every session is protected by 256 bit encryption, with two factor authentication on logins and withdrawals.' },
+    ],
+  },
+  prosCons: {
+    eyebrow: 'Weighing It Up',
+    title: 'The Honest Pros ',
+    titleMark: 'and Cons',
+    lead: 'No platform is right for everyone. Here is the fair summary, in both directions.',
+    pros: [
+      'Registration is free',
+      `Low ${MIN_DEPOSIT} starting deposit`,
+      'Automated and manual trading in one account',
+      'A dashboard built for beginners',
+      'Support from real people, around the clock',
+    ],
+    cons: [
+      'Trading can lose money, even with AI involved',
+      'Accounts are limited to Australian residents',
+      'No native mobile app, it runs in your browser',
+      'AI signals are not guaranteed to be right',
+      'Costs apply to every position you open',
+    ],
+  },
+  costs: {
+    eyebrow: 'The Numbers',
+    title: 'Fees and ',
+    titleMark: 'Minimum Deposit',
+    rows: [
+      { k: 'Registration', v: 'Free' },
+      { k: 'Minimum Deposit', v: MIN_DEPOSIT },
+      { k: 'Subscription Fees', v: 'None' },
+      { k: 'Hidden Charges', v: 'None' },
+      { k: 'Withdrawal Requests', v: 'Most Processed Within 24 Hours' },
+    ],
+    note: 'Trading carries risk, and costs apply to the positions you open. Read our',
+    noteLink: { text: 'Risk Disclosure', href: '/disclosure' },
+    noteEnd: 'before you deposit.',
+  },
+  legit: {
+    eyebrow: 'Safety Check',
+    title: 'Is Sovereign Kapitix ',
+    titleMark: 'a Scam?',
+    lead: 'Plenty of people search that exact question before signing up, and it is a sensible thing to ask. Online trading attracts fake platforms, so checking before you deposit is smart. Rather than asking you to simply trust us, here is what you can check yourself.',
+    items: [
+      'Read our Terms of Use and Risk Disclosure. Both are published in full on this site, so you can judge the platform on the facts rather than on ratings.',
+      'No one can guarantee profits. Any platform promising fixed or guaranteed returns is a red flag. We do not, and no legitimate platform can.',
+      `Start small. You can begin with the ${MIN_DEPOSIT} minimum and test a withdrawal before adding more.`,
+      'Your data is encrypted. Every session is protected with 256 bit SSL encryption, and two factor authentication guards your logins.',
+      'We will never ask for your password, your bank PIN, or remote access to your computer. If anyone claiming to be us does, hang up and contact us.',
+    ],
+  },
+  fakes: {
+    eyebrow: 'Stay Safe',
+    title: 'Warning Signs: ',
+    titleMark: 'Fake Sites',
+    lead: 'Popular brand names get copied. Scammers build clone websites, run fake ads and call people while pretending to be from Sovereign Kapitix. Watch for these red flags.',
+    signs: [
+      'A website address that is not sovereign-kapitix.net',
+      'Anyone promising guaranteed or fixed daily profits',
+      'Pressure to deposit more money quickly, or to act before an offer ends',
+      'Requests for remote access to your computer',
+      'Payment requests in gift cards or crypto to a personal wallet',
+      'A Sovereign Kapitix app on the App Store or Google Play. We do not have one',
+    ],
+  },
+  report: {
+    title: 'What to Do If You Spot a Fake Site',
+    items: [
+      'Stop all contact and do not send any money.',
+      'Contact your bank straight away if you have already paid.',
+      'Report it to Scamwatch at scamwatch.gov.au and ReportCyber at cyber.gov.au.',
+      'Let us know at support@sovereign-kapitix.net so we can warn other users.',
+    ],
+  },
+  who: {
+    eyebrow: 'Who It Suits',
+    title: 'Is Sovereign Kapitix ',
+    titleMark: 'Right for You?',
+    suitedTitle: 'It may suit you if you:',
+    suited: [
+      'Are new to trading and want clear, guided signals',
+      'Are busy and cannot watch the markets all day',
+      `Want to start small with ${MIN_DEPOSIT}`,
+    ],
+    notSuitedTitle: 'It may not suit you if you:',
+    notSuited: [
+      'Cannot afford to lose the money you deposit',
+      'Want guaranteed or fixed returns',
+      'Live outside Australia',
+    ],
+  },
+  verdict: {
+    eyebrow: 'Final Verdict',
+    title: 'Our ',
+    titleMark: 'Conclusion',
+    body: 'Sovereign Kapitix gives Australians a straightforward way to try AI assisted trading. The starting deposit is low, the platform runs in your browser, and you choose between automated and manual trading. The main thing to remember is that no AI removes risk. Start small, set your limits, and only ever trade money you can afford to lose.',
+  },
+  faqMini: {
+    eyebrow: 'Common Questions',
+    title: 'Before You ',
+    titleMark: 'Decide',
+    items: [
+      {
+        q: 'Is Sovereign Kapitix a Scam?',
+        a: 'Sovereign Kapitix is an automated trading platform, not an investment scheme. We publish our Terms of Use, our Risk Disclosure and an explanation of how the platform works, so you can judge it on the facts rather than on ratings. Always check any platform independently before you deposit money.',
+      },
+      {
+        q: 'How Much Do I Need to Start?',
+        a: `A minimum deposit of ${MIN_DEPOSIT} activates your trading account. There are no subscription fees, hidden charges or registration costs.`,
+      },
+      {
+        q: 'Can I Withdraw My Money?',
+        a: 'Yes. Withdrawals follow the same channels as your deposit, including major credit cards, bank transfers and PayPal. Most requests are processed within 24 hours.',
+      },
+      {
+        q: 'Does Sovereign Kapitix Guarantee Profits?',
+        a: 'No, and no legitimate platform can. Trading carries risk, and you may lose some or all of the money you deposit.',
+      },
+      {
+        q: 'Is It Available Outside Australia?',
+        a: 'No. Accounts are limited to verified residents of Australia.',
+      },
+    ],
+    moreText: 'Read the full FAQ',
+    moreHref: '/faq',
+  },
+}
+
+export const registerPage = {
+  eyebrow: 'Get Started',
+  title: 'Open Your Account in ',
+  titleMark: 'About Two Minutes',
+  lead: 'Registration is free. Fill in your details and our team will get in touch to get you started.',
+  // Sits above the form on purpose: a reader should meet the downside before
+  // being asked for a phone number, not after.
+  risk: {
+    title: 'Trading Carries Risk',
+    text: 'The value of your investments can go down as well as up, and you may lose some or all of the money you deposit. Never trade money you cannot afford to lose.',
+    link: { text: 'Read the full Risk Disclosure', href: '/disclosure' },
+  },
+  next: {
+    eyebrow: 'What Happens Next',
+    title: 'Three Steps from Here to ',
+    titleMark: 'Your First Trade',
+    steps: [
+      {
+        no: '01',
+        icon: 'headset',
+        title: 'We Call You Back',
+        text: 'A member of our team gets in touch to explain the platform, answer your questions and help you complete verification.',
+      },
+      {
+        no: '02',
+        icon: 'shield',
+        title: 'You Verify Your Identity',
+        text: 'Every account goes through KYC and AML checks. It keeps the platform safe for everyone using it, and it only takes a few minutes.',
+      },
+      {
+        no: '03',
+        icon: 'wallet',
+        title: 'You Fund and Start',
+        text: `Deposit a minimum of ${MIN_DEPOSIT} and your account is ready. Choose automated or manual trading, and set the limits you are comfortable with.`,
+      },
+    ],
+  },
+}
+
 export const footer = {
   blurb: 'Sovereign Kapitix is an AI-driven automated trading platform for users in Australia - automated strategies, live market insights, and dependable security in one place.',
   company: [
     { label: 'Home', href: '/' },
+    { label: 'How It Works', href: '/how-it-works' },
     { label: 'About Us', href: '/about' },
+    { label: 'Reviews', href: '/review' },
     { label: 'FAQ', href: '/faq' },
     { label: 'Contact Us', href: '/contact' },
   ],

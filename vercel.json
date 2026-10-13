@@ -6,10 +6,8 @@
       "destination": "https://sovereign-kapitix.net/$1",
       "permanent": true
     },
-    { "source": "/How-It-Works", "destination": "/", "permanent": true },
-    { "source": "/how-it-works", "destination": "/", "permanent": true },
+    { "source": "/How-It-Works", "destination": "/how-it-works", "permanent": true },
     { "source": "/why-invest", "destination": "/", "permanent": true },
-    { "source": "/review", "destination": "/", "permanent": true },
     { "source": "/app", "destination": "/", "permanent": true }
   ],
   "rewrites": [
@@ -19,6 +17,9 @@
     { "source": "/privacy", "destination": "/privacy/index.html" },
     { "source": "/disclosure", "destination": "/disclosure/index.html" },
     { "source": "/thank-you", "destination": "/thank-you/index.html" },
-    { "source": "/faq", "destination": "/faq/index.html" }
+    { "source": "/faq", "destination": "/faq/index.html" },
+    { "source": "/how-it-works", "destination": "/how-it-works/index.html" },
+    { "source": "/review", "destination": "/review/index.html" },
+    { "source": "/register", "destination": "/register/index.html" }
   ]
 }

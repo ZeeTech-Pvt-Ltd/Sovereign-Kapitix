@@ -51,7 +51,7 @@ export default function Header({ route = 'home' }) {
         </nav>
 
         <div className="header-actions">
-          <a className="btn btn-primary btn-signup" href="/" data-scroll="#register">Sign Up</a>
+          <a className="btn btn-primary btn-signup" href="/register">Sign Up</a>
           <button
             className={`burger ${menuOpen ? 'open' : ''}`}
             onClick={() => setMenuOpen((v) => !v)}
@@ -69,7 +69,7 @@ export default function Header({ route = 'home' }) {
             {item.label}
           </a>
         ))}
-        <a href="/" data-scroll="#register" onClick={() => setMenuOpen(false)}>Sign Up</a>
+        <a href="/register" onClick={() => setMenuOpen(false)}>Sign Up</a>
       </nav>
     </header>
   )

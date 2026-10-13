@@ -41,6 +41,9 @@ const OUTPUT = {
   disclosure: 'disclosure/index.html',
   'thank-you': 'thank-you/index.html',
   faq: 'faq/index.html',
+  'how-it-works': 'how-it-works/index.html',
+  review: 'review/index.html',
+  register: 'register/index.html',
   404: '404.html',
 }
 
@@ -158,6 +161,26 @@ if (cssFiles.length !== 1) {
   throw new Error(`Expected exactly 1 CSS file, found ${cssFiles.length}: ${cssFiles.join(', ')}`)
 }
 const css = readFileSync(path.join(assetsDir, cssFiles[0]), 'utf8')
+
+// A route listed in OUTPUT but missing from the prerender entry's ROUTES array
+// yields `undefined`, and interpolating that into the template writes the
+// literal text "undefined" as the page body: the route ships with no markup at
+// all, and React then throws a hydration mismatch (#418) on every visit. It is
+// a silent failure - the build reports success and the file count is right -
+// so refuse to write the file rather than let it reach production.
+const missing = Object.keys(OUTPUT).filter((route) => typeof pages[route] !== 'string')
+if (missing.length) {
+  throw new Error(
+    `No prerendered markup for: ${missing.join(', ')}. Add them to ROUTES in scripts/prerender-entry.jsx.`,
+  )
+}
+
+// Same idea for the head: OUTPUT keys and seo.js keys are two more lists that
+// have to agree, and a missing one fails a long way from the cause.
+const noSeo = Object.keys(OUTPUT).filter((route) => !seo[route])
+if (noSeo.length) {
+  throw new Error(`No SEO config for: ${noSeo.join(', ')}. Add them to the seo map in src/data/seo.js.`)
+}
 
 let wrote = 0
 for (const [route, rel] of Object.entries(OUTPUT)) {

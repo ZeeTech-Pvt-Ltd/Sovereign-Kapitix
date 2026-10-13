@@ -15,6 +15,9 @@ import Capabilities from './components/Capabilities.jsx'
 import Toolkit from './components/Toolkit.jsx'
 import FinalCta from './components/FinalCta.jsx'
 import FaqPage from './components/FaqPage.jsx'
+import HowItWorksPage from './components/HowItWorksPage.jsx'
+import ReviewPage from './components/ReviewPage.jsx'
+import RegisterPage from './components/RegisterPage.jsx'
 import Footer from './components/Footer.jsx'
 import About from './components/About.jsx'
 import Contact from './components/Contact.jsx'
@@ -46,6 +49,9 @@ export function renderRoute(route) {
   if (route === 'disclosure') return <Layout routeName="disclosure"><RiskDisclosure /></Layout>
   if (route === 'thank-you') return <Layout routeName="thank-you"><ThankYou /></Layout>
   if (route === 'faq') return <Layout routeName="faq"><FaqPage /></Layout>
+  if (route === 'how-it-works') return <Layout routeName="how-it-works"><HowItWorksPage /></Layout>
+  if (route === 'review') return <Layout routeName="review"><ReviewPage /></Layout>
+  if (route === 'register') return <Layout routeName="register"><RegisterPage /></Layout>
   if (route === '404') return <Layout routeName="404"><NotFound /></Layout>
 
   return (

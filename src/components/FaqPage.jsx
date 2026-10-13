@@ -34,7 +34,7 @@ export default function FaqPage() {
             Frequently Asked <mark>Questions</mark>
           </h1>
           <p className="lead">
-            Straight answers to the most common questions about Sovereign Kapitix - how the platform works, what it costs, and how to stay safe.
+            Straight answers to the questions people ask most: how the platform works, what it costs, how to open an account, and how to stay safe from lookalike sites.
           </p>
         </div>
       </section>
