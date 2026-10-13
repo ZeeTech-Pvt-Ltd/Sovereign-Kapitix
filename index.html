@@ -13,11 +13,28 @@
          (prerendered HTML included). -->
     <script>document.documentElement.classList.add('js')</script>
 
-    <!-- Third-party connection warm-up. (Google Analytics / Tag Manager and the
-         Search Console verification tag were removed - this is a demo build
-         with no tracking wired up.) -->
+    <!-- Third-party connection warm-up. -->
     <link rel="preconnect" href="https://flagcdn.com" crossorigin />
     <link rel="dns-prefetch" href="https://flagcdn.com" />
+
+    <!-- Search Console ownership verification. -->
+    <meta name="google-site-verification" content="Cx0lmBQmPq_TuNTl0fhsHbfNI9Nom-HGNk82dbMySRw" />
+
+    <!-- Google tag (gtag.js). Feeds GA4 property G-2K32GJQKWT.
+         THESE TAGS MUST STAY ABOVE THE "Primary metadata" MARKER BELOW.
+         scripts/build.mjs replaces everything from that marker down, per route,
+         so a tag placed under it is present on the dev server and in no
+         prerendered page that ships. Above the marker, every route gets it.
+         gtag.js sets its own cookies and sends page views, so the Privacy
+         Policy describes it (section 09) and has to keep doing so. -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-2K32GJQKWT"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-2K32GJQKWT');
+    </script>
 
     <!-- Primary metadata (homepage defaults; <Seo/> updates per route).
          scripts/build.mjs REPLACES everything from here down per route, so in

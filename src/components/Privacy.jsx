@@ -76,9 +76,12 @@ const sections = [
   },
   {
     n: '09',
-    t: 'Cookies and Similar Technologies',
+    t: 'Cookies, Analytics and Similar Technologies',
     p: [
       'We use cookies and similar technologies to operate the Service, remember your preferences, and understand how the Service is used.',
+      'We also use Google Analytics 4 (measurement ID G-2K32GJQKWT), a service provided by Google, to understand how visitors find and use this website. It records the pages you view, how long you spend on them, how you arrived, and general information about your device and approximate location. Google receives your IP address as part of this. We use the results in aggregate to improve the site, and we do not use them to identify you personally.',
+      'The Google tag on this site carries measurement settings only. It is not configured for advertising or remarketing, and we do not share analytics data with advertising networks.',
+      'You can block or delete cookies in your browser settings at any time. Google also offers a browser extension that opts you out of Google Analytics across every site you visit. Blocking cookies does not stop you from using this website.',
     ],
   },
   {
@@ -122,7 +125,7 @@ export default function Privacy() {
             Privacy <mark>Policy</mark>
           </h1>
           <p className="lead">How Sovereign Kapitix collects, uses, and protects your personal information.</p>
-          <span className="terms-updated">Last updated: 31 August 2026</span>
+          <span className="terms-updated">Last updated: 13 October 2026</span>
         </div>
       </section>
 
