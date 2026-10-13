@@ -27,7 +27,7 @@ export const nav = [
   { label: 'Home', href: '/' },
   { label: 'How It Works', href: '/how-it-works' },
   { label: 'About Us', href: '/about' },
-  { label: 'Reviews', href: '/review' },
+  { label: 'Reviews', href: '/sovereign-kapitix-review' },
   { label: 'FAQ', href: '/faq' },
   { label: 'Contact', href: '/contact' },
 ]
@@ -269,7 +269,7 @@ export const faq = [
     // with verifiable facts - your entity name, AFSL status if you hold one,
     // and how a reader can check it.
     a: 'Sovereign Kapitix is an automated trading platform. We publish our terms, our risk disclosure, and how the platform works, so you can judge it on the facts rather than on ratings. Always verify any platform independently before depositing money.',
-    link: { text: 'Read our full review.', href: '/review' },
+    link: { text: 'Read our full review.', href: '/sovereign-kapitix-review' },
   },
   {
     q: 'How Much Do I Need to Start Trading on Sovereign Kapitix?',
@@ -699,7 +699,7 @@ export const footer = {
     { label: 'Home', href: '/' },
     { label: 'How It Works', href: '/how-it-works' },
     { label: 'About Us', href: '/about' },
-    { label: 'Reviews', href: '/review' },
+    { label: 'Reviews', href: '/sovereign-kapitix-review' },
     { label: 'FAQ', href: '/faq' },
     { label: 'Contact Us', href: '/contact' },
   ],

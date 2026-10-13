@@ -42,7 +42,7 @@ const OUTPUT = {
   'thank-you': 'thank-you/index.html',
   faq: 'faq/index.html',
   'how-it-works': 'how-it-works/index.html',
-  review: 'review/index.html',
+  'sovereign-kapitix-review': 'sovereign-kapitix-review/index.html',
   register: 'register/index.html',
   404: '404.html',
 }

@@ -2,8 +2,9 @@ import CtaBanner from './CtaBanner.jsx'
 import { Check } from './icons.jsx'
 import { reviewPage, whatis } from '../data/content.js'
 
-// The /review route - the page a reader lands on after searching "is Sovereign
-// Kapitix a scam", which is the search this page is built to answer honestly.
+// The /sovereign-kapitix-review route - the page a reader lands on after
+// searching "is Sovereign Kapitix a scam", which is the search this page is
+// built to answer honestly.
 //
 // It is deliberately NOT a wall of testimonials. No attributable customer
 // quotes have been supplied, and inventing them for a trading platform is both

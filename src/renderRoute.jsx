@@ -50,7 +50,7 @@ export function renderRoute(route) {
   if (route === 'thank-you') return <Layout routeName="thank-you"><ThankYou /></Layout>
   if (route === 'faq') return <Layout routeName="faq"><FaqPage /></Layout>
   if (route === 'how-it-works') return <Layout routeName="how-it-works"><HowItWorksPage /></Layout>
-  if (route === 'review') return <Layout routeName="review"><ReviewPage /></Layout>
+  if (route === 'sovereign-kapitix-review') return <Layout routeName="sovereign-kapitix-review"><ReviewPage /></Layout>
   if (route === 'register') return <Layout routeName="register"><RegisterPage /></Layout>
   if (route === '404') return <Layout routeName="404"><NotFound /></Layout>
 

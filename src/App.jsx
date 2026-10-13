@@ -4,14 +4,14 @@ import { renderRoute } from './renderRoute.jsx'
 
 // Clean-path routing: "/" -> home, "/about" -> About, anything unknown -> 404.
 // Fragment anchors like "#register" keep working as in-page scroll links.
-const KNOWN_ROUTES = ['about', 'contact', 'terms', 'privacy', 'disclosure', 'thank-you', 'faq', 'how-it-works', 'review', 'register']
+const KNOWN_ROUTES = ['about', 'contact', 'terms', 'privacy', 'disclosure', 'thank-you', 'faq', 'how-it-works', 'sovereign-kapitix-review', 'register']
 
 // Pages that were removed. Any stale link - a bookmark, an old search result,
 // or an older URL - now resolves to the homepage.
 //   /why-invest - superseded by the how-it-works page
 //   /app        - retired content
 //
-// /how-it-works and /review used to live here too, removed for being thin
+// /how-it-works and the review page used to live here too, removed for being thin
 // restatements of a homepage section. Both are real pages again, so they must
 // stay OUT of this map: anything listed here is rewritten to "/" before the
 // router ever sees it, and the page would be unreachable no matter what else
@@ -19,10 +19,13 @@ const KNOWN_ROUTES = ['about', 'contact', 'terms', 'privacy', 'disclosure', 'tha
 // for the same reason.
 const REMOVED_PAGES = { '/why-invest': '/', '/app': '/' }
 
-// Legacy case-variant paths redirect to their canonical form. The old
-// /How-It-Works casing now points at the page that exists again rather than
-// home, which is what someone following an old link was looking for.
-const LEGACY_PATHS = { '/How-It-Works': '/how-it-works' }
+// Older paths that resolve to the page that replaced them.
+//   /How-It-Works - the old casing; the page exists again under the lowercase
+//                   slug rather than redirecting home.
+//   /review       - the route shipped briefly under this short slug. The live
+//                   slug is the brand-qualified one, so a link saved in that
+//                   window still lands on the page instead of the 404.
+const LEGACY_PATHS = { '/How-It-Works': '/how-it-works', '/review': '/sovereign-kapitix-review' }
 
 const getRoute = (path = location.pathname) => {
   const clean = path.split('?')[0].replace(/\/+$/, '')

@@ -223,19 +223,24 @@ export const seo = {
   // description deliberately do not repeat that phrasing back as a claim about
   // the platform; they describe what the page contains, which is an honest
   // review carrying the downsides as well as the benefits.
-  review: {
+  //
+  // The slug is brand-qualified rather than a bare /review. Every brand built
+  // on this template does the same, and the longer slug is what makes it
+  // unambiguous when the page is shared or cited without its domain. The short
+  // /review path is redirected here, never the other way around.
+  'sovereign-kapitix-review': {
     title: 'Sovereign Kapitix Review | An Honest Look at the Platform',
     description:
       'An honest look at Sovereign Kapitix: how it works, what it costs, and the risks you should know before you deposit. Open your free account today.',
     keywords:
       'Sovereign Kapitix review, is Sovereign Kapitix a scam, Sovereign Kapitix legit, Sovereign Kapitix pros and cons, Sovereign Kapitix minimum deposit',
-    canonical: `${SITE}/review`,
+    canonical: `${SITE}/sovereign-kapitix-review`,
     robots: 'index, follow, max-image-preview:large, max-snippet:-1',
     type: 'website',
     ogImageAlt: 'An honest review of the Sovereign Kapitix trading platform',
     schema: [
-      webPage('Sovereign Kapitix Review', `${SITE}/review`, 'A full review of the Sovereign Kapitix automated trading platform: the costs, the pros and cons, and how to check the site you are on is the real one.'),
-      breadcrumb('Reviews', '/review'),
+      webPage('Sovereign Kapitix Review', `${SITE}/sovereign-kapitix-review`, 'A full review of the Sovereign Kapitix automated trading platform: the costs, the pros and cons, and how to check the site you are on is the real one.'),
+      breadcrumb('Reviews', '/sovereign-kapitix-review'),
     ],
   },
 
