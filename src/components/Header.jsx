@@ -53,6 +53,7 @@ export default function Header({ route = 'home' }) {
         <div className="header-actions">
           <a className="btn btn-primary btn-signup" href="/register">Sign Up</a>
           <button
+            type="button"
             className={`burger ${menuOpen ? 'open' : ''}`}
             onClick={() => setMenuOpen((v) => !v)}
             aria-label="Toggle menu"

@@ -45,6 +45,7 @@ export default function FaqPage() {
             {faq.map((item, i) => (
               <div className={`faq-item ${openIndex === i ? 'open' : ''} reveal`} key={item.q}>
                 <button
+                  type="button"
                   className="faq-q"
                   onClick={() => toggle(i)}
                   aria-expanded={openIndex === i}

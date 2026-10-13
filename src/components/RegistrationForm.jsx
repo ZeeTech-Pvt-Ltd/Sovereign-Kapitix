@@ -167,10 +167,15 @@ export default function RegistrationForm() {
       </button>
       {message.kind && <div className={`form-message ${message.kind}`}>{message.text}</div>}
 
+      {/* Relative, not absolute. These pointed at
+          https://sovereign-kapitix.net/privacy and /terms, which is wrong in
+          both directions: on the dev server or any staging host the links leave
+          the site entirely, and in production they force a full page load
+          instead of the SPA navigation every other link on the site uses. */}
       <p className="legal">
         By entering your personal information and clicking the button, you accept the{' '}
-        <a href="https://sovereign-kapitix.net/privacy">Privacy Policy</a> and{' '}
-        <a href="https://sovereign-kapitix.net/terms">Terms of Use</a> of the website.
+        <a href="/privacy">Privacy Policy</a> and{' '}
+        <a href="/terms">Terms of Use</a> of the website.
       </p>
 
       <div className="pay-row" aria-label="Accepted payment methods">

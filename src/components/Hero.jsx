@@ -25,11 +25,17 @@ export default function Hero() {
             ))}
           </ul>
 
+          {/* Both buttons point at their own page rather than scrolling.
+              "Register Now" used to carry data-scroll="#register" while the hero
+              itself is the element with id="register", so the button scrolled to
+              the section it was already sitting in and appeared to do nothing.
+              "How It Works" scrolled to the homepage's summary section, which is
+              now the short version of a full page. */}
           <div className="hero-cta">
-            <a className="btn btn-primary" href="/" data-scroll="#register">
+            <a className="btn btn-primary" href="/register">
               Register Now <ArrowRight />
             </a>
-            <a className="btn btn-ghost" href="/" data-scroll="#how">How It Works</a>
+            <a className="btn btn-ghost" href="/how-it-works">How It Works</a>
           </div>
         </div>
 

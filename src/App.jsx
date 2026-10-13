@@ -82,7 +82,10 @@ export default function App() {
       const href = a.getAttribute('href')
       if (!href) return
 
-      // Placeholder links (footer socials) - keep URL clean, do nothing.
+      // A bare "#" is a deliberate no-op: keep the URL clean instead of letting
+      // the browser jump to the top. Nothing on the site uses one right now -
+      // the footer socials that did have been removed - but the guard stays so
+      // a future placeholder does not yank the page to the top on click.
       if (href === '#') {
         e.preventDefault()
         return
