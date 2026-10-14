@@ -91,8 +91,8 @@ export default function PhoneMockup({ variant = 1 }) {
           <svg className="pm-chart" viewBox="0 0 320 150" role="img" aria-label={`${v.label} trading chart`}>
             <defs>
               <linearGradient id={gid} x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0" stopColor="#0F766E" stopOpacity="0.28" />
-                <stop offset="1" stopColor="#0F766E" stopOpacity="0" />
+                <stop offset="0" stopColor="#1D4ED8" stopOpacity="0.28" />
+                <stop offset="1" stopColor="#1D4ED8" stopOpacity="0" />
               </linearGradient>
             </defs>
             <g stroke="rgba(15,118,110,.13)" strokeDasharray="2 5">

@@ -108,14 +108,14 @@ mark {
 .btn-primary {
   position: relative; overflow: hidden;
   background: var(--grad); color: #fff;
-  box-shadow: 0 10px 24px -8px rgba(11, 93, 87, 0.55);
+  box-shadow: 0 10px 24px -8px rgba(30, 64, 175, 0.55);
 }
 .btn-primary::after {
   content: ""; position: absolute; top: 0; left: -160%; width: 55%; height: 100%;
   background: linear-gradient(105deg, transparent, rgba(255, 255, 255, .35), transparent);
   transform: skewX(-20deg); transition: left .55s ease; pointer-events: none;
 }
-.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 16px 32px -8px rgba(11, 93, 87, 0.6); }
+.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 16px 32px -8px rgba(30, 64, 175, 0.6); }
 .btn-primary:hover::after { left: 160%; }
 .btn-ghost:hover { border-color: var(--primary-light); background: var(--primary-lightest); transform: translateY(-2px); }
 .btn-ghost { background: #fff; color: var(--primary); border: 1.5px solid var(--primary-lighter); box-shadow: var(--shadow-sm); }
@@ -161,7 +161,7 @@ mark {
 }
 .logo-text { font-size: 21px; font-weight: 800; letter-spacing: -0.02em; }
 .logo-text span { color: var(--primary); }
-.logo-text.on-dark span { color: #5EEAD4; }
+.logo-text.on-dark span { color: #93C5FD; }
 .nav { display: flex; align-items: center; gap: 6px; }
 .nav a {
   font-size: 14.5px; font-weight: 500; color: #333F3E;
@@ -199,7 +199,7 @@ body.menu-open { overflow: hidden; }
 }
 .hero::before {
   content: ""; position: absolute; inset: 0; opacity: .5;
-  background-image: radial-gradient(rgba(11, 93, 87,.10) 1.4px, transparent 1.4px);
+  background-image: radial-gradient(rgba(30, 64, 175,.10) 1.4px, transparent 1.4px);
   background-size: 26px 26px;
   mask-image: radial-gradient(closest-side at 30% 30%, #000, transparent 75%);
   -webkit-mask-image: radial-gradient(closest-side at 30% 30%, #000, transparent 75%);
@@ -381,7 +381,7 @@ body.menu-open { overflow: hidden; }
 .how { background: var(--primary-lightest); position: relative; overflow: hidden; }
 .how::before {
   content: ""; position: absolute; inset: 0;
-  background-image: radial-gradient(rgba(11, 93, 87,.07) 1.4px, transparent 1.4px);
+  background-image: radial-gradient(rgba(30, 64, 175,.07) 1.4px, transparent 1.4px);
   background-size: 26px 26px;
   mask-image: radial-gradient(closest-side at 90% 10%, #000, transparent 70%);
   -webkit-mask-image: radial-gradient(closest-side at 90% 10%, #000, transparent 70%);
@@ -401,7 +401,7 @@ body.menu-open { overflow: hidden; }
   background: var(--primary-lighter); color: var(--primary);
   display: grid; place-items: center; margin-bottom: 20px;
 }
-.step .step-ico.green { background: rgba(143,196,115,.18); color: var(--green); }
+.step .step-ico.green { background: rgba(29, 78, 216, .14); color: var(--green); }
 .step h3 { margin-bottom: 8px; }
 .step p { color: var(--muted); font-size: 15px; }
 .step .step-no { position: absolute; top: 22px; right: 24px; font-size: 13px; font-weight: 700; color: var(--primary); letter-spacing: .06em; }
@@ -451,7 +451,6 @@ body.menu-open { overflow: hidden; }
   box-shadow: var(--shadow-md); padding: 12px 14px; display: flex; align-items: center; gap: 10px;
   border: 1px solid var(--line); font-size: 13px; font-weight: 600;
 }
-.exp-badge .dot { width: 10px; height: 10px; border-radius: 50%; background: var(--green-light); box-shadow: 0 0 0 4px rgba(143,196,115,.25); }
 .exp-badge.b1 { bottom: -14px; left: -14px; }
 .exp-badge.b2 { top: -16px; right: -6px; }
 .exp-badge.b3 { bottom: -12px; right: 16px; }
@@ -472,8 +471,6 @@ body.menu-open { overflow: hidden; }
 }
 .exp-sec .exp-brand { font-size: 12px; font-weight: 800; letter-spacing: .08em; color: var(--primary-dark); display: inline-flex; align-items: center; gap: 8px; }
 .exp-sec .exp-brand-dot { width: 9px; height: 9px; border-radius: 3px; background: var(--grad); }
-.exp-sec .exp-live { font-size: 12px; font-weight: 700; color: var(--green); display: inline-flex; align-items: center; gap: 7px; }
-.exp-sec .exp-live .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--green-light); box-shadow: 0 0 0 4px rgba(143, 196, 115, .2); animation: pulse 1.6s infinite; }
 .exp-sec .exp-card-body { padding: 26px 28px 28px; }
 .exp-sec .bar-chart { gap: 9px; height: 230px; margin-top: 18px; padding: 16px 14px 0; background: linear-gradient(180deg, var(--primary-lightest), #fff); border: 1px solid var(--line); border-radius: 16px; }
 .exp-sec .bar-chart i { border-radius: 8px 8px 5px 5px; }
@@ -532,7 +529,7 @@ body.menu-open { overflow: hidden; }
 .prio-list { display: grid; gap: 10px; }
 .prio-list li { display: inline-flex; align-items: center; gap: 10px; font-size: 14.5px; color: #2F3B3A; }
 .tags { display: flex; gap: 8px; margin-top: 16px; flex-wrap: wrap; }
-.tag { font-size: 11.5px; font-weight: 700; color: var(--green); background: rgba(143,196,115,.18); padding: 5px 11px; border-radius: 999px; }
+.tag { font-size: 11.5px; font-weight: 700; color: var(--green); background: rgba(29, 78, 216, .14); padding: 5px 11px; border-radius: 999px; }
 .prio-card.alt .prio-top { background: #fff; color: var(--ink); border-bottom: 1px solid var(--line); }
 .prio-card.alt .prio-top::after { background: rgba(29, 78, 216,.05); }
 .prio-card.alt .prio-top .big { color: var(--primary); }
@@ -552,7 +549,7 @@ body.menu-open { overflow: hidden; }
   background: var(--primary-lighter); color: var(--primary);
   display: grid; place-items: center; margin-bottom: 18px;
 }
-.feat-ico.green { background: rgba(143,196,115,.18); color: var(--green); }
+.feat-ico.green { background: rgba(29, 78, 216, .14); color: var(--green); }
 .feat-card h3 { font-size: 18px; margin-bottom: 8px; }
 .feat-card p { color: var(--muted); font-size: 14.5px; }
 
@@ -632,8 +629,8 @@ body.menu-open { overflow: hidden; }
 
 /* ---------- Footer ---------- */
 .footer {
-  background: linear-gradient(180deg, #0A403A 0%, var(--primary-darker) 100%);
-  color: #C2D7D3;
+  background: linear-gradient(180deg, #152A6E 0%, var(--primary-darker) 100%);
+  color: #C6D4EE;
   padding: 64px 0 0;
   position: relative;
 }
@@ -644,20 +641,20 @@ body.menu-open { overflow: hidden; }
 .footer a:hover { color: #fff; }
 .footer-top { display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 40px; padding-bottom: 40px; }
 .footer-brand .logo-text { color: #fff; }
-.footer-brand p { font-size: 14px; margin-top: 14px; max-width: 320px; color: #92ADA8; }
+.footer-brand p { font-size: 14px; margin-top: 14px; max-width: 320px; color: #93A6C8; }
 /* Column labels are h2, not h3: on pages whose main content has no h2 (the FAQ
    list, the 404) an h3 here was the first heading after the h1 and broke the
    document outline. Same declarations, so nothing moves visually. */
 .footer h2 { color: #fff; font-size: 15px; margin-bottom: 16px; font-weight: 700; }
 .footer ul li { margin-bottom: 10px; }
-.footer ul a { font-size: 14.5px; color: #C2D7D3; }
+.footer ul a { font-size: 14.5px; color: #C6D4EE; }
 .footer-social { display: flex; gap: 10px; margin-top: 20px; }
 .footer-social a { width: 38px; height: 38px; border-radius: 10px; background: rgba(255,255,255,.08); display: grid; place-items: center; transition: background .2s; }
 .footer-social a:hover { background: var(--primary-light); }
-.footer-legal { border-top: 1px solid rgba(255,255,255,.1); padding: 22px 0; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px; font-size: 13.5px; color: #92ADA8; }
+.footer-legal { border-top: 1px solid rgba(255,255,255,.1); padding: 22px 0; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px; font-size: 13.5px; color: #93A6C8; }
 .disclaimer { border-top: 1px solid rgba(255,255,255,.08); padding: 26px 0 40px; }
 .disclaimer b { color: #fff; font-size: 13.5px; display: block; margin-bottom: 8px; }
-.disclaimer p { font-size: 12.5px; line-height: 1.75; color: #92ADA8; }
+.disclaimer p { font-size: 12.5px; line-height: 1.75; color: #93A6C8; }
 
 /* =========================================================
    Polish & effects
@@ -739,7 +736,7 @@ body.menu-open { overflow: hidden; }
 /* eyebrow pulse dot */
 .eyebrow::before {
   content: ""; width: 6px; height: 6px; border-radius: 50%;
-  background: var(--green-light); box-shadow: 0 0 0 3px rgba(143, 196, 115, .22);
+  background: var(--green-light); box-shadow: 0 0 0 3px rgba(29, 78, 216, .12);
 }
 .cta-banner .eyebrow::before { background: #fff; box-shadow: 0 0 0 3px rgba(255, 255, 255, .22); }
 
@@ -747,16 +744,18 @@ body.menu-open { overflow: hidden; }
 .prio {
   background:
     radial-gradient(40rem 26rem at 100% 0%, rgba(59, 130, 246, .07), transparent 60%),
-    radial-gradient(30rem 22rem at 0% 100%, rgba(143, 196, 115, .08), transparent 60%);
+    radial-gradient(30rem 22rem at 0% 100%, rgba(29, 78, 216, .12), transparent 60%);
 }
 .feat { background: radial-gradient(44rem 30rem at -10% 0%, rgba(59, 130, 246, .06), transparent 60%); }
 /* Portfolio management section - pure white (sirf #portfolio wala section) */
 #portfolio { background: #fff; }
-/* "Built to perform" (Features) - halka teal tint, separate-section feel */
+/* "Built to perform" (Features) - soft blue tint, separate-section feel.
+   Was #eef4ff / #f6f8fb from the old teal palette, which read as green
+   against the blue. */
 #features {
   background:
-    radial-gradient(44rem 30rem at 110% 0%, rgba(59, 130, 246, .07), transparent 60%),
-    linear-gradient(180deg, #EAF6F3 0%, #F7FCFA 55%, #FFFFFF 100%);
+    radial-gradient(44rem 30rem at 110% 0%, rgba(29, 78, 216, .07), transparent 60%),
+    linear-gradient(180deg, #EEF4FF 0%, #F6F8FB 55%, #FFFFFF 100%);
 }
 
 /* gradient numbers */
@@ -819,7 +818,7 @@ html.js .reveal[data-revealed] { opacity: 1; transform: none; }
 .tv-halo { fill: none; stroke: var(--primary-light); stroke-width: 2; opacity: .45; transform-box: fill-box; transform-origin: center; animation: tvRing 1.8s ease-out infinite; }
 .tv-coin {
   position: absolute; top: -14px; right: -12px; width: 54px; height: 54px; border-radius: 50%;
-  background: radial-gradient(circle at 32% 28%, #5EEAD4, var(--primary-light) 38%, var(--primary) 72%, var(--primary-dark));
+  background: radial-gradient(circle at 32% 28%, #93C5FD, var(--primary-light) 38%, var(--primary) 72%, var(--primary-dark));
   box-shadow: 0 12px 22px rgba(29, 78, 216, .38), inset 0 -4px 10px rgba(30, 58, 138, .35), inset 0 3px 6px rgba(255, 255, 255, .5);
   display: grid; place-items: center; color: #fff; font-weight: 800; font-size: 22px;
   animation: coinFloat 4s ease-in-out infinite;
@@ -1196,8 +1195,7 @@ html.js .reveal[data-revealed] { opacity: 1; transform: none; }
 .rv-sec h2 { font-size: clamp(21px, 2.4vw, 26px); line-height: 1.28; margin-bottom: 16px; color: var(--ink); }
 .rv-sec p { color: var(--muted); font-size: 16px; line-height: 1.75; margin-bottom: 16px; }
 .rv-sec p:last-child { margin-bottom: 0; }
-.rv-sec a, .rv-intro a, .rv-risk a { color: var(--primary); font-weight: 600; text-decoration: underline; text-underline-offset: 3px; text-decoration-color: rgba(29, 78, 216, .35); transition: color .2s ease, text-decoration-color .2s ease; }
-.rv-sec a:hover, .rv-intro a:hover, .rv-risk a:hover { color: var(--primary-dark); text-decoration-color: currentColor; }
+.rv-sec a, .rv-intro a, .rv-sec a:hover, .rv-intro a:hover, .rv-risk a:hover { color: var(--primary-dark); text-decoration-color: currentColor; }
 
 /* At-a-glance spec table */
 .rv-glance { border: 1px solid var(--line); border-radius: var(--r-lg); overflow: hidden; background: #fff; box-shadow: var(--shadow-sm); }
@@ -1243,10 +1241,8 @@ html.js .reveal[data-revealed] { opacity: 1; transform: none; }
 .zapp-split-content .zapp-note { max-width: none; margin: 20px 0 0; text-align: left; }
 .zapp-split-media img { width: 100%; max-width: 440px; height: auto; margin-inline: auto; }
 .warn-timeline { position: relative; max-width: 720px; margin: 8px auto 0; }
-.warn-timeline::before { content: ''; position: absolute; left: 22px; top: 12px; bottom: 12px; width: 2px; background: linear-gradient(180deg, rgba(192, 57, 43, .4), rgba(192, 57, 43, .06)); }
 .warn-item { position: relative; padding: 0 0 28px 60px; }
 .warn-item:last-child { padding-bottom: 0; }
-.warn-num { position: absolute; left: 0; top: 0; width: 46px; height: 46px; background: linear-gradient(135deg, #C0392B, #922B21); color: #fff; font-size: 15px; font-weight: 800; border-radius: 50%; display: grid; place-items: center; box-shadow: 0 4px 14px -4px rgba(192, 57, 43, .5); border: 2px solid #fff; }
 .warn-item p { color: #2F3B3A; font-size: 15.5px; line-height: 1.7; padding-top: 9px; }
 .zapp-faq { max-width: none; margin-inline: 0; }
 .zapp-note { max-width: 720px; margin: 40px auto 0; text-align: center; color: var(--muted); font-size: 15px; line-height: 1.7; }
@@ -1265,9 +1261,6 @@ html.js .reveal[data-revealed] { opacity: 1; transform: none; }
 .rv-fit-card.no li::before { content: '\2715'; color: #C0392B; }
 
 /* Risk warning card under the FAQ */
-.rv-risk { margin-top: 34px; display: flex; gap: 14px; align-items: flex-start; border: 1px solid rgba(192, 57, 43, .28); background: #FCF5F4; border-radius: var(--r-lg); padding: 18px 22px; }
-.rv-risk b { color: #C0392B; text-transform: uppercase; letter-spacing: .05em; font-size: 12.5px; flex: 0 0 auto; padding-top: 2px; }
-.rv-risk p { color: #7A4A44; font-size: 14.5px; line-height: 1.7; margin: 0; }
 
 @media (max-width: 640px) {
   .rv-hero { padding: 48px 0 32px; }
@@ -1291,7 +1284,7 @@ html.js .reveal[data-revealed] { opacity: 1; transform: none; }
 /* ---------- Inside the toolkit - reuses .feat-grid / .feat-card, tint of its own ---------- */
 .toolkit {
   background:
-    radial-gradient(44rem 30rem at 100% 0%, rgba(143, 196, 115, .08), transparent 60%),
+    radial-gradient(44rem 30rem at 100% 0%, rgba(29, 78, 216, .12), transparent 60%),
     radial-gradient(40rem 26rem at 0% 100%, rgba(59, 130, 246, .06), transparent 60%);
 }
 
@@ -1374,7 +1367,7 @@ html.js .reveal[data-revealed] { opacity: 1; transform: none; }
 .mode-card p { color: var(--muted); font-size: 15px; }
 .how-modes .how-strip { margin-top: 30px; }
 
-.how-ready { background: radial-gradient(44rem 30rem at 100% 0%, rgba(143, 196, 115, .08), transparent 60%); }
+.how-ready { background: radial-gradient(44rem 30rem at 100% 0%, rgba(29, 78, 216, .12), transparent 60%); }
 
 /* ---------- /register ---------- */
 .reg-grid { display: grid; grid-template-columns: 1fr 1.1fr; gap: 46px; align-items: start; }
@@ -1389,16 +1382,16 @@ html.js .reveal[data-revealed] { opacity: 1; transform: none; }
 
 /* Risk band - deliberately above the form, matching the homepage order. */
 .risk-band {
-  border: 1px solid rgba(192, 57, 43, .28);
-  background: #FCF5F4;
+  border: 1px solid rgba(166, 124, 26, .28);
+  background: #FCF9F2;
   border-radius: var(--r-lg);
   padding: 22px 24px;
 }
-.risk-band h2 { color: #C0392B; font-size: 17px; margin-bottom: 8px; }
-.risk-band p { color: #7A4A44; font-size: 14.5px; line-height: 1.7; }
+.risk-band h2 { color: var(--accent); font-size: 17px; margin-bottom: 8px; }
+.risk-band p { color: #6B5A33; font-size: 14.5px; line-height: 1.7; }
 .risk-band a {
   display: inline-block; margin-top: 12px;
-  color: #C0392B; font-weight: 600; font-size: 14px;
+  color: var(--accent); font-weight: 600; font-size: 14px;
   text-decoration: underline; text-underline-offset: 3px;
 }
 
@@ -1430,7 +1423,7 @@ html.js .reveal[data-revealed] { opacity: 1; transform: none; }
 
 /* ---------- Shared small pieces ---------- */
 .section-note { margin-top: 24px; color: var(--muted); font-size: 14.5px; line-height: 1.7; }
-.section-note a { color: var(--primary); font-weight: 600; text-decoration: underline; text-underline-offset: 3px; text-decoration-color: rgba(15,118,110,.35); }
+.section-note a { color: var(--primary); font-weight: 600; text-decoration: underline; text-underline-offset: 3px; text-decoration-color: rgba(29,78,216,.35); }
 .sub-h { font-size: 15px; text-transform: uppercase; letter-spacing: .06em; color: var(--primary); margin-bottom: 14px; }
 .caps-grid-wide { grid-template-columns: 1fr 1fr; }
 .small-print { margin-top: 34px; color: var(--muted); font-size: 13px; line-height: 1.7; }
@@ -1444,9 +1437,9 @@ html.js .reveal[data-revealed] { opacity: 1; transform: none; }
 .whatis-body { margin: 0 auto 34px; }
 .whatis-fit { margin-top: 6px; }
 .legit { background: linear-gradient(180deg, var(--primary-lightest) 0%, #fff 70%); }
-.fees-sec { background: radial-gradient(44rem 30rem at 0% 0%, rgba(20,184,166,.06), transparent 60%); }
-.risks-sec { background: linear-gradient(180deg, #FCF5F4 0%, #fff 60%); }
-.risks-sec .eyebrow { background: rgba(192,57,43,.10); color: #C0392B; border-color: rgba(192,57,43,.22); }
+.fees-sec { background: radial-gradient(44rem 30rem at 0% 0%, rgba(59,130,246,.06), transparent 60%); }
+.risks-sec { background: #fff; }
+
 .fees-actions, .faq-actions { display: flex; flex-wrap: wrap; gap: 18px; align-items: center; justify-content: space-between; margin-top: 28px; }
 .feat-grid-7 { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
 
@@ -1572,7 +1565,7 @@ html.js .reveal[data-revealed] { opacity: 1; transform: none; }
   box-shadow: var(--shadow-sm);
   transition: transform .22s ease, box-shadow .22s ease, border-color .22s ease;
 }
-.icon-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-md); border-color: rgba(15,118,110,.28); }
+.icon-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-md); border-color: rgba(29,78,216,.28); }
 .icon-card .ico {
   width: 48px; height: 48px; border-radius: 15px;
   background: var(--primary-lighter); color: var(--primary);
@@ -1580,8 +1573,8 @@ html.js .reveal[data-revealed] { opacity: 1; transform: none; }
 }
 .icon-card h3 { font-size: 16.5px; margin-bottom: 8px; }
 .icon-card p { color: var(--muted); font-size: 14.5px; line-height: 1.62; }
-.icon-card.warn .ico { background: rgba(192,57,43,.10); color: #C0392B; }
-.icon-card.warn { border-color: rgba(192,57,43,.20); }
+.icon-card.warn .ico { background: rgba(166,124,26,.12); color: var(--accent); }
+.icon-card.warn { border-color: rgba(166,124,26,.22); }
 
 /* ---------- Fit cards: who it is for / not for ---------- */
 .fit-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
@@ -1757,7 +1750,7 @@ html.js .reveal[data-revealed] { opacity: 1; transform: none; }
   background: var(--primary-lighter); color: var(--primary);
   display: grid; place-items: center;
 }
-.feat-row .ico.green { background: rgba(143,196,115,.20); color: var(--green); }
+.feat-row .ico.green { background: rgba(29, 78, 216, .14); color: var(--green); }
 .feat-row h3 { font-size: 16px; margin-bottom: 5px; }
 .feat-row p { color: var(--muted); font-size: 14.5px; line-height: 1.6; }
 
@@ -1811,7 +1804,7 @@ html.js .reveal[data-revealed] { opacity: 1; transform: none; }
    the row looked right on a phone and wrong on a desktop. */
 .field-row > *, .pn-wrap, .field-row .input { min-width: 0; }
 
-/* #features carried a teal-tinted wash (#EAF6F3 / #F7FCFA) from the old
+/* #features carried a teal-tinted wash (#eef4ff / #f6f8fb) from the old
    palette, which read as green against the blue. Re-tinted to the brief's
    alternate section colours. */
 #features {
@@ -1900,3 +1893,20 @@ html.js .reveal[data-revealed] { opacity: 1; transform: none; }
 .fee-hero span { color: var(--muted); margin-top: 6px; }
 @media (max-width: 1024px) { .fee-hero { grid-template-columns: repeat(2, 1fr); } }
 @media (max-width: 640px) { .fee-hero { grid-template-columns: 1fr; } }
+
+/* =========================================================
+   Removing the last of the red and green accents
+   ========================================================= */
+
+/* The risk section sat on a pink wash with red eyebrows and red icons. Red is
+   the colour of a validation error everywhere else on this site, so a whole
+   section wearing it read as a fault rather than as caution. Amber is the
+   conventional non-red caution colour and was already in the palette. */
+.risks-sec { background: #fff; }
+.risks-sec .eyebrow { background: rgba(166, 124, 26, .10); color: var(--accent); border-color: rgba(166, 124, 26, .24); }
+.icon-card.warn .ico { background: rgba(166, 124, 26, .12); color: var(--accent); }
+.icon-card.warn { border-color: rgba(166, 124, 26, .22); }
+
+/* FAQ action row: one filled button, centred. The secondary "Create my free
+   account" link that sat beside it has been removed. */
+.faq-actions { justify-content: center; }

@@ -36,10 +36,6 @@ export default function Risks() {
             </article>
           ))}
         </div>
-
-        <p className="section-note reveal">
-          <a href={risks.link.href}>{risks.link.text}</a> {risks.linkEnd}
-        </p>
       </div>
     </section>
   )

@@ -50,7 +50,7 @@ export default function Hero() {
             </div>
 
             <div className="chip chip-2">
-              <span className="ico" style={{ background: 'linear-gradient(114deg,#0F766E,#14B8A6)' }}>
+              <span className="ico" style={{ background: 'linear-gradient(114deg,#1D4ED8,#3B82F6)' }}>
                 <Check />
               </span>
               <div><b>Browser-based</b><span>Nothing to install</span></div>

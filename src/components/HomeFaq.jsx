@@ -17,10 +17,11 @@ export default function HomeFaq() {
 
         <FaqAccordion items={faq} idPrefix="home-faq" />
 
+        {/* A filled button rather than an inline link, and on its own: the
+            secondary "Create my free account" beside it has been removed. */}
         <div className="faq-actions reveal">
-          <a className="btn-link" href="/faq">Read all 30 questions</a>
-          <a className="btn btn-primary" href="/" data-scroll="#register">
-            Create my free account <ArrowRight />
+          <a className="btn btn-primary" href="/faq">
+            Read all 30 questions <ArrowRight />
           </a>
         </div>
       </div>

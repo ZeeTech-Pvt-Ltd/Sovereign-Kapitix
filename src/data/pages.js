@@ -20,11 +20,10 @@
 //   - Deposits and withdrawals are card payment, bank transfer or e-wallet.
 //   - Available to verified Australian residents aged 18+.
 //
-// The briefs also specify a blue palette (#1D4ED8) and call it "the same
-// palette as homepage". The homepage is emerald teal (#0F766E), so the two
-// cannot both be right. The site's existing palette wins: recolouring every
-// page blue is a redesign, not a copy change, and the note's own stated intent
-// ("same palette as homepage") is satisfied by leaving it alone.
+// The briefs specify a blue palette (#1D4ED8 primary, #EEF4FF tint, #F6F8FB
+// alternate) and call it "the same palette as homepage". The site was emerald
+// teal at the time. The operator has since confirmed the blue is the intended
+// one, so src/index.css now carries those tokens and every page inherits them.
 // =========================================================
 import { MIN_DEPOSIT, MARKETS, SUPPORT_HOURS } from './content.js'
 
