@@ -137,14 +137,14 @@ mark {
 }
 .header.scrolled { box-shadow: 0 6px 24px -12px rgba(30, 58, 138,.16); }
 .header-inner { display: flex; align-items: center; justify-content: space-between; gap: 20px; min-height: 72px; }
-.logo { display: inline-flex; align-items: center; gap: 11px; }
+.logo { display: inline-flex; align-items: center; gap: 9px; }
 /* "SK" hexagon monogram. The hexagon is a clipped layer rather than a shape on
    .logo-mark itself, so the drop-shadow on the wrapper traces the hexagon
    outline instead of a square box. The same mark is mirrored in
    public/favicon.svg and the inline favicon in index.html - change all three
    together. */
 .logo-mark {
-  position: relative; width: 40px; height: 40px; display: grid; place-items: center;
+  position: relative; width: 42px; height: 42px; display: grid; place-items: center; flex: 0 0 auto;
   filter: drop-shadow(0 7px 12px rgba(29, 78, 216, .34));
   transition: transform .25s ease;
 }
@@ -153,13 +153,13 @@ mark {
   clip-path: polygon(50% 0%, 92.4% 25.5%, 92.4% 74.5%, 50% 100%, 7.6% 74.5%, 7.6% 25.5%);
 }
 /* On the dark footer the deep end of --grad sinks into the background, so the
-   mark switches to the lighter teal there. */
+   mark switches to the lighter blue there. */
 .logo-mark.on-dark .logo-hex { background: linear-gradient(158deg, #60A5FA, var(--primary) 72%); }
 .logo-initials {
   position: relative; color: #fff; font-weight: 800; font-size: 16px;
   letter-spacing: -0.04em; line-height: 1;
 }
-.logo-text { font-size: 21px; font-weight: 800; letter-spacing: -0.02em; }
+.logo-text { font-size: 18px; font-weight: 800; letter-spacing: -0.028em; line-height: 1; white-space: nowrap; }
 .logo-text span { color: var(--primary); }
 .logo-text.on-dark span { color: #93C5FD; }
 .nav { display: flex; align-items: center; gap: 6px; }
@@ -1165,10 +1165,7 @@ html.js .reveal[data-revealed] { opacity: 1; transform: none; }
    viewport, and .hero's overflow:hidden clips the overflow. Stacking the name
    fields and allowing the grid/flex items to shrink below their content lets
    the card fit the container. */
-@media (max-width: 400px) {
-  .field-row { grid-template-columns: 1fr; }
-  .form-wrap, .field-row > *, .pn-wrap { min-width: 0; }
-}
+
 
 /* Reduced motion */
 @media (prefers-reduced-motion: reduce) {
@@ -1190,8 +1187,10 @@ html.js .reveal[data-revealed] { opacity: 1; transform: none; }
 .rv-wrap { max-width: none; }
 .rv-intro { color: var(--muted); font-size: 17px; line-height: 1.75; margin-bottom: 0; }
 
-.rv-sec { margin-top: 52px; }
+.rv-sec { margin-top: 60px; }
 .rv-sec:first-of-type { margin-top: 34px; }
+.rv-sec + .rv-sec { border-top: 1px solid var(--line); padding-top: 52px; }
+.rv-sec h2 { margin-bottom: 18px; }
 .rv-sec h2 { font-size: clamp(21px, 2.4vw, 26px); line-height: 1.28; margin-bottom: 16px; color: var(--ink); }
 .rv-sec p { color: var(--muted); font-size: 16px; line-height: 1.75; margin-bottom: 16px; }
 .rv-sec p:last-child { margin-bottom: 0; }
@@ -1912,3 +1911,52 @@ html.js .reveal[data-revealed] { opacity: 1; transform: none; }
    .section-head, so a full-width accordion would not line up with it. Every
    other FAQ sits under a left-aligned heading and fills its container. */
 .faq-sec .faq { max-width: 820px; margin-inline: auto; }
+
+/* =========================================================
+   Small-screen pass.
+   =========================================================
+   Kept at the END of the sheet on purpose: several rules it overrides
+   (.chip-1, .chip-2, .reg-card, .feat-visual, .pay-row) are declared further
+   down the file, so a media query placed with the rest of the responsive work
+   was being overridden by them and silently doing nothing.
+   ========================================================= */
+@media (max-width: 400px) {
+  .field-row { grid-template-columns: 1fr; }
+  .form-wrap, .field-row > *, .pn-wrap { min-width: 0; }
+
+  /* Buttons did not shrink. .btn carries white-space:nowrap and 26px side
+     padding, so a label like "Create my free account" plus its arrow measured
+     391px against a 320px viewport and pushed the whole page 87px wide - the
+     only element on the page that did. They now wrap and fill the row. */
+  .btn { padding: 0 18px; font-size: 14px; white-space: normal; text-align: center; max-width: 100%; }
+  .hero-cta { width: 100%; }
+  .hero-cta .btn,
+  .fees-actions .btn, .faq-actions .btn, .how-actions .btn,
+  .cta-banner .btn, .step .btn, .reg-form-card .btn { width: 100%; }
+  .section-note .btn-link { white-space: normal; }
+
+  /* Eyebrow pills ran to the edge and their wide tracking pushed them wider. */
+  .eyebrow { letter-spacing: .01em; padding: 8px 8px; font-size: 11px; }
+
+  /* The form card and its dashed ring sat hard against the screen edge. The
+     card gets its own side padding here and the ring is pulled in to match. */
+  .form-wrap { padding-inline: 4px; }
+  .form-ring { inset: -6px; }
+  .chip-1 { top: -12px; left: 0; }
+  .chip-2 { bottom: -20px; right: 0; }
+  .reg-card { padding: 40px 16px 20px; border-radius: var(--r-md); }
+  .reg-card h2 { font-size: 19px; }
+  .reg-card .sub { font-size: 12.5px; margin: 5px 0 16px; }
+  .input, .pn-input, .pn-country { font-size: 14px; }
+  .input { padding: 0 12px; min-height: 46px; }
+  .consent span, .legal { font-size: 12px; }
+
+  /* Five payment marks wrapped to two rows; smaller and tighter keeps them on
+     one. */
+  .pay-row { gap: 5px; flex-wrap: nowrap; margin-top: 14px; }
+  .pay { height: 26px; min-width: 0; padding: 0 5px; border-radius: 6px; }
+
+  .feat-visual { padding: 10px; }
+  .signal-card { padding: 18px 16px 16px; }
+  .signal-asset b { font-size: 20px; }
+}

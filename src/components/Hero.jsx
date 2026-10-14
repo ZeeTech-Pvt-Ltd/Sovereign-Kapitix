@@ -11,7 +11,9 @@ export default function Hero() {
 
         <div className="container hero-inner">
           <div className="hero-copy reveal">
-            <span className="eyebrow">{hero.eyebrow}</span>
+            {/* The "AI-assisted trading for Australian residents" eyebrow was
+                removed from here at the operator's request. The .eyebrow style
+                is still used by every other section. */}
             <h1 className="h1">
               {hero.title}
               <mark>{hero.titleMark}</mark>
