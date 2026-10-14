@@ -48,7 +48,6 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 
 .container { width: min(1224px, 100% - 2rem); margin-inline: auto; }
 .section { padding: 72px 0; }
-.section-tight { padding: 56px 0; }
 
 /* Kept in the accessibility tree but off-screen. Used where a section needs a
    heading for the document outline but the design deliberately shows none -
@@ -75,7 +74,6 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   letter-spacing: -0.015em;
 }
 .h3 { font-size: 20px; font-weight: 700; line-height: 1.3; }
-.h4 { font-size: 17px; font-weight: 600; line-height: 1.35; }
 mark {
   background: none;
   -webkit-text-fill-color: currentColor;
@@ -83,7 +81,6 @@ mark {
 }
 .lead { font-size: clamp(16px, 1.6vw, 19px); color: var(--muted); line-height: 1.65; }
 .center { text-align: center; }
-.muted { color: var(--muted); }
 .eyebrow {
   display: inline-flex; align-items: center; gap: 8px;
   font-size: 12px; font-weight: 700; letter-spacing: .12em;
@@ -335,26 +332,11 @@ body.menu-open { overflow: hidden; }
 
 /* ---------- Metrics ---------- */
 .metrics { position: relative; padding: 56px 0; }
-.metrics-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; max-width: 1080px; margin-inline: auto; }
-.metric {
-  position: relative; overflow: hidden;
-  background: #fff; border: 1px solid var(--line);
-  border-radius: var(--r-md); padding: 26px 18px;
-  text-align: center; box-shadow: var(--shadow-sm);
-  transition: transform .2s ease, box-shadow .2s ease;
-}
-.metric:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
 .metric .num { font-size: 38px; font-weight: 800; color: var(--primary); line-height: 1.1; letter-spacing: -0.02em; }
-.metric .lbl { font-size: 14px; font-weight: 600; color: #333F3E; margin-top: 6px; }
-.metric.solid { background: var(--grad); border: none; color: #fff; }
 .metric.solid .num, .metric.solid .lbl { color: #fff; }
-.metric .deco-dot { position: absolute; width: 110px; height: 110px; border-radius: 50%; background: rgba(255,255,255,.12); top: -55px; right: -45px; }
-.metric:nth-child(2) .deco-dot, .metric:nth-child(4) .deco-dot { background: rgba(29, 78, 216,.06); }
-.metric.solid .deco-dot { background: rgba(255,255,255,.14); }
 
 /* ---------- What is Sovereign Kapitix ---------- */
 .whatis { background: var(--white); }
-.whatis-inner { display: grid; grid-template-columns: 1fr 1.1fr; gap: 56px; align-items: center; }
 
 /* ---------- How it works ---------- */
 .how { background: var(--primary-lightest); position: relative; overflow: hidden; }
@@ -385,128 +367,18 @@ body.menu-open { overflow: hidden; }
 .step p { color: var(--muted); font-size: 15px; }
 .step .step-no { position: absolute; top: 22px; right: 24px; font-size: 13px; font-weight: 700; color: var(--primary); letter-spacing: .06em; }
 .step .btn-link { margin-top: 18px; }
-.how-strip {
-  position: relative;
-  margin-top: 30px; background: #fff; border: 1px solid var(--line);
-  border-radius: var(--r-md); box-shadow: var(--shadow-sm);
-  display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; padding: 22px 26px;
-}
-.how-strip p { display: inline-flex; align-items: center; gap: 10px; font-size: 14.5px; font-weight: 500; color: #2F3B3A; }
 .how-strip .tick { flex: 0 0 auto; }
 
-/* ---------- Experience ---------- */
-.exp-sec {
-  background: radial-gradient(52rem 36rem at 90% -5%, rgba(59, 130, 246, .08), transparent 60%),
-    linear-gradient(180deg, #EEF4FF 0%, #FFFFFF 100%);
-}
-/* Base styles are SHARED with the Portfolio card - keep them generic. */
-.exp-row { display: grid; grid-template-columns: 1fr 1fr; align-items: start; gap: 46px; }
-.exp-row + .exp-row { margin-top: 72px; }
 .exp-row.reverse .exp-visual { order: -1; }
 .exp-row.reveal { transition-duration: .4s; }
-.exp-copy { display: grid; gap: 14px; }
 .exp-copy .h3 { font-size: 22px; }
-.exp-copy p { color: var(--muted); font-size: 15.5px; }
-.exp-visual { justify-self: center; position: relative; }
-.exp-card {
-  background: #fff; border: 1px solid var(--line); border-radius: var(--r-lg);
-  box-shadow: var(--shadow-md); padding: 22px; width: 100%; max-width: 400px;
-  position: relative; z-index: 1;
-}
-.bar-chart { display: flex; align-items: flex-end; gap: 8px; height: 130px; margin-top: 12px; }
-.bar-chart i {
-  flex: 1; border-radius: 8px 8px 4px 4px;
-  background: linear-gradient(180deg, var(--primary-light), var(--primary-dark));
-  opacity: .85;
-}
-.mini-label { display: flex; justify-content: space-between; font-size: 13px; color: var(--muted); }
-.mini-bal { font-size: 24px; font-weight: 800; margin-top: 2px; }
-.mini-bal span { color: var(--green); font-size: 13px; font-weight: 700; }
-.exp-card-2 { background: var(--grad); color: #fff; }
-.exp-card-2 .mini-label { color: rgba(255,255,255,.75); }
-.exp-card-2 .mini-bal { color: #fff; }
-.exp-badge {
-  position: absolute; z-index: 2; background: #fff; border-radius: 14px;
-  box-shadow: var(--shadow-md); padding: 12px 14px; display: flex; align-items: center; gap: 10px;
-  border: 1px solid var(--line); font-size: 13px; font-weight: 600;
-}
-.exp-badge.b1 { bottom: -14px; left: -14px; }
-.exp-badge.b2 { top: -16px; right: -6px; }
-.exp-badge.b3 { bottom: -12px; right: 16px; }
 
-/* Experience redesign - bigger dashboard-style visuals, scoped to THIS section
-   so the Portfolio card keeps its original look. */
-.exp-sec .exp-row { grid-template-columns: 1fr 1.1fr; align-items: center; gap: 56px; }
 .exp-sec .section-head { margin-bottom: 56px; }
-.exp-sec .exp-row + .exp-row { margin-top: 120px; }
-.exp-sec .exp-copy { gap: 16px; }
 .exp-sec .exp-copy .h3 { font-size: 24px; }
-.exp-sec .exp-copy p { line-height: 1.7; }
-.exp-sec .exp-visual { width: 100%; }
-.exp-sec .exp-card { border-radius: 20px; box-shadow: 0 20px 50px rgba(29, 78, 216, .13); max-width: 560px; padding: 0; overflow: hidden; }
-.exp-sec .exp-card-head {
-  display: flex; align-items: center; justify-content: space-between;
-  padding: 13px 22px; background: var(--primary-lightest); border-bottom: 1px solid var(--line);
-}
-.exp-sec .exp-brand { font-size: 12px; font-weight: 800; letter-spacing: .08em; color: var(--primary-dark); display: inline-flex; align-items: center; gap: 8px; }
-.exp-sec .exp-brand-dot { width: 9px; height: 9px; border-radius: 3px; background: var(--grad); }
-.exp-sec .exp-card-body { padding: 26px 28px 28px; }
-.exp-sec .bar-chart { gap: 9px; height: 230px; margin-top: 18px; padding: 16px 14px 0; background: linear-gradient(180deg, var(--primary-lightest), #fff); border: 1px solid var(--line); border-radius: 16px; }
-.exp-sec .bar-chart i { border-radius: 8px 8px 5px 5px; }
-.exp-sec .mini-bal { font-size: 30px; margin-top: 4px; letter-spacing: -.01em; }
-.exp-sec .mini-bal span { margin-left: 8px; }
-.exp-sec .exp-card-2 .exp-card-head { background: rgba(255, 255, 255, .08); border-color: rgba(255, 255, 255, .16); }
-.exp-sec .exp-card-2 .exp-brand { color: #fff; }
-.exp-sec .exp-card-2 .exp-brand-dot { background: #fff; }
-.exp-sec .exp-card-2 .mini-label { color: rgba(255, 255, 255, .78); }
-.exp-sec .exp-card-2 .mini-bal { color: #fff; }
-.exp-sec .exp-card-2 .bar-chart { background: rgba(255, 255, 255, .1); border-color: rgba(255, 255, 255, .18); }
-.exp-sec .exp-card-2 .bar-chart i { background: linear-gradient(180deg, #fff, rgba(255, 255, 255, .5)); opacity: .95; }
-.exp-sec .exp-badge { border-radius: 16px; padding: 14px 18px; font-size: 13.5px; font-weight: 700; }
-.exp-sec .exp-badge.b1 { bottom: -16px; left: -14px; }
-.exp-sec .exp-badge.b2 { top: -16px; right: -6px; }
-.exp-sec .exp-badge.b3 { bottom: -14px; right: 18px; }
-.exp-sec .exp-points {
-  display: grid; gap: 11px; margin: 6px 0 0; padding: 0;
-  list-style: none;
-}
-.exp-sec .exp-points li {
-  display: flex; align-items: flex-start; gap: 11px;
-  font-size: 15px; font-weight: 500; color: #2F3B3A; line-height: 1.5;
-}
 .exp-sec .exp-points .tick { width: 21px; height: 21px; margin-top: 1px; }
 .exp-sec .exp-points .tick svg { display: block; }
 
-/* Portfolio management visual - enlarged to match the platform cards */
-.feat-duo .exp-visual { width: 100%; }
-.feat-duo .exp-card { max-width: 560px; padding: 26px 28px 28px; border-radius: 20px; box-shadow: 0 20px 50px rgba(29, 78, 216, .13); }
-.feat-duo .mini-label { font-size: 14px; }
-.feat-duo .mini-bal { font-size: 30px; letter-spacing: -.01em; margin-top: 4px; }
-.feat-duo .mini-bal span { margin-left: 8px; }
-.feat-duo .bar-chart { gap: 9px; height: 230px; margin-top: 18px; padding: 16px 14px 0; background: linear-gradient(180deg, var(--primary-lightest), #fff); border: 1px solid var(--line); border-radius: 16px; }
-.feat-duo .exp-badge { border-radius: 16px; padding: 14px 18px; font-size: 13.5px; }
 
-/* ---------- Priorities ---------- */
-.prio-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
-.prio-card {
-  background: #fff; border: 1px solid var(--line); border-radius: var(--r-lg);
-  overflow: hidden; box-shadow: var(--shadow-sm);
-  transition: transform .22s ease, box-shadow .22s ease;
-}
-.prio-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-md); }
-.prio-top {
-  padding: 26px 24px 22px; color: #fff; background: var(--grad);
-  position: relative; overflow: hidden;
-}
-.prio-top::after { content: ""; position: absolute; width: 120px; height: 120px; border-radius: 50%; background: rgba(255,255,255,.10); top: -60px; right: -40px; }
-.prio-top .big { font-size: 42px; font-weight: 800; line-height: 1; }
-.prio-top .big small { font-size: 16px; font-weight: 600; }
-.prio-top .cap { font-size: 14px; font-weight: 500; opacity: .85; margin-top: 4px; }
-.prio-body { padding: 22px 24px 26px; }
-.prio-title { font-size: 13px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; color: var(--primary); }
-.prio-sub { font-size: 18px; font-weight: 700; margin: 6px 0 14px; }
-.prio-list { display: grid; gap: 10px; }
-.prio-list li { display: inline-flex; align-items: center; gap: 10px; font-size: 14.5px; color: #2F3B3A; }
 .tags { display: flex; gap: 8px; margin-top: 16px; flex-wrap: wrap; }
 .tag { font-size: 11.5px; font-weight: 700; color: var(--green); background: rgba(29, 78, 216, .14); padding: 5px 11px; border-radius: 999px; }
 .prio-card.alt .prio-top { background: #fff; color: var(--ink); border-bottom: 1px solid var(--line); }
@@ -514,20 +386,12 @@ body.menu-open { overflow: hidden; }
 .prio-card.alt .prio-top .big { color: var(--primary); }
 .prio-card.alt .prio-top .cap { color: var(--muted); }
 
-/* ---------- Features ---------- */
-.feat { position: relative; overflow: hidden; background: var(--primary-lightest); }
-.feat-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
 .feat-card {
   background: #fff; border: 1px solid var(--line); border-radius: var(--r-lg);
   padding: 28px 26px; box-shadow: var(--shadow-sm);
   transition: transform .22s ease, box-shadow .22s ease;
 }
 .feat-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-md); }
-.feat-ico {
-  width: 52px; height: 52px; border-radius: 15px;
-  background: var(--primary-lighter); color: var(--primary);
-  display: grid; place-items: center; margin-bottom: 18px;
-}
 .feat-ico.green { background: rgba(29, 78, 216, .14); color: var(--green); }
 .feat-card h3 { font-size: 18px; margin-bottom: 8px; }
 .feat-card p { color: var(--muted); font-size: 14.5px; }
@@ -548,33 +412,8 @@ body.menu-open { overflow: hidden; }
 .cta-banner .btn { position: relative; z-index: 1; }
 .cta-banner .eyebrow { background: rgba(255,255,255,.16); color: #fff; border-color: rgba(255,255,255,.28); box-shadow: none; }
 
-/* ---------- Portfolio duo ---------- */
-.feat-duo { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
-.feat-duo-copy { display: grid; gap: 18px; justify-items: start; }
 
-/* ---------- Testimonials ---------- */
-.tst-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
-.tst-card {
-  background: #fff; border: 1px solid var(--line); border-radius: var(--r-lg);
-  padding: 26px; box-shadow: var(--shadow-sm);
-  display: flex; flex-direction: column; gap: 16px;
-}
-.tst-stars { color: var(--accent-light); font-size: 16px; letter-spacing: 2px; }
-.tst-card blockquote { color: #333F3E; font-size: 15px; line-height: 1.7; flex: 1; }
-.tst-person { display: flex; align-items: center; gap: 12px; }
-.tst-avatar {
-  width: 46px; height: 46px; border-radius: 50%;
-  background: var(--grad); color: #fff;
-  font-weight: 700; font-size: 16px; display: grid; place-items: center; flex: 0 0 auto;
-  box-shadow: 0 6px 14px -4px rgba(29, 78, 216, .45);
-}
-.tst-person b { display: block; font-size: 15px; }
 .tst-person .verified { font-size: 12.5px; color: var(--green); font-weight: 600; }
-.tst-summary {
-  display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 18px;
-  margin-top: 34px; padding: 18px 26px; /* border aur shadow hata diye - flat, clean */
-}
-.tst-summary .big { font-size: 40px; font-weight: 800; color: var(--primary); }
 .tst-summary .row { display: flex; align-items: center; gap: 12px; }
 .tst-summary .divider { width: 1px; height: 34px; background: var(--line); }
 
@@ -595,14 +434,6 @@ body.menu-open { overflow: hidden; }
 .faq-a { max-height: 0; overflow: hidden; transition: max-height .35s ease; }
 .faq-a p { padding: 0 22px 20px; color: var(--muted); font-size: 15px; line-height: 1.7; }
 
-/* ---------- Capabilities ---------- */
-.caps { background: var(--primary-lightest); }
-.caps-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
-.cap-row {
-  display: flex; align-items: center; justify-content: space-between; gap: 16px;
-  background: #fff; border: 1px solid var(--line); border-radius: var(--r-sm);
-  padding: 16px 20px; box-shadow: var(--shadow-sm);
-}
 .cap-row .k { font-size: 14px; color: var(--muted); }
 .cap-row .v { font-size: 14.5px; font-weight: 700; text-align: right; }
 
@@ -669,24 +500,6 @@ body.menu-open { overflow: hidden; }
 .form-ring { animation: ringPulse 4.5s ease-in-out infinite; }
 @keyframes ringPulse { 0%, 100% { opacity: 1; } 50% { opacity: .5; } }
 
-/* live market ticker */
-.ticker {
-  position: relative; z-index: 1; overflow: hidden;
-  border-top: 1px solid rgba(223, 234, 232, .8);
-  border-bottom: 1px solid rgba(223, 234, 232, .8);
-  background: rgba(255, 255, 255, .74);
-  backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
-  padding: 11px 0;
-}
-.ticker-track {
-  display: inline-flex; align-items: center; gap: 38px; white-space: nowrap;
-  animation: tickerX 32s linear infinite;
-}
-.ticker:hover .ticker-track { animation-play-state: paused; }
-.ticker-item { display: inline-flex; align-items: center; gap: 8px; font-size: 13px; color: #333F3E; }
-.ticker-item b { font-weight: 700; color: var(--ink); }
-.ticker-price { font-variant-numeric: tabular-nums; font-weight: 500; }
-.ticker-item em { font-style: normal; font-weight: 700; font-variant-numeric: tabular-nums; }
 .ticker-item em.up { color: var(--green); }
 .ticker-item em.down { color: #C0392B; }
 @keyframes tickerX { to { transform: translateX(-50%); } }
@@ -702,8 +515,6 @@ body.menu-open { overflow: hidden; }
 .step:hover::before, .feat-card:hover::before, .prio-card:hover::before, .tst-card:hover::before { transform: translateX(-50%) scaleX(1); }
 .step:hover, .feat-card:hover, .prio-card:hover, .tst-card:hover { border-color: rgba(29, 78, 216, .28); }
 
-/* bar charts grow from the baseline */
-.bar-chart i { transform-origin: bottom; }
 .reveal[data-revealed] .bar-chart i { animation: barGrow .8s cubic-bezier(.22, .61, .36, 1) backwards; }
 .exp-row.reveal[data-revealed] .bar-chart i { animation-duration: .5s; }
 @keyframes barGrow { from { transform: scaleY(0); } }
@@ -719,13 +530,6 @@ body.menu-open { overflow: hidden; }
 }
 .cta-banner .eyebrow::before { background: #fff; box-shadow: 0 0 0 3px rgba(255, 255, 255, .22); }
 
-/* soft section washes for depth */
-.prio {
-  background:
-    radial-gradient(40rem 26rem at 100% 0%, rgba(59, 130, 246, .07), transparent 60%),
-    radial-gradient(30rem 22rem at 0% 100%, rgba(29, 78, 216, .12), transparent 60%);
-}
-.feat { background: radial-gradient(44rem 30rem at -10% 0%, rgba(59, 130, 246, .06), transparent 60%); }
 /* Portfolio management section - pure white (sirf #portfolio wala section) */
 #portfolio { background: #fff; }
 /* "Built to perform" (Features) - soft blue tint, separate-section feel.
@@ -743,7 +547,6 @@ body.menu-open { overflow: hidden; }
   -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
 }
 
-/* ---------- Reveal ---------- */
 /* The hide rule is scoped to html.js so content never disappears for no-JS
    visitors (prerendered HTML stays fully visible). The unhide rule must match
    the same scope AND carry equal-or-higher specificity, or the hide rule
@@ -998,10 +801,6 @@ html.js .reveal[data-revealed] { opacity: 1; transform: none; }
 .ct-field > input:focus { outline: none; border-color: var(--primary-light); box-shadow: 0 0 0 3px rgba(29, 78, 216, .12); }
 .ct-form .btn { justify-self: start; }
 
-.ct-success { text-align: center; padding: 30px 12px; }
-.ct-success-ico { width: 52px; height: 52px; margin: 0 auto 14px; border-radius: 50%; display: grid; place-items: center; background: var(--green); color: #fff; }
-.ct-success h4 { font-size: 19px; margin-bottom: 6px; }
-.ct-success p { color: var(--muted); font-size: 14.5px; max-width: 340px; margin-inline: auto; }
 
 @media (max-width: 1024px) {
   .ct-grid { grid-template-columns: 1fr; gap: 36px; }
@@ -1081,21 +880,13 @@ html.js .reveal[data-revealed] { opacity: 1; transform: none; }
   .terms-block { grid-template-columns: 1fr; gap: 10px; padding: 20px 18px; }
 }
 
-.zapp-why { grid-template-columns: 1fr 1.1fr; }
-.zapp-split { grid-template-columns: 1.2fr 1fr; }
 /* ---------- Responsive ---------- */
 @media (max-width: 1024px) {
   .nav { display: none; }
   .burger { display: flex; }
   .hero-inner { grid-template-columns: 1fr; padding-top: 44px; }
   .form-wrap { justify-self: center; max-width: 520px; width: 100%; }
-  .metrics-grid { grid-template-columns: repeat(2, 1fr); }
   .steps, .prio-grid, .feat-grid, .tst-grid { grid-template-columns: repeat(2, 1fr); }
-  .how-strip { grid-template-columns: repeat(2, 1fr); }
-  .exp-row { grid-template-columns: 1fr; gap: 34px; }
-  .exp-sec .exp-row { grid-template-columns: 1fr; gap: 34px; }
-  .exp-sec .exp-row + .exp-row { margin-top: 88px; }
-  .feat-duo { grid-template-columns: 1fr; gap: 32px; }
   .cta-banner { grid-template-columns: 1fr; padding: 48px 34px; }
   .about-hero-inner { grid-template-columns: 1fr; gap: 44px; }
   .about-pillars { grid-template-columns: repeat(2, 1fr); }
@@ -1104,16 +895,10 @@ html.js .reveal[data-revealed] { opacity: 1; transform: none; }
   .about-chip.two { right: 8px; }
 }
 @media (max-width: 900px) {
-  .zapp-why { grid-template-columns: 1fr; gap: 32px; }
-  .zapp-split { grid-template-columns: 1fr; gap: 32px; }
-  .whatis-inner { grid-template-columns: 1fr; gap: 36px; }
 }
 @media (max-width: 640px) {
   .section { padding: 56px 0; }
-  .zapp-why { grid-template-columns: 1fr; gap: 32px; }
-  .zapp-split { grid-template-columns: 1fr; gap: 32px; }
   .metrics-grid, .steps, .prio-grid, .feat-grid, .tst-grid, .caps-grid { grid-template-columns: 1fr; }
-  .how-strip { grid-template-columns: 1fr; }
       .reg-card { padding: 26px 20px 22px; }
   .footer-top { grid-template-columns: 1fr; gap: 30px; }
   .cta-banner { padding: 40px 24px; }
@@ -1191,37 +976,6 @@ html.js .reveal[data-revealed] { opacity: 1; transform: none; }
 .rv-ticklist li { display: flex; gap: 12px; align-items: flex-start; color: var(--muted); font-size: 15.5px; line-height: 1.65; }
 .rv-ticklist .tick { margin-top: 1px; }
 
-/* app page - prose, note, and warning panel */
-.zapp-why-sec { background: linear-gradient(160deg, var(--primary-lighter) 0%, #fff 75%); }
-.zapp-why { display: grid; gap: 56px; align-items: center; }
-.zapp-why-media img { width: 100%; max-width: 380px; height: auto; margin-inline: auto; }
-.zapp-why-copy { display: grid; gap: 16px; align-content: center; }
-.zapp-why-copy .eyebrow { justify-self: start; }
-.zapp-why-copy .h2 { margin-bottom: 2px; }
-.zapp-why-copy p { color: var(--muted); font-size: 16px; line-height: 1.75; }
-.zapp-hero::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background-image: radial-gradient(rgba(29, 78, 216, .12) 1.5px, transparent 1.5px);
-  background-size: 26px 26px;
-  z-index: 0;
-  pointer-events: none;
-}
-.zapp-hero .container { position: relative; z-index: 1; }
-.zapp-split { display: grid; gap: 56px; align-items: center; }
-.zapp-split-content { display: grid; gap: 20px; }
-.zapp-split-content .eyebrow { justify-self: start; }
-.zapp-split-content .warn-timeline { margin: 4px 0 0; max-width: none; }
-.zapp-split-content .zapp-note { max-width: none; margin: 20px 0 0; text-align: left; }
-.zapp-split-media img { width: 100%; max-width: 440px; height: auto; margin-inline: auto; }
-.warn-timeline { position: relative; max-width: 720px; margin: 8px auto 0; }
-.warn-item { position: relative; padding: 0 0 28px 60px; }
-.warn-item:last-child { padding-bottom: 0; }
-.warn-item p { color: #2F3B3A; font-size: 15.5px; line-height: 1.7; padding-top: 9px; }
-.zapp-faq { max-width: none; margin-inline: 0; }
-.zapp-note { max-width: 720px; margin: 40px auto 0; text-align: center; color: var(--muted); font-size: 15px; line-height: 1.7; }
-.warn-card p { color: var(--muted); font-size: 14.5px; line-height: 1.65; }
 
 /* Who Sovereign Kapitix suits - two cards */
 .rv-fit { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin: 20px 0 2px; }
@@ -1244,7 +998,6 @@ html.js .reveal[data-revealed] { opacity: 1; transform: none; }
   .rv-sec h2 { font-size: 21px; }
   .rv-glance-row { grid-template-columns: 1fr; gap: 4px; padding: 12px 16px; }
   .rv-fit { grid-template-columns: 1fr; }
-  .rv-risk { flex-direction: column; gap: 8px; padding: 16px 18px; }
 }
 
 /* Trailing read-more link on a FAQ answer. The renderer still supports it -
@@ -1256,49 +1009,23 @@ html.js .reveal[data-revealed] { opacity: 1; transform: none; }
 .terms-hero a { color: var(--primary); font-weight: 600; text-decoration: underline; text-underline-offset: 3px; text-decoration-color: rgba(29, 78, 216, .35); }
 .terms-hero a:hover { color: var(--primary-dark); text-decoration-color: currentColor; }
 
-/* ---------- Inside the toolkit - reuses .feat-grid / .feat-card, tint of its own ---------- */
-.toolkit {
-  background:
-    radial-gradient(44rem 30rem at 100% 0%, rgba(29, 78, 216, .12), transparent 60%),
-    radial-gradient(40rem 26rem at 0% 100%, rgba(59, 130, 246, .06), transparent 60%);
-}
 
 /* =========================================================
    Dedicated pages: /how-it-works, /review, /register
    ========================================================= */
 
-/* ---------- Shared: two-column editorial split ---------- */
-.split-two { display: grid; grid-template-columns: 1fr 1fr; gap: 46px; align-items: start; }
 .narrow { max-width: none; }
 .h2-sm { font-size: clamp(21px, 2.4vw, 26px); line-height: 1.28; }
-.prose { color: var(--muted); font-size: 16px; line-height: 1.75; margin-top: 14px; }
-.cost-note { color: var(--muted); font-size: 14px; line-height: 1.7; margin-top: 14px; }
 .tick-list { display: grid; gap: 12px; margin-top: 18px; }
 .tick-list li { display: flex; gap: 11px; align-items: flex-start; color: var(--muted); font-size: 15.5px; line-height: 1.65; }
 .tick-list .tick { margin-top: 1px; }
-.tick-list-center { max-width: 620px; margin-inline: auto; }
 
 /* ---------- /review additions (the .rv-* base is above) ---------- */
 .rv-sec h3 { font-size: 16px; color: var(--ink); margin: 22px 0 6px; }
 .rv-sec h3:first-of-type { margin-top: 6px; }
 .rv-note { color: var(--muted); font-size: 14px; line-height: 1.7; margin-top: 14px; }
-.rv-verdict {
-  color: var(--ink); font-size: 16.5px; line-height: 1.75;
-  border-left: 3px solid var(--primary-light); padding-left: 18px;
-}
-.rv-qa { display: grid; gap: 20px; margin-top: 6px; }
-.rv-qa-item h3 { font-size: 16px; color: var(--ink); margin-bottom: 6px; }
-.rv-qa-item p { color: var(--muted); font-size: 15.5px; line-height: 1.7; margin: 0; }
-/* The ✕ counterpart to .tick, for the "do not do this" lists. */
-.cross {
-  width: 22px; height: 22px; border-radius: 50%;
-  background: rgba(192, 57, 43, .10); color: #C0392B;
-  display: grid; place-items: center; flex: 0 0 auto;
-  font-size: 15px; font-weight: 700; line-height: 1;
-}
 .rv-ticklist .cross { margin-top: 1px; }
 
-/* ---------- /how-it-works ---------- */
 /* Five steps, so not .steps (hard-wired to three columns). auto-fit keeps the
    row full on a wide screen and drops to four, then two, as it narrows, with
    no breakpoint to maintain. */
@@ -1324,25 +1051,12 @@ html.js .reveal[data-revealed] { opacity: 1; transform: none; }
   font-size: 13px; font-weight: 700; color: var(--primary); letter-spacing: .06em;
 }
 
-.how-modes { background: linear-gradient(180deg, var(--primary-lightest) 0%, #fff 100%); }
-.modes-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 22px; }
-.mode-card {
-  background: #fff; border: 1px solid var(--line);
-  border-radius: var(--r-lg); padding: 32px 28px;
-  box-shadow: var(--shadow-sm);
-  transition: transform .22s ease, box-shadow .22s ease, border-color .22s ease;
-}
-.mode-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-md); border-color: rgba(29, 78, 216, .28); }
 .mode-card .step-ico {
   width: 54px; height: 54px; border-radius: 16px;
   background: var(--primary-lighter); color: var(--primary);
   display: grid; place-items: center; margin-bottom: 20px;
 }
-.mode-card h3 { margin-bottom: 8px; }
-.mode-card p { color: var(--muted); font-size: 15px; }
-.how-modes .how-strip { margin-top: 30px; }
 
-.how-ready { background: radial-gradient(44rem 30rem at 100% 0%, rgba(29, 78, 216, .12), transparent 60%); }
 
 /* ---------- /register ---------- */
 .reg-grid { display: grid; grid-template-columns: 1fr 1.1fr; gap: 46px; align-items: start; }
@@ -1378,7 +1092,6 @@ html.js .reveal[data-revealed] { opacity: 1; transform: none; }
   .flow-grid, .flow-grid-3, .modes-grid { grid-template-columns: 1fr; }
   .rv-fit { grid-template-columns: 1fr; }
   .rv-glance-row { grid-template-columns: 1fr; gap: 4px; }
-  .rv-verdict { padding-left: 14px; }
   .reg-form-card { padding: 26px 20px; }
 }
 
@@ -1391,23 +1104,17 @@ html.js .reveal[data-revealed] { opacity: 1; transform: none; }
 /* ---------- Shared small pieces ---------- */
 .section-note { margin-top: 24px; color: var(--muted); font-size: 14.5px; line-height: 1.7; }
 .section-note a { color: var(--primary); font-weight: 600; text-decoration: underline; text-underline-offset: 3px; text-decoration-color: rgba(29,78,216,.35); }
-.sub-h { font-size: 15px; text-transform: uppercase; letter-spacing: .06em; color: var(--primary); margin-bottom: 14px; }
-.caps-grid-wide { grid-template-columns: 1fr 1fr; }
 .small-print { margin-top: 34px; color: var(--muted); font-size: 13px; line-height: 1.7; }
-.final-small-print { text-align: center; color: var(--muted); font-size: 13px; margin-bottom: 56px; }
 
 /* The accordion question is an <h3> so search engines read it as one. Reset the
    heading's own type so the existing .faq-q button styling still shows. */
 .faq-h { margin: 0; font-size: inherit; font-weight: inherit; line-height: inherit; }
 
-/* ---------- Homepage sections ---------- */
-.whatis-body { margin: 0 auto 34px; }
 .legit { background: linear-gradient(180deg, var(--primary-lightest) 0%, #fff 70%); }
 .fees-sec { background: radial-gradient(44rem 30rem at 0% 0%, rgba(59,130,246,.06), transparent 60%); }
 .risks-sec { background: #fff; }
 
 .fees-actions, .faq-actions { display: flex; flex-wrap: wrap; gap: 18px; align-items: center; justify-content: space-between; margin-top: 28px; }
-.feat-grid-7 { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
 
 /* ---------- Long-form blocks (fees, how-it-works, register, review) ---------- */
 .short-answer {
@@ -1482,7 +1189,6 @@ html.js .reveal[data-revealed] { opacity: 1; transform: none; }
    a narrow screen the form is pulled above them. */
 @media (max-width: 1024px) {
   .reg-form-card { order: -1; }
-  .caps-grid-wide { grid-template-columns: 1fr; }
   .mode-row { grid-template-columns: 1fr; gap: 8px; }
 }
 @media (max-width: 640px) {
@@ -1506,21 +1212,6 @@ html.js .reveal[data-revealed] { opacity: 1; transform: none; }
    replace that with a proper card language.
    ========================================================= */
 
-/* ---------- Stat strip: the four supplied figures ---------- */
-.stats-strip {
-  position: relative; z-index: 3;
-  display: grid; grid-template-columns: repeat(4, 1fr);
-  background: #fff; border: 1px solid var(--line);
-  border-radius: var(--r-lg); box-shadow: var(--shadow-md);
-  overflow: hidden; margin-top: -52px;
-}
-.stat { padding: 28px 20px; text-align: center; border-right: 1px solid var(--line); }
-.stat:last-child { border-right: none; }
-.stat b {
-  display: block; font-size: clamp(26px, 3.2vw, 34px); font-weight: 800;
-  color: var(--primary); letter-spacing: -.025em; line-height: 1.1;
-}
-.stat span { display: block; margin-top: 8px; color: var(--muted); font-size: 13.5px; line-height: 1.45; }
 
 /* ---------- Icon cards: security, risk, feature-style blocks ---------- */
 .icon-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(258px, 1fr)); gap: 20px; }
@@ -1562,11 +1253,6 @@ html.js .reveal[data-revealed] { opacity: 1; transform: none; }
   background: #fff; border: 1px solid var(--line);
   border-radius: var(--r-lg); overflow: hidden; box-shadow: var(--shadow-sm);
 }
-.fee-row { display: grid; grid-template-columns: minmax(190px, 1fr) 1.5fr; gap: 26px; padding: 16px 28px; align-items: baseline; }
-.fee-row + .fee-row { border-top: 1px solid var(--line); }
-.fee-row:nth-child(odd) { background: var(--primary-lightest); }
-.fee-row dt { font-weight: 600; color: var(--ink); font-size: 14.5px; }
-.fee-row dd { color: var(--muted); font-size: 14.5px; line-height: 1.6; }
 
 /* The three numbers worth leading with, above the full table. */
 .fee-hero { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-bottom: 26px; }
@@ -1578,23 +1264,13 @@ html.js .reveal[data-revealed] { opacity: 1; transform: none; }
 .fee-hero b { display: block; font-size: clamp(24px, 3vw, 31px); font-weight: 800; letter-spacing: -.02em; }
 .fee-hero span { display: block; margin-top: 7px; font-size: 13.5px; color: rgba(255,255,255,.82); }
 
-/* ---------- Section rhythm ---------- */
-.whatis-visual { margin-top: 34px; }
-.legit-panels { display: grid; gap: 22px; margin-top: 34px; }
 @media (min-width: 1025px) { .legit-panels.two-up { grid-template-columns: 1fr 1fr; align-items: start; } }
 
 @media (max-width: 1024px) {
-  .stats-strip { grid-template-columns: repeat(2, 1fr); margin-top: -36px; }
-  .stat:nth-child(2) { border-right: none; }
-  .stat:nth-child(1), .stat:nth-child(2) { border-bottom: 1px solid var(--line); }
   .fee-hero { grid-template-columns: 1fr; }
   .setup-row { grid-template-columns: 1fr; gap: 4px; }
 }
 @media (max-width: 640px) {
-  .stats-strip { grid-template-columns: 1fr; margin-top: -24px; }
-  .stat { border-right: none; border-bottom: 1px solid var(--line); }
-  .stat:last-child { border-bottom: none; }
-  .fee-row { grid-template-columns: 1fr; gap: 5px; padding: 14px 18px; }
   .panel { padding: 24px 20px; }
 }
 
@@ -1603,12 +1279,7 @@ html.js .reveal[data-revealed] { opacity: 1; transform: none; }
    features with a visual, and even-feilling grids
    ========================================================= */
 
-/* The stat strip now sits near the foot of the page rather than under the
-   hero, so it no longer needs to overlap the section above it. */
-.stats-strip { margin-top: 0; }
 
-/* ---------- Ticker ---------- */
-.ticker-wrap { position: relative; background: #F6F8FB; border-block: 1px solid var(--line); }
 
 /* ---------- Features: four cards, then a visual beside the rest ---------- */
 .feat-grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
@@ -1638,31 +1309,17 @@ html.js .reveal[data-revealed] { opacity: 1; transform: none; }
 .protect-grid .icon-card { grid-column: span 2; }
 .protect-grid .icon-card:nth-last-child(-n+2) { grid-column: span 3; }
 
-/* ---------- Fee grid: four columns ----------
-   Fourteen rows as a list is a long scroll. As a grid the facts sit side by
-   side; the last two items each span two tracks so the final row is full. */
-.fee-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
-.fee-cell {
-  background: #fff; border: 1px solid var(--line); border-radius: var(--r-md);
-  padding: 16px 18px; box-shadow: var(--shadow-sm);
-}
-.fee-cell dt { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; color: var(--primary); margin-bottom: 7px; }
-.fee-cell dd { color: var(--muted); font-size: 14px; line-height: 1.55; }
-.fee-grid .fee-cell:nth-last-child(-n+2) { grid-column: span 2; }
 
 @media (max-width: 1024px) {
   .feat-grid-4 { grid-template-columns: repeat(2, 1fr); }
   .feat-split { grid-template-columns: 1fr; gap: 30px; }
   .protect-grid { grid-template-columns: repeat(4, 1fr); }
   .protect-grid .icon-card, .protect-grid .icon-card:nth-last-child(-n+2) { grid-column: span 2; }
-  .fee-grid { grid-template-columns: repeat(2, 1fr); }
-  .fee-grid .fee-cell:nth-last-child(-n+2) { grid-column: span 1; }
 }
 @media (max-width: 640px) {
   .feat-grid-4 { grid-template-columns: 1fr; }
   .protect-grid { grid-template-columns: 1fr; }
   .protect-grid .icon-card, .protect-grid .icon-card:nth-last-child(-n+2) { grid-column: span 1; }
-  .fee-grid { grid-template-columns: 1fr; }
 }
 
 /* The six-step guide link is a button now, not an inline link. */
@@ -1687,12 +1344,6 @@ html.js .reveal[data-revealed] { opacity: 1; transform: none; }
     radial-gradient(44rem 30rem at 110% 0%, rgba(29, 78, 216, .07), transparent 60%),
     linear-gradient(180deg, #EEF4FF 0%, #F6F8FB 55%, #FFFFFF 100%);
 }
-.toolkit {
-  background:
-    radial-gradient(44rem 30rem at 100% 0%, rgba(29, 78, 216, .07), transparent 60%),
-    radial-gradient(40rem 26rem at 0% 100%, rgba(59, 130, 246, .06), transparent 60%);
-}
-.how-ready { background: radial-gradient(44rem 30rem at 100% 0%, rgba(29, 78, 216, .06), transparent 60%); }
 
 /* ---------- Fee table: 4 columns ----------
    A grid of loose cells did not read as a fee schedule. This is a real table:
@@ -1936,8 +1587,6 @@ html.js .reveal[data-revealed] { opacity: 1; transform: none; }
 .signal-fields dd.pos { color: var(--green); }
 .signal-note { margin-top: 16px; font-size: 13px; color: var(--muted); line-height: 1.55; }
 
-/* ---------- Panel heading used outside a panel ---------- */
-.panel-heading { font-size: 17px; margin-bottom: 18px; }
 .setup-rows { margin-top: 4px; }
 
 /* ---------- Trust strip: slim bar under the stat panel ---------- */
@@ -1947,10 +1596,6 @@ html.js .reveal[data-revealed] { opacity: 1; transform: none; }
   .signal-asset b { font-size: 21px; }
 }
 
-/* Legit: full-width panels, setup rows as a 2x2 of blocks.
-   The rows were a label/value grid inside a half-width column, which put bold
-   teal labels and long values in two narrow columns and read as a form. */
-.legit-panels { display: grid; gap: 30px; margin-top: 34px; }
 .setup-rows { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 20px; }
 .setup-row {
   display: block; padding: 17px 20px;

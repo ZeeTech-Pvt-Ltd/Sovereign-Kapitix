@@ -10,9 +10,9 @@ import { whatis } from '../data/content.js'
 // a visual, a three-step flow, then a closing strip on a tinted card.
 //
 // The for / not-for pair that used to sit between the flow and the closing
-// strip has been removed at the operator request. Its copy is still in
-// content.js under whatis.for / whatis.notFor, so restoring it is a markup
-// change only.
+// strip has been removed at the operator request, along with its copy. The
+// source wording is in the homepage brief at .arttmp/briefs/ if it is ever
+// wanted back.
 export default function WhatIsKapitix() {
   return (
     <section className="section whatis" id="what">

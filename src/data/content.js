@@ -106,21 +106,6 @@ export const whatis = {
     { icon: 'gauge', text: 'Executes trades' },
   ],
   cta: { text: 'Want the whole process before you register?', button: 'See how it works', href: '/how-it-works' },
-  forTitle: 'Who Sovereign Kapitix Is For',
-  for: [
-    `Beginners who want guided onboarding, plain-English signals and a low ${MIN_DEPOSIT} starting balance.`,
-    'Busy professionals who cannot watch charts all day and prefer rules-based automation.',
-    'Experienced traders who want AI signals as a second opinion alongside their own analysis.',
-  ],
-  notForTitle: 'Who It Is Not For',
-  // The brief supplies this as one sentence. Split into the three conditions it
-  // actually enumerates so the card balances the one beside it - as a single
-  // paragraph it left two thirds of the card empty next to a full list.
-  notFor: [
-    'You need guaranteed returns, or you want a platform that promises them.',
-    'You cannot afford to lose the money you deposit.',
-    'You need personal financial advice. Speak to a licensed financial adviser first.',
-  ],
 }
 
 export const stepsHead = {
@@ -253,7 +238,6 @@ export const feesTable = {
     { k: 'Verification', v: 'KYC and AML/CTF checks' },
     { k: 'Available To', v: 'Verified Australian residents, 18+' },
   ],
-  link: { text: 'See the full fee breakdown.', href: '/fees' },
   cta: `Start from ${MIN_DEPOSIT}, no platform commission`,
 }
 
@@ -271,8 +255,6 @@ export const risks = {
     { k: 'Automation Follows Rules, Not Judgement', v: 'Sudden news, low liquidity or price gaps can move markets past your stop-loss.' },
     { k: 'Start Small', v: 'Begin with the minimum deposit and test signals before increasing your trade size.' },
   ],
-  link: { text: 'Read the full Risk Disclosure', href: '/disclosure' },
-  linkEnd: 'before you deposit.',
 }
 
 // Homepage FAQ. The brief sizes each answer at 40 to 60 words so it can win a
@@ -315,7 +297,6 @@ export const finalCta = {
   titleMark: 'AI-Assisted Trading?',
   body: 'Open a free Sovereign Kapitix account in about two minutes. Your account manager will walk you through fees, risk settings and your first signal before you deposit a cent.',
   cta: 'Create my free account',
-  smallPrint: 'Available to verified Australian residents aged 18+. Trading involves risk of loss.',
 }
 
 export const footer = {
