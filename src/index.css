@@ -331,20 +331,6 @@ body.menu-open { overflow: hidden; }
 .form-message.err { display: block; background: rgba(217,69,69,.08); color: #C0392B; border: 1px solid rgba(217,69,69,.25); }
 
 /* floating chips */
-.chip {
-  position: absolute; z-index: 2;
-  background: rgba(255,255,255,.9); backdrop-filter: blur(8px);
-  border: 1px solid rgba(223, 234, 232,.9);
-  border-radius: 14px; padding: 10px 14px;
-  box-shadow: var(--shadow-md);
-  display: flex; align-items: center; gap: 9px;
-  animation: float 5s ease-in-out infinite;
-}
-.chip .ico { width: 34px; height: 34px; border-radius: 10px; display: grid; place-items: center; color: #fff; flex: 0 0 auto; }
-.chip b { display: block; font-size: 13.5px; line-height: 1.2; }
-.chip span { font-size: 11.5px; color: var(--muted); }
-.chip-1 { top: -22px; left: -26px; }
-.chip-2 { bottom: -48px; right: -40px; animation-delay: 1.4s; }
 @keyframes float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-9px); } }
 
 /* ---------- Metrics ---------- */
@@ -369,13 +355,6 @@ body.menu-open { overflow: hidden; }
 /* ---------- What is Sovereign Kapitix ---------- */
 .whatis { background: var(--white); }
 .whatis-inner { display: grid; grid-template-columns: 1fr 1.1fr; gap: 56px; align-items: center; }
-.whatis .whatis-copy { text-align: left; }
-.whatis .whatis-copy h2 { margin-bottom: 18px; }
-.whatis .whatis-copy p {
-  color: var(--muted); font-size: clamp(16px, 1.6vw, 18px);
-  line-height: 1.7;
-}
-.whatis .whatis-copy p + p { margin-top: 16px; }
 
 /* ---------- How it works ---------- */
 .how { background: var(--primary-lightest); position: relative; overflow: hidden; }
@@ -639,7 +618,7 @@ body.menu-open { overflow: hidden; }
   background: linear-gradient(90deg, transparent, var(--primary-light) 40%, var(--accent-light) 60%, transparent);
 }
 .footer a:hover { color: #fff; }
-.footer-top { display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 40px; padding-bottom: 40px; }
+.footer-top { display: grid; grid-template-columns: 1.6fr 1fr 1fr 1fr; gap: 36px; padding-bottom: 40px; }
 .footer-brand .logo-text { color: #fff; }
 .footer-brand p { font-size: 14px; margin-top: 14px; max-width: 320px; color: #AEBEDA; }
 /* Column labels are h2, not h3: on pages whose main content has no h2 (the FAQ
@@ -1135,10 +1114,7 @@ html.js .reveal[data-revealed] { opacity: 1; transform: none; }
   .zapp-split { grid-template-columns: 1fr; gap: 32px; }
   .metrics-grid, .steps, .prio-grid, .feat-grid, .tst-grid, .caps-grid { grid-template-columns: 1fr; }
   .how-strip { grid-template-columns: 1fr; }
-  .chip b, .chip span { font-size: 10px; letter-spacing: .05em; }
-  .chip-1 { left: -8px; top: -22px; }
-  .chip-2 { right: -6px; bottom: -50px; }
-  .reg-card { padding: 26px 20px 22px; }
+      .reg-card { padding: 26px 20px 22px; }
   .footer-top { grid-template-columns: 1fr; gap: 30px; }
   .cta-banner { padding: 40px 24px; }
   .header-actions .btn-signup { display: none; }
@@ -1426,7 +1402,6 @@ html.js .reveal[data-revealed] { opacity: 1; transform: none; }
 
 /* ---------- Homepage sections ---------- */
 .whatis-body { margin: 0 auto 34px; }
-.whatis-fit { margin-top: 6px; }
 .legit { background: linear-gradient(180deg, var(--primary-lightest) 0%, #fff 70%); }
 .fees-sec { background: radial-gradient(44rem 30rem at 0% 0%, rgba(59,130,246,.06), transparent 60%); }
 .risks-sec { background: #fff; }
@@ -1566,20 +1541,6 @@ html.js .reveal[data-revealed] { opacity: 1; transform: none; }
 .icon-card.warn .ico { background: rgba(166,124,26,.12); color: var(--accent); }
 .icon-card.warn { border-color: rgba(166,124,26,.22); }
 
-/* ---------- Fit cards: who it is for / not for ---------- */
-.fit-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
-.fit-card {
-  background: #fff; border: 1px solid var(--line); border-top: 3px solid var(--line);
-  border-radius: var(--r-lg); padding: 28px 26px; box-shadow: var(--shadow-sm);
-}
-.fit-card.yes { border-top-color: var(--green); }
-.fit-card.no { border-top-color: #C0392B; }
-.fit-card h3 { font-size: 16.5px; margin-bottom: 18px; }
-.fit-card ul { display: grid; gap: 13px; }
-.fit-card li { display: flex; gap: 11px; align-items: flex-start; color: var(--muted); font-size: 15px; line-height: 1.6; }
-.fit-card .tick { margin-top: 1px; }
-.fit-card .cross { margin-top: 1px; }
-
 /* ---------- Panels ---------- */
 .panel {
   background: #fff; border: 1px solid var(--line);
@@ -1627,7 +1588,6 @@ html.js .reveal[data-revealed] { opacity: 1; transform: none; }
   .stat:nth-child(2) { border-right: none; }
   .stat:nth-child(1), .stat:nth-child(2) { border-bottom: 1px solid var(--line); }
   .fee-hero { grid-template-columns: 1fr; }
-  .fit-grid { grid-template-columns: 1fr; }
   .setup-row { grid-template-columns: 1fr; gap: 4px; }
 }
 @media (max-width: 640px) {
@@ -1637,79 +1597,6 @@ html.js .reveal[data-revealed] { opacity: 1; transform: none; }
   .fee-row { grid-template-columns: 1fr; gap: 5px; padding: 14px 18px; }
   .panel { padding: 24px 20px; }
 }
-
-/* ---------- Hero chip fix ----------
-   .chip-1 sat at top:-22px left:-26px, which put it straight over the form
-   card's centred heading. It now hangs above the card's padding instead. */
-.reg-card { padding-top: 56px; }
-.chip-1 { top: -20px; left: -18px; }
-.chip-2 { bottom: -34px; right: -22px; }
-
-/* ---------- What is: prose + sample signal ---------- */
-.whatis-split { display: grid; grid-template-columns: 1.15fr 1fr; gap: 46px; align-items: center; }
-.whatis-split .prose:first-child { margin-top: 0; }
-
-/* ---------- Sample signal card ---------- */
-.signal-card {
-  margin: 0; padding: 22px 24px 20px;
-  background: #fff; border: 1px solid var(--line);
-  border-radius: var(--r-lg); box-shadow: var(--shadow-md);
-  position: relative; overflow: hidden;
-}
-.signal-card::before {
-  content: ''; position: absolute; inset: 0 0 auto 0; height: 3px; background: var(--grad);
-}
-.signal-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 18px; }
-.signal-live { display: inline-flex; align-items: center; gap: 7px; font-size: 12px; font-weight: 700; letter-spacing: .07em; text-transform: uppercase; color: var(--primary); }
-.signal-live i { width: 7px; height: 7px; border-radius: 50%; background: var(--green-light); box-shadow: 0 0 0 3px rgba(110,201,140,.28); animation: ringPulse 2.4s ease-in-out infinite; }
-.signal-sample { font-size: 11.5px; color: var(--muted); background: var(--primary-lightest); border: 1px solid var(--line); border-radius: 999px; padding: 3px 10px; }
-.signal-asset { display: flex; align-items: center; gap: 12px; margin-bottom: 18px; }
-.signal-asset b { font-size: 25px; font-weight: 800; letter-spacing: -.02em; color: var(--ink); }
-.signal-dir { font-size: 11.5px; font-weight: 800; letter-spacing: .08em; padding: 4px 10px; border-radius: 7px; }
-.signal-dir.buy { background: rgba(21,128,61,.12); color: var(--green); }
-.signal-dir.sell { background: rgba(192,57,43,.10); color: #C0392B; }
-.signal-fields { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
-.signal-fields > div { background: var(--primary-lightest); border: 1px solid var(--line); border-radius: var(--r-sm); padding: 13px 14px; }
-.signal-fields dt { font-size: 11.5px; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); margin-bottom: 6px; }
-.signal-fields dd { font-size: 16px; font-weight: 700; color: var(--ink); font-variant-numeric: tabular-nums; }
-.signal-fields dd.neg { color: #C0392B; }
-.signal-fields dd.pos { color: var(--green); }
-.signal-note { margin-top: 16px; font-size: 13px; color: var(--muted); line-height: 1.55; }
-
-/* ---------- Panel heading used outside a panel ---------- */
-.panel-heading { font-size: 17px; margin-bottom: 18px; }
-.setup-rows { margin-top: 4px; }
-
-/* ---------- Trust strip: slim bar under the stat panel ---------- */
-
-@media (max-width: 1024px) {
-  .whatis-split { grid-template-columns: 1fr; gap: 30px; }
-}
-@media (max-width: 640px) {
-    .signal-fields { grid-template-columns: 1fr; }
-  .signal-asset b { font-size: 21px; }
-}
-
-/* Legit: full-width panels, setup rows as a 2x2 of blocks.
-   The rows were a label/value grid inside a half-width column, which put bold
-   teal labels and long values in two narrow columns and read as a form. */
-.legit-panels { display: grid; gap: 30px; margin-top: 34px; }
-.setup-rows { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 20px; }
-.setup-row {
-  display: block; padding: 17px 20px;
-  background: var(--primary-lightest); border: 1px solid var(--line);
-  border-radius: var(--r-md);
-}
-.setup-row + .setup-row { border-top: 1px solid var(--line); }
-.setup-row .k { display: block; margin-bottom: 6px; }
-.setup-row .v { font-size: 14.5px; }
-@media (max-width: 900px) { .setup-rows { grid-template-columns: 1fr; } }
-
-/* Five protection cards in a four-column auto-fit grid left the fifth alone on
-   a row of its own. Three columns gives 3 + 2, which reads as one set. */
-.legit-panels .icon-cards { grid-template-columns: repeat(3, 1fr); }
-@media (max-width: 1024px) { .legit-panels .icon-cards { grid-template-columns: repeat(2, 1fr); } }
-@media (max-width: 640px) { .legit-panels .icon-cards { grid-template-columns: 1fr; } }
 
 /* =========================================================
    Second pass on the homepage: ticker, stats placement,
@@ -1942,9 +1829,7 @@ html.js .reveal[data-revealed] { opacity: 1; transform: none; }
      card gets its own side padding here and the ring is pulled in to match. */
   .form-wrap { padding-inline: 4px; }
   .form-ring { inset: -6px; }
-  .chip-1 { top: -12px; left: 0; }
-  .chip-2 { bottom: -20px; right: 0; }
-  .reg-card { padding: 40px 16px 20px; border-radius: var(--r-md); }
+      .reg-card { padding: 40px 16px 20px; border-radius: var(--r-md); }
   .reg-card h2 { font-size: 19px; }
   .reg-card .sub { font-size: 12.5px; margin: 5px 0 16px; }
   .input, .pn-input, .pn-country { font-size: 14px; }
@@ -1960,3 +1845,183 @@ html.js .reveal[data-revealed] { opacity: 1; transform: none; }
   .signal-card { padding: 18px 16px 16px; }
   .signal-asset b { font-size: 20px; }
 }
+
+/* Support address under the footer blurb. The brand column is wider than the
+   three link columns and was mostly empty below two lines of text. */
+.footer-mail {
+  display: inline-block; margin-top: 16px;
+  font-size: 14px; font-weight: 600; color: #fff;
+  text-decoration: underline; text-underline-offset: 3px;
+  text-decoration-color: rgba(255,255,255,.35);
+}
+.footer-mail:hover { text-decoration-color: currentColor; }
+
+@media (max-width: 1024px) {
+  .footer-top { grid-template-columns: 1fr 1fr; gap: 34px; }
+}
+@media (max-width: 560px) {
+  .footer-top { grid-template-columns: 1fr; gap: 30px; }
+}
+
+/* ---------- Hero eyebrow, plain ----------
+   The .eyebrow class is a pill: white fill, border, full radius, shadow. The
+   hero wanted the words only, so this is its own rule rather than an override
+   that would have to undo four properties. */
+.hero-eyebrow {
+  display: block;
+  font-size: 12.5px; font-weight: 700; letter-spacing: .12em;
+  text-transform: uppercase; color: var(--primary);
+}
+
+/* ---------- "What is" section ----------
+   Layout follows the equivalent block on the operator's sibling site: heading
+   capped at a reading width, a three-column band with the visual in the first
+   column and the copy spanning the other two, then a full-width closing strip
+   on a tinted, heavily rounded card. */
+.whatis-head { max-width: 790px; display: grid; gap: 16px; margin-bottom: 44px; }
+.whatis-head .h2 { margin: 0; }
+
+.whatis-cta {
+  display: flex; align-items: center; justify-content: space-between; gap: 32px;
+  margin-top: 40px; padding: 32px 48px;
+  background: var(--primary-lightest);
+  border: 1px solid var(--line); border-radius: 30px;
+}
+.whatis-cta p { font-size: 20px; font-weight: 600; line-height: 1.35; color: var(--ink); max-width: 620px; margin: 0; }
+
+/* Tinted action button, matching the sibling site's secondary button: light
+   blue fill, deep blue label, pill radius. */
+.btn-tint {
+  background: var(--primary-lighter); color: var(--primary-darker);
+  box-shadow: none; white-space: nowrap; flex: 0 0 auto;
+}
+.btn-tint:hover { background: #C7DBFD; transform: translateY(-2px); }
+
+@media (max-width: 1024px) {
+  .whatis-cta { flex-direction: column; align-items: flex-start; gap: 22px; padding: 28px 26px; border-radius: 22px; }
+  .whatis-cta p { font-size: 18px; }
+  .whatis-cta .btn { width: 100%; }
+}
+/* =========================================================
+   Restored: the sample signal card, the panel heading, and the setup-row /
+   Legit / Protected blocks. An over-broad regex removed these by accident.
+   The .whatis-split rules from the same range are deliberately left out -
+   .whatis-band replaced that layout.
+   ========================================================= */
+
+/* ---------- Sample signal card ---------- */
+.signal-card {
+  margin: 0; padding: 22px 24px 20px;
+  background: #fff; border: 1px solid var(--line);
+  border-radius: var(--r-lg);
+  position: relative; overflow: hidden;
+}
+.signal-card::before {
+  content: ''; position: absolute; inset: 0 0 auto 0; height: 3px; background: var(--grad);
+}
+.signal-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 18px; }
+.signal-live { display: inline-flex; align-items: center; gap: 7px; font-size: 12px; font-weight: 700; letter-spacing: .07em; text-transform: uppercase; color: var(--primary); }
+.signal-live i { width: 7px; height: 7px; border-radius: 50%; background: var(--green-light); box-shadow: 0 0 0 3px rgba(110,201,140,.28); animation: ringPulse 2.4s ease-in-out infinite; }
+.signal-sample { font-size: 11.5px; color: var(--muted); background: var(--primary-lightest); border: 1px solid var(--line); border-radius: 999px; padding: 3px 10px; }
+.signal-asset { display: flex; align-items: center; gap: 12px; margin-bottom: 18px; }
+.signal-asset b { font-size: 25px; font-weight: 800; letter-spacing: -.02em; color: var(--ink); }
+.signal-dir { font-size: 11.5px; font-weight: 800; letter-spacing: .08em; padding: 4px 10px; border-radius: 7px; }
+.signal-dir.buy { background: rgba(21,128,61,.12); color: var(--green); }
+.signal-dir.sell { background: rgba(192,57,43,.10); color: #C0392B; }
+.signal-fields { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+.signal-fields > div { background: var(--primary-lightest); border: 1px solid var(--line); border-radius: var(--r-sm); padding: 13px 14px; }
+.signal-fields dt { font-size: 11.5px; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); margin-bottom: 6px; }
+.signal-fields dd { font-size: 16px; font-weight: 700; color: var(--ink); font-variant-numeric: tabular-nums; }
+.signal-fields dd.neg { color: #C0392B; }
+.signal-fields dd.pos { color: var(--green); }
+.signal-note { margin-top: 16px; font-size: 13px; color: var(--muted); line-height: 1.55; }
+
+/* ---------- Panel heading used outside a panel ---------- */
+.panel-heading { font-size: 17px; margin-bottom: 18px; }
+.setup-rows { margin-top: 4px; }
+
+/* ---------- Trust strip: slim bar under the stat panel ---------- */
+
+@media (max-width: 640px) {
+    .signal-fields { grid-template-columns: 1fr; }
+  .signal-asset b { font-size: 21px; }
+}
+
+/* Legit: full-width panels, setup rows as a 2x2 of blocks.
+   The rows were a label/value grid inside a half-width column, which put bold
+   teal labels and long values in two narrow columns and read as a form. */
+.legit-panels { display: grid; gap: 30px; margin-top: 34px; }
+.setup-rows { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 20px; }
+.setup-row {
+  display: block; padding: 17px 20px;
+  background: var(--primary-lightest); border: 1px solid var(--line);
+  border-radius: var(--r-md);
+}
+.setup-row + .setup-row { border-top: 1px solid var(--line); }
+.setup-row .k { display: block; margin-bottom: 6px; }
+.setup-row .v { font-size: 14.5px; }
+@media (max-width: 900px) { .setup-rows { grid-template-columns: 1fr; } }
+
+/* Five protection cards in a four-column auto-fit grid left the fifth alone on
+   a row of its own. Three columns gives 3 + 2, which reads as one set. */
+.legit-panels .icon-cards { grid-template-columns: repeat(3, 1fr); }
+@media (max-width: 1024px) { .legit-panels .icon-cards { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 640px) { .legit-panels .icon-cards { grid-template-columns: 1fr; } }
+@media (max-width: 640px) {
+  .signal-fields { grid-template-columns: 1fr; }
+  .signal-asset b { font-size: 21px; }
+  .reg-card { padding: 26px 20px 22px; }
+}
+
+/* ---------- "What is" section, rebuilt on the sibling site's layout ----------
+   Heading, then a band with the visual beside four short capability points,
+   then a three-step flow, then the closing strip. */
+.whatis-band { display: grid; grid-template-columns: 378px 1fr; gap: 24px; align-items: stretch; }
+.whatis-right { display: grid; gap: 24px; align-content: start; }
+.whatis-points {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 26px 32px;
+  padding: 30px 32px;
+  background: #fff;
+  border: 1px solid var(--line); border-radius: var(--r-lg);
+}
+.whatis-point { display: flex; gap: 14px; align-items: flex-start; }
+.wp-ico {
+  flex: 0 0 auto; width: 42px; height: 42px; border-radius: 13px;
+  background: var(--primary-lighter); color: var(--primary);
+  display: grid; place-items: center;
+}
+.whatis-point h3 { font-size: 16px; margin-bottom: 5px; }
+.whatis-point p { color: var(--muted); font-size: 14.5px; line-height: 1.6; margin: 0; }
+
+/* Three-step flow. Numbered, so it reads as a sequence rather than a list. */
+.whatis-flow { }
+.whatis-flow ol { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+/* Blue fill and an icon, and no shadow: the tint is what separates these from
+   the white panel above them, so a drop shadow on top of it only muddied the
+   edge. */
+.whatis-flow li {
+  display: flex; align-items: center; justify-content: center; gap: 10px;
+  padding: 16px 14px; text-align: center;
+  background: var(--primary-lightest);
+  border: 1px solid var(--line); border-radius: var(--r-md);
+  color: var(--ink); font-size: 15px; font-weight: 600; line-height: 1.4;
+}
+.wf-ico { flex: 0 0 auto; color: var(--primary); display: grid; place-items: center; }
+
+
+@media (max-width: 1024px) {
+  .whatis-band { grid-template-columns: 1fr; gap: 34px; }
+  .whatis-flow ol { grid-template-columns: 1fr; }
+}
+@media (max-width: 640px) {
+  .whatis-points { grid-template-columns: 1fr; gap: 20px; }
+  .whatis-flow li { padding: 16px 18px; font-size: 14px; }
+}
+
+/* The signal card stretches to the height of the column beside it, with the
+   note pinned to the bottom so the extra space reads as part of the card
+   rather than a gap under it. */
+.whatis-figure { display: flex; }
+.whatis-figure .signal-card { flex: 1; display: flex; flex-direction: column; }
+.whatis-figure .signal-note { margin-top: auto; padding-top: 16px; }
+@media (max-width: 1024px) { .whatis-figure .signal-card { min-height: 0; } }

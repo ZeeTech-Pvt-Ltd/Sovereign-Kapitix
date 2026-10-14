@@ -76,13 +76,36 @@ export const stats = [
   { value: '1 business day', label: 'Typical withdrawal time' },
 ]
 
+// Rewritten after the equivalent block on the operator's sibling site
+// (haveningry.com, "What is Haveningry?"), which the operator asked to follow.
+// Its shape: a one-line answer under the heading, four short capability points
+// beside a visual, a three-step flow, and a closing strip.
+//
+// The two long paragraphs that used to sit here are gone - the operator said
+// the existing copy could be cut. The substance they carried is not lost: the
+// broker-execution sentence is in the lead and again in the Legit section, and
+// "general information only, not personal advice" is in the footer, the risk
+// disclosure and the FAQ.
 export const whatis = {
   title: 'What Is ',
   titleMark: 'Sovereign Kapitix?',
-  body: [
-    'Sovereign Kapitix is an AI-assisted trading platform available to verified residents of Australia. It analyses live price data across cryptocurrencies, forex, shares and commodities, then generates trade signals. You decide what happens next: act on the signals yourself, or switch on automation and let the platform place trades within limits you set.',
-    'Sovereign Kapitix supplies the AI signals, dashboard and automation tools. Trades are executed through partnered, regulated brokers rather than an in-house desk. Sovereign Kapitix provides technology and general information only. It does not give personal financial advice.',
+  lead: 'An AI-assisted trading platform for verified Australian residents, built to make following the markets as straightforward as online banking. It suits a new trader and an experienced one alike.',
+  // One short clause each, matching the brevity of the reference block rather
+  // than the full sentences the first pass used.
+  items: [
+    { icon: 'bot', title: 'AI-Powered Analysis', text: 'Scans price, volume and momentum, so you do not watch charts all day.' },
+    { icon: 'user', title: 'Manual or Automated', text: 'Trade each signal yourself, or let automation run inside your limits.' },
+    { icon: 'gauge', title: 'One Clear Dashboard', text: 'Positions, closed trades and your balance at a glance.' },
+    { icon: 'wallet', title: 'Low Barrier to Entry', text: `Start from ${MIN_DEPOSIT}. No registration fee and no platform commission.` },
   ],
+  // Three plain phrases, as on the reference block, with no heading and no
+  // numbering above them. Each carries its own icon.
+  flow: [
+    { icon: 'bot', text: 'AI analyzes markets' },
+    { icon: 'zap', text: 'Finds signals' },
+    { icon: 'gauge', text: 'Executes trades' },
+  ],
+  cta: { text: 'Want the whole process before you register?', button: 'See how it works', href: '/how-it-works' },
   forTitle: 'Who Sovereign Kapitix Is For',
   for: [
     `Beginners who want guided onboarding, plain-English signals and a low ${MIN_DEPOSIT} starting balance.`,
@@ -297,12 +320,18 @@ export const finalCta = {
 
 export const footer = {
   blurb: 'Sovereign Kapitix is an AI-assisted trading platform for Australian residents. Trades are executed through partnered, regulated brokers.',
+  // The link list is split across two columns rather than one tall stack, so
+  // the footer reads as four even columns instead of a dense list with two
+  // sparse ones beside it.
+  email: 'support@sovereign-kapitix.net',
   company: [
     { label: 'Home', href: '/' },
-    { label: 'How It Works', href: '/how-it-works' },
-    { label: 'Fees', href: '/fees' },
     { label: 'About Us', href: '/about' },
     { label: 'Reviews', href: '/sovereign-kapitix-review' },
+  ],
+  platform: [
+    { label: 'How It Works', href: '/how-it-works' },
+    { label: 'Fees', href: '/fees' },
     { label: 'FAQ', href: '/faq' },
     { label: 'Contact Us', href: '/contact' },
   ],

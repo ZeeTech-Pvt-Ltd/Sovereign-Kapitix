@@ -11,9 +11,9 @@ export default function Hero() {
 
         <div className="container hero-inner">
           <div className="hero-copy reveal">
-            {/* The "AI-assisted trading for Australian residents" eyebrow was
-                removed from here at the operator's request. The .eyebrow style
-                is still used by every other section. */}
+            {/* Plain text, not the pill: the .eyebrow class carries a white
+                background, border and full radius, none of which is wanted here. */}
+            <span className="hero-eyebrow">{hero.eyebrow}</span>
             <h1 className="h1">
               {hero.title}
               <mark>{hero.titleMark}</mark>
@@ -43,20 +43,6 @@ export default function Hero() {
 
           <div className="form-wrap reveal" id="register">
             <div className="form-ring"></div>
-
-            <div className="chip chip-1">
-              <span className="ico" style={{ background: 'var(--grad)' }}>
-                <svg width="18" height="18" viewBox="0 0 20 20" fill="none"><path d="M11 3.5a3.5 3.5 0 0 1 3 5.25L17.5 15h-15L6 8.75A3.5 3.5 0 0 1 11 3.5Z" fill="#fff" /></svg>
-              </span>
-              <div><b>Free demo</b><span>No money at risk</span></div>
-            </div>
-
-            <div className="chip chip-2">
-              <span className="ico" style={{ background: 'linear-gradient(114deg,#1D4ED8,#3B82F6)' }}>
-                <Check />
-              </span>
-              <div><b>Browser-based</b><span>Nothing to install</span></div>
-            </div>
 
             <div className="reg-card">
               <h2>Open your account in 2 minutes</h2>

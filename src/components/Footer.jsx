@@ -19,6 +19,7 @@ export default function Footer() {
           <div className="footer-brand">
             <Logo onDark />
             <p>{footer.blurb}</p>
+            <a className="footer-mail" href={`mailto:${footer.email}`}>{footer.email}</a>
           </div>
 
           <div>
@@ -27,6 +28,15 @@ export default function Footer() {
             <h2>Company</h2>
             <ul>
               {footer.company.map((l) => (
+                <li key={l.label}><a href={l.href} data-scroll={l.scroll || undefined}>{l.label}</a></li>
+              ))}
+            </ul>
+          </div>
+
+          <div>
+            <h2>Platform</h2>
+            <ul>
+              {footer.platform.map((l) => (
                 <li key={l.label}><a href={l.href} data-scroll={l.scroll || undefined}>{l.label}</a></li>
               ))}
             </ul>

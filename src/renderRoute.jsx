@@ -1,7 +1,6 @@
 import Seo from './components/Seo.jsx'
 import Header from './components/Header.jsx'
 import Hero from './components/Hero.jsx'
-import Ticker from './components/Ticker.jsx'
 import TrustStrip from './components/TrustStrip.jsx'
 import WhatIsKapitix from './components/WhatIsKapitix.jsx'
 import HowItWorks from './components/HowItWorks.jsx'
@@ -64,8 +63,6 @@ export function renderRoute(route) {
   return (
     <Layout routeName="home">
       <Hero />
-      {/* Ticker sits immediately under the hero, then the assurance bar. */}
-      <Ticker />
       <TrustStrip />
       <WhatIsKapitix />
       <HowItWorks />
