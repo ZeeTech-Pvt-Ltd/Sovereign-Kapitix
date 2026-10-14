@@ -1,13 +1,12 @@
-import SignalCard from './SignalCard.jsx'
 import { Icon, ArrowRight } from './icons.jsx'
 import { whatis } from '../data/content.js'
 
 // The definitional block.
 //
 // Structure follows the equivalent section on the operator's sibling site
-// (haveningry.com, "What is Haveningry?"), which the operator asked us to
-// mirror: a heading with a one-line answer, four short capability points beside
-// a visual, a three-step flow, then a closing strip on a tinted card.
+// (haveningry.com, "What is Haveningry?"): a heading with a one-line answer,
+// four short capability points beside a visual, a three-step flow, then a
+// closing strip on a tinted card.
 //
 // The for / not-for pair that used to sit between the flow and the closing
 // strip has been removed at the operator request, along with its copy. The
@@ -27,7 +26,15 @@ export default function WhatIsKapitix() {
 
         <div className="whatis-band">
           <div className="whatis-figure reveal">
-            <SignalCard />
+            <img
+              className="whatis-img"
+              src="/btc_minimal_trading.webp"
+              alt="A Bitcoin and Australian dollar price chart on a desktop monitor, with an order book and a buy panel beside it"
+              width="637"
+              height="546"
+              loading="lazy"
+              decoding="async"
+            />
           </div>
 
           {/* The four points and the signal flow sit in one column, the flow

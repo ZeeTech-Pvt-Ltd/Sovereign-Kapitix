@@ -1284,11 +1284,7 @@ html.js .reveal[data-revealed] { opacity: 1; transform: none; }
 /* ---------- Features: four cards, then a visual beside the rest ---------- */
 .feat-grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
 .feat-split { display: grid; grid-template-columns: 1.05fr 1fr; gap: 46px; align-items: center; margin-top: 24px; }
-.feat-visual {
-  background: linear-gradient(160deg, var(--primary-lightest) 0%, #fff 70%);
-  border: 1px solid var(--line); border-radius: var(--r-lg);
-  padding: 26px; box-shadow: var(--shadow-sm);
-}
+.feat-visual { min-width: 0; }
 .feat-rest { display: grid; gap: 20px; }
 .feat-row { display: flex; gap: 16px; align-items: flex-start; }
 .feat-row .ico {
@@ -1493,8 +1489,6 @@ html.js .reveal[data-revealed] { opacity: 1; transform: none; }
   .pay { height: 26px; min-width: 0; padding: 0 5px; border-radius: 6px; }
 
   .feat-visual { padding: 10px; }
-  .signal-card { padding: 18px 16px 16px; }
-  .signal-asset b { font-size: 20px; }
 }
 
 /* Support address under the footer blurb. The brand column is wider than the
@@ -1560,41 +1554,11 @@ html.js .reveal[data-revealed] { opacity: 1; transform: none; }
    .whatis-band replaced that layout.
    ========================================================= */
 
-/* ---------- Sample signal card ---------- */
-.signal-card {
-  margin: 0; padding: 22px 24px 20px;
-  background: #fff; border: 1px solid var(--line);
-  border-radius: var(--r-lg);
-  position: relative; overflow: hidden;
-}
-.signal-card::before {
-  content: ''; position: absolute; inset: 0 0 auto 0; height: 3px; background: var(--grad);
-}
-.signal-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 18px; }
-.signal-live { display: inline-flex; align-items: center; gap: 7px; font-size: 12px; font-weight: 700; letter-spacing: .07em; text-transform: uppercase; color: var(--primary); }
-.signal-live i { width: 7px; height: 7px; border-radius: 50%; background: var(--green-light); box-shadow: 0 0 0 3px rgba(110,201,140,.28); animation: ringPulse 2.4s ease-in-out infinite; }
-.signal-sample { font-size: 11.5px; color: var(--muted); background: var(--primary-lightest); border: 1px solid var(--line); border-radius: 999px; padding: 3px 10px; }
-.signal-asset { display: flex; align-items: center; gap: 12px; margin-bottom: 18px; }
-.signal-asset b { font-size: 25px; font-weight: 800; letter-spacing: -.02em; color: var(--ink); }
-.signal-dir { font-size: 11.5px; font-weight: 800; letter-spacing: .08em; padding: 4px 10px; border-radius: 7px; }
-.signal-dir.buy { background: rgba(21,128,61,.12); color: var(--green); }
-.signal-dir.sell { background: rgba(192,57,43,.10); color: #C0392B; }
-.signal-fields { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
-.signal-fields > div { background: var(--primary-lightest); border: 1px solid var(--line); border-radius: var(--r-sm); padding: 13px 14px; }
-.signal-fields dt { font-size: 11.5px; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); margin-bottom: 6px; }
-.signal-fields dd { font-size: 16px; font-weight: 700; color: var(--ink); font-variant-numeric: tabular-nums; }
-.signal-fields dd.neg { color: #C0392B; }
-.signal-fields dd.pos { color: var(--green); }
-.signal-note { margin-top: 16px; font-size: 13px; color: var(--muted); line-height: 1.55; }
-
-.setup-rows { margin-top: 4px; }
 
 /* ---------- Trust strip: slim bar under the stat panel ---------- */
 
 @media (max-width: 640px) {
-    .signal-fields { grid-template-columns: 1fr; }
-  .signal-asset b { font-size: 21px; }
-}
+  }
 
 .setup-rows { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 20px; }
 .setup-row {
@@ -1613,8 +1577,6 @@ html.js .reveal[data-revealed] { opacity: 1; transform: none; }
 @media (max-width: 1024px) { .legit-panels .icon-cards { grid-template-columns: repeat(2, 1fr); } }
 @media (max-width: 640px) { .legit-panels .icon-cards { grid-template-columns: 1fr; } }
 @media (max-width: 640px) {
-  .signal-fields { grid-template-columns: 1fr; }
-  .signal-asset b { font-size: 21px; }
   .reg-card { padding: 26px 20px 22px; }
 }
 
@@ -1663,10 +1625,10 @@ html.js .reveal[data-revealed] { opacity: 1; transform: none; }
   .whatis-flow li { padding: 16px 18px; font-size: 14px; }
 }
 
-/* The signal card stretches to the height of the column beside it, with the
-   note pinned to the bottom so the extra space reads as part of the card
-   rather than a gap under it. */
-.whatis-figure { display: flex; }
-.whatis-figure .signal-card { flex: 1; display: flex; flex-direction: column; }
-.whatis-figure .signal-note { margin-top: auto; padding-top: 16px; }
-@media (max-width: 1024px) { .whatis-figure .signal-card { min-height: 0; } }
+
+/* ---------- Supplied imagery ----------
+   Both files are complete card graphics with their own rounding and shadow, so
+   the wrappers only need to size them. Intrinsic width/height are set on the
+   elements themselves to keep the layout from shifting as they load. */
+.whatis-img, .feat-img { display: block; width: 100%; height: auto; border-radius: var(--r-lg); }
+.whatis-img { max-width: 637px; }

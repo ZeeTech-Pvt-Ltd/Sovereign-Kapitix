@@ -1,4 +1,3 @@
-import TradingVisual from './TradingVisual.jsx'
 import { Icon, ArrowRight } from './icons.jsx'
 import { featuresHead, features } from '../data/content.js'
 
@@ -39,7 +38,15 @@ export default function Features() {
 
         <div className="feat-split">
           <div className="feat-visual reveal">
-            <TradingVisual />
+            <img
+              className="feat-img"
+              src="/live_trading_dashboard.webp"
+              alt="The Sovereign Kapitix dashboard, showing an illustrative portfolio chart, an AI buy signal and covered markets"
+              width="1280"
+              height="1104"
+              loading="lazy"
+              decoding="async"
+            />
           </div>
 
           <div className="feat-rest">
