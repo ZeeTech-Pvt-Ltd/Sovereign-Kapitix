@@ -77,9 +77,9 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 .h3 { font-size: 20px; font-weight: 700; line-height: 1.3; }
 .h4 { font-size: 17px; font-weight: 600; line-height: 1.35; }
 mark {
-  background: linear-gradient(114deg, var(--primary) 0%, var(--primary-light) 100%);
-  -webkit-background-clip: text; background-clip: text;
-  -webkit-text-fill-color: transparent; color: transparent;
+  background: none;
+  -webkit-text-fill-color: currentColor;
+  color: inherit;
 }
 .lead { font-size: clamp(16px, 1.6vw, 19px); color: var(--muted); line-height: 1.65; }
 .center { text-align: center; }
@@ -269,10 +269,10 @@ body.menu-open { overflow: hidden; }
 .field.error .pn-wrap, .pn-wrap.invalid { border-color: #D64545; }
 .pn-country {
   display: inline-flex; align-items: center; gap: 7px;
-  padding: 0 11px 0 13px;
+  padding: 0 5px 0 5px;
   border: none; border-right: 1.5px solid var(--line);
   background: transparent; cursor: pointer;
-  font: inherit; font-size: 15px; color: var(--ink);
+  font: inherit; font-size: 14px; color: var(--ink);
   outline: none;
 }
 .pn-country:hover { background: rgba(29, 78, 216,.05); }
@@ -280,7 +280,7 @@ body.menu-open { overflow: hidden; }
 .pn-input {
   flex: 1; min-width: 0;
   border: none; background: transparent;
-  padding: 0 16px;
+  padding: 0 8px;
   font: inherit; font-size: 15px; color: var(--ink);
   outline: none;
 }
@@ -641,7 +641,7 @@ body.menu-open { overflow: hidden; }
 .footer a:hover { color: #fff; }
 .footer-top { display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 40px; padding-bottom: 40px; }
 .footer-brand .logo-text { color: #fff; }
-.footer-brand p { font-size: 14px; margin-top: 14px; max-width: 320px; color: #93A6C8; }
+.footer-brand p { font-size: 14px; margin-top: 14px; max-width: 320px; color: #AEBEDA; }
 /* Column labels are h2, not h3: on pages whose main content has no h2 (the FAQ
    list, the 404) an h3 here was the first heading after the h1 and broke the
    document outline. Same declarations, so nothing moves visually. */
@@ -651,10 +651,10 @@ body.menu-open { overflow: hidden; }
 .footer-social { display: flex; gap: 10px; margin-top: 20px; }
 .footer-social a { width: 38px; height: 38px; border-radius: 10px; background: rgba(255,255,255,.08); display: grid; place-items: center; transition: background .2s; }
 .footer-social a:hover { background: var(--primary-light); }
-.footer-legal { border-top: 1px solid rgba(255,255,255,.1); padding: 22px 0; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px; font-size: 13.5px; color: #93A6C8; }
+.footer-legal { border-top: 1px solid rgba(255,255,255,.1); padding: 22px 0; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px; font-size: 13.5px; color: #AEBEDA; }
 .disclaimer { border-top: 1px solid rgba(255,255,255,.08); padding: 26px 0 40px; }
 .disclaimer b { color: #fff; font-size: 13.5px; display: block; margin-bottom: 8px; }
-.disclaimer p { font-size: 12.5px; line-height: 1.75; color: #93A6C8; }
+.disclaimer p { font-size: 12.5px; line-height: 1.75; color: #AEBEDA; }
 
 /* =========================================================
    Polish & effects
