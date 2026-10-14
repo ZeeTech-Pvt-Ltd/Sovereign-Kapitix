@@ -1,4 +1,9 @@
-// Live market ticker - pure CSS marquee, duplicated once for a seamless loop
+// Market ticker - pure CSS marquee, duplicated once for a seamless loop.
+//
+// The operator's homepage brief says to remove this ("Replace static ticker
+// with a live feed, or remove it"), because prices that never move tell a
+// visitor the site is not maintained. It is back at the operator's request.
+// The prices below are fixed sample values, not a feed.
 const items = [
   { sym: 'BTC/USD', price: '61,248', chg: '+2.4%', up: true },
   { sym: 'ETH/USD', price: '3,412', chg: '+1.8%', up: true },

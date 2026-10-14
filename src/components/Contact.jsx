@@ -11,7 +11,7 @@ import { hasTrunkPrefix } from '../lib/phoneFormat.js'
 // components are Sovereign Kapitix's own design system. Content is Sovereign Kapitix-branded.
 const info = [
   { icon: 'mail', title: 'Email', value: 'support@sovereign-kapitix.net', hint: 'Replies within a few hours' },
-  { icon: 'clock', title: 'Support Hours', value: '24/7, 365 days a year', hint: 'Round-the-clock assistance' },
+  { icon: 'clock', title: 'Support Hours', value: '24/5, Monday to Friday', hint: 'Phone, email and live chat' },
   { icon: 'pin', title: 'Location', value: 'Melbourne, Victoria, Australia', hint: 'Serving traders across Australia' },
   { icon: 'zap', title: 'Response Time', value: 'Most questions answered within a few hours', hint: 'Fast, helpful support' },
 ]
@@ -143,7 +143,7 @@ export default function Contact() {
       <CtaBanner
         eyebrow="Explore trading opportunities"
         title="Register now and our team will be in touch"
-        text="Open your Sovereign Kapitix account in minutes and put automated AI trading to work - with support available 24/7."
+        text="Open your Sovereign Kapitix account in minutes and put automated AI trading to work - with support available 24/5."
         cta="Register Now"
       />
     </>

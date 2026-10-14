@@ -49,7 +49,7 @@ const pillars = [
   },
   {
     icon: 'shield',
-    title: 'Bank-Grade Security',
+    title: 'Layered Account Security',
     text: 'Funds and personal data are shielded by strong encryption and layered account protection - from the moment you sign up to your very first withdrawal.',
   },
   {
@@ -120,7 +120,7 @@ const badges = ['256-bit Encryption', 'Two-Factor Authentication', 'Browser-Base
 
 const security = [
   { icon: 'shield', title: 'Your Funds Stay Safe', text: 'Funds remain in your own account at all times. Sovereign Kapitix is authorised only to place trades on your behalf - nothing more.' },
-  { icon: 'lock', title: 'Bank-Grade Encryption', text: 'All data is protected by 256-bit SSL encryption, and API keys are encrypted both at rest and in transit.' },
+  { icon: 'lock', title: 'Strong Encryption', text: 'All data is protected by 256-bit SSL encryption, and API keys are encrypted both at rest and in transit.' },
   { icon: 'zap', title: 'Two-Factor Authentication', text: 'Accounts can be secured with two-factor authentication, biometric login, and confirmation steps before any withdrawal.' },
   { icon: 'user', title: 'Data Privacy Standards', text: 'Strict data-privacy and account-security practices are applied in every market Sovereign Kapitix serves.' },
 ]
@@ -153,7 +153,7 @@ export default function About() {
             <TradingVisual />
             <span className="about-chip one">
               <span className="ico"><Icon name="chart" size={16} /></span>
-              24/7 Automated Analysis
+              Continuous Automated Analysis
             </span>
             <span className="about-chip two">
               <span className="ico"><Icon name="user" size={16} /></span>
@@ -283,7 +283,7 @@ export default function About() {
       <CtaBanner
         eyebrow="Ready to begin?"
         title="Put automated trading to work"
-        text="Create your Sovereign Kapitix account in about two minutes and let AI-driven strategies trade around the clock - with support available 24/7."
+        text="Create your Sovereign Kapitix account in about two minutes and let AI-driven strategies trade around the clock - with support available 24/5."
         cta="Register Now"
       />
     </>

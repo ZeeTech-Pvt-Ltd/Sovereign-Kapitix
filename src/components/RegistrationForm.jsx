@@ -18,6 +18,13 @@ const fields = {
   phone: { label: 'Phone', type: 'tel', placeholder: 'Enter your Phone Number', autocomplete: 'tel', error: 'Please enter a valid phone number.' },
 }
 
+// The consent line the operator's brief requires, because the account manager
+// calls every new sign-up: contact consent has to be explicit under the
+// Australian Spam Act and Privacy Act. It is a separate, unticked control the
+// visitor has to assert themselves.
+const CONSENT =
+  'I agree that Sovereign Kapitix may contact me by phone and email about my account. I can opt out at any time.'
+
 const payMethods = [
   { name: 'VISA', Icon: Visa },
   { name: 'Mastercard', Icon: Mastercard },
@@ -30,6 +37,7 @@ export default function RegistrationForm() {
   const [errors, setErrors] = useState({})
   const [message, setMessage] = useState({ kind: '', text: '' })
   const [processing, setProcessing] = useState(false)
+  const [agreed, setAgreed] = useState(false)
   const { country, phone, setPhone, onCountryChange, phoneE164 } = usePhoneField()
   const formRef = useRef(null)
 
@@ -80,6 +88,13 @@ export default function RegistrationForm() {
     setErrors(nextErrors)
     setMessage({ kind: '', text: '' })
     if (Object.keys(nextErrors).length) return
+    // Contact consent is required, not assumed. The account manager calls every
+    // new sign-up, so this is the assertion that makes that lawful; the form
+    // will not submit without it, and it is never pre-ticked.
+    if (!agreed) {
+      setMessage({ kind: 'err', text: 'Please tick the consent box so we can contact you about your account.' })
+      return
+    }
     setProcessing(true)
     try {
       // Four keys, named explicitly. This used to forward every field the form
@@ -138,31 +153,49 @@ export default function RegistrationForm() {
         {renderField('last_name')}
       </div>
 
-      {renderField('email')}
+      {/* Email and phone share a row, matching the name row above. The phone
+          field is composite (a country picker button plus the input), so it is
+          written out rather than going through renderField. */}
+      <div className="field-row">
+        {renderField('email')}
 
-      <div className={`field ${errors.phone ? 'error' : ''}`}>
-        <label htmlFor="phone">Phone</label>
-        <PhoneNumberInput
-          country={country}
-          onCountryChange={onCountryChange}
-          value={phone}
-          onValueChange={(v) => {
-            setPhone(v)
-            clearError('phone')
-          }}
-          onBlur={handleBlur}
-          invalid={errors.phone}
-          id="phone"
-          name="phone"
-          autoComplete="tel"
-        />
-        <p className="error-msg">
-          {typeof errors.phone === 'string' ? errors.phone : fields.phone.error}
-        </p>
+        <div className={`field ${errors.phone ? 'error' : ''}`}>
+          <label htmlFor="phone">Phone</label>
+          <PhoneNumberInput
+            country={country}
+            onCountryChange={onCountryChange}
+            value={phone}
+            onValueChange={(v) => {
+              setPhone(v)
+              clearError('phone')
+            }}
+            onBlur={handleBlur}
+            invalid={errors.phone}
+            id="phone"
+            name="phone"
+            autoComplete="tel"
+          />
+          <p className="error-msg">
+            {typeof errors.phone === 'string' ? errors.phone : fields.phone.error}
+          </p>
+        </div>
       </div>
 
+      <label className="consent">
+        <input
+          type="checkbox"
+          name="agree"
+          checked={agreed}
+          onChange={(e) => {
+            setAgreed(e.target.checked)
+            if (e.target.checked) setMessage({ kind: '', text: '' })
+          }}
+        />
+        <span>{CONSENT}</span>
+      </label>
+
       <button className="btn btn-primary btn-block" type="submit" disabled={processing}>
-        {processing ? 'Processing…' : 'Sign Up Now'}
+        {processing ? 'Processing…' : 'Create my free account'}
         {!processing && <ArrowRight />}
       </button>
       {message.kind && <div className={`form-message ${message.kind}`}>{message.text}</div>}
@@ -173,9 +206,9 @@ export default function RegistrationForm() {
           the site entirely, and in production they force a full page load
           instead of the SPA navigation every other link on the site uses. */}
       <p className="legal">
-        By entering your personal information and clicking the button, you accept the{' '}
-        <a href="/privacy">Privacy Policy</a> and{' '}
-        <a href="/terms">Terms of Use</a> of the website.
+        By registering you agree to our <a href="/terms">Terms of Use</a> and{' '}
+        <a href="/privacy">Privacy Policy</a>. Trading involves risk of loss. Read the{' '}
+        <a href="/disclosure">risk disclosure</a>.
       </p>
 
       <div className="pay-row" aria-label="Accepted payment methods">

@@ -5,7 +5,7 @@
 //
 // The win-rate and pair-count figures are carried over from the reference
 // site, alongside the rest of the product claims - see data/content.js.
-import { SIGNAL_ACCURACY, INSTRUMENTS } from '../data/content.js'
+import { MARKETS } from '../data/content.js'
 
 const line =
   'M0 170 C52 154 88 124 132 132 C168 138 198 100 240 92 C282 84 314 110 352 90 C388 72 420 46 462 40 C498 34 530 40 560 24'
@@ -87,13 +87,16 @@ export default function TradingVisual() {
           AI Signal <b>BUY</b>
         </span>
         <span className="tv-stat">
-          Win rate <b>{SIGNAL_ACCURACY}</b>
+          Markets <b>{MARKETS}</b>
         </span>
         <span className="tv-stat">
-          Pairs <b>{INSTRUMENTS}</b>
+          Signals <b>24/5</b>
         </span>
+        {/* Was a duplicate "Markets" label reading 24/7. The operator's brief
+            is explicit that support is 24/5 and that 24/7 should not appear
+            anywhere on the site. */}
         <span className="tv-stat">
-          Markets <b>24/7</b>
+          Support <b>24/5</b>
         </span>
       </div>
     </div>

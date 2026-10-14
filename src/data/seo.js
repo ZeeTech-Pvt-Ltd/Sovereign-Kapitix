@@ -3,9 +3,11 @@
 // Single source of truth for <title>, meta description, meta
 // keywords, canonical URLs, robots rules, Open Graph, Twitter
 // cards, and JSON-LD structured data - consumed by <Seo/>.
-// Nothing here invents facts: all claims come from content.js.
+// Nothing here invents facts: all claims come from content.js
+// and pages.js, both of which are operator-supplied.
 // =========================================================
-import { faq, MIN_DEPOSIT } from './content.js'
+import { faq, MIN_DEPOSIT, MARKETS } from './content.js'
+import { faqGroups } from './pages.js'
 
 // Single source of truth for the origin. Every absolute URL on the site -
 // canonicals, og:url, JSON-LD @id, the sitemap and the build's head writer -
@@ -17,6 +19,10 @@ export const OG_IMAGE = `${SITE}/og-image.png`
 
 // ---------- JSON-LD builders (real site content only) ----------
 
+// Organization is deliberately thin. The operator's brief asks for
+// "Organization (name, URL and logo only)" and says why: "Company registration
+// details are intentionally left out for data security." No address, no
+// founding date, no registration number - each would be an invented fact.
 const organization = {
   '@context': 'https://schema.org',
   '@type': 'Organization',
@@ -24,53 +30,7 @@ const organization = {
   name: 'Sovereign Kapitix',
   url: SITE,
   logo: `${SITE}/favicon.svg`,
-  description:
-    'Sovereign Kapitix is an AI-powered automated trading platform for users in Australia - automated strategies, live market signals, and dependable security in one place.',
-  email: 'support@sovereign-kapitix.net',
   inLanguage: 'en-AU',
-  areaServed: 'Australia',
-  address: {
-    '@type': 'PostalAddress',
-    addressLocality: 'Melbourne',
-    addressRegion: 'Victoria',
-    addressCountry: 'AU',
-  },
-  contactPoint: {
-    '@type': 'ContactPoint',
-    contactType: 'customer support',
-    email: 'support@sovereign-kapitix.net',
-    availableLanguage: 'en',
-    hoursAvailable: 'Mo-Su 00:00-24:00',
-  },
-}
-
-// The platform described as a schema.org Service, geo-scoped to Australia -
-// all fields reflect claims already on the site (Melbourne base, 24/7
-// support), nothing invented.
-function serviceSchema() {
-  return {
-    '@context': 'https://schema.org',
-    '@type': 'Service',
-    '@id': `${SITE}/#service`,
-    name: 'Sovereign Kapitix Automated Trading Platform',
-    serviceType: 'Automated trading platform',
-    description:
-      'AI-powered automated trading platform for users in Australia - automated strategies, live market signals, and dependable security in one place.',
-    provider: { '@id': `${SITE}/#organization` },
-    areaServed: 'Australia',
-    audience: { '@type': 'Audience', audienceType: 'Traders in Australia' },
-    // The minimum deposit is now a set figure (see MIN_DEPOSIT in content.js),
-    // so the machine-readable offer can carry it. Keep the two in step if the
-    // figure ever changes - structured data is surfaced directly in search.
-    offers: {
-      '@type': 'Offer',
-      name: 'Sovereign Kapitix Trading Account',
-      price: '250',
-      priceCurrency: 'AUD',
-      description:
-        'Minimum deposit to open a Sovereign Kapitix trading account. No subscription or registration fees.',
-    },
-  }
 }
 
 const website = {
@@ -108,8 +68,10 @@ function breadcrumb(name, path) {
   }
 }
 
-// FAQ schema is always generated from the same FAQ content that is rendered
-// on the page it describes - never duplicated or invented.
+// FAQPage is always generated from the same question list the page renders,
+// never duplicated or invented. When an answer carries a trailing read-more
+// link, the same sentence is appended here so the structured text matches the
+// rendered answer exactly (anchor text only, no markup).
 function buildFaqPage(items) {
   return {
     '@context': 'https://schema.org',
@@ -117,9 +79,6 @@ function buildFaqPage(items) {
     mainEntity: items.map((f) => ({
       '@type': 'Question',
       name: f.q,
-      // When an answer carries a trailing read-more link (item.link), the same
-      // sentence is appended here so the structured text matches the rendered
-      // answer exactly (anchor text only, no markup).
       acceptedAnswer: {
         '@type': 'Answer',
         text: f.link ? `${f.a} ${f.link.text}` : f.a,
@@ -128,141 +87,164 @@ function buildFaqPage(items) {
   }
 }
 
-// FAQ schema - mirrors the FAQ accordion on the /faq route.
-function faqPageSchema() {
-  return buildFaqPage(faq)
-}
+// The /faq page renders its questions in seven groups; the schema wants one
+// flat list, so flatten it here rather than maintaining a second copy.
+const faqGroupItems = faqGroups.flatMap((g) => g.items)
 
-// Titles below are kept under ~60 characters where possible - Google truncates
-// the SERP snippet past roughly that width, and a cut-off title loses the tail
-// keyword. Descriptions target 70-160 for the same reason.
+// ---------- per-route configuration ----------
 //
-// The home pair is hoisted because the JSON-LD block below repeats them; two
-// copies of the same string is how they drift apart.
-const homeTitle = 'Sovereign Kapitix | AI Trading Platform for Australia'
-const homeDescription =
-  'Sovereign Kapitix - AI-powered automated trading platform for Australia. 24/7 automated strategies, live signals, bank-grade security.'
-
+// Every title and description below is the one supplied in the operator's
+// page briefs, transcribed rather than rewritten, so the SERP snippet matches
+// what was signed off. Titles target under 60 characters and descriptions
+// under 155, which the briefs were themselves written to.
 export const seo = {
   home: {
-    title: homeTitle,
-    description: homeDescription,
+    title: 'Sovereign Kapitix: AI Trading Platform for Australians',
+    description:
+      `Sovereign Kapitix is an AI-assisted trading platform for Australian residents. See how it works, fees, risks and how to open an account from ${MIN_DEPOSIT}.`,
     keywords:
-      'automated trading platform australia, AI trading platform, automated crypto trading, Sovereign Kapitix, AI trading Australia',
+      'Sovereign Kapitix, AI trading platform Australia, automated trading platform Australia, AI crypto trading Australia, Sovereign Kapitix review, is Sovereign Kapitix legit',
     canonical: `${SITE}/`,
     robots: 'index, follow, max-image-preview:large, max-snippet:-1',
     type: 'website',
-    ogImageAlt: 'Sovereign Kapitix - AI-powered automated trading platform for Australia',
-    schema: [organization, website, webPage(homeTitle, `${SITE}/`, homeDescription), serviceSchema()],
+    ogImageAlt: 'Sovereign Kapitix AI trading platform for Australia',
+    schema: [
+      organization,
+      website,
+      webPage('Sovereign Kapitix AI Trading Platform for Australia', `${SITE}/`, `Sovereign Kapitix is an AI-assisted trading platform for Australian residents, with a ${MIN_DEPOSIT} minimum deposit.`),
+      buildFaqPage(faq),
+    ],
   },
 
   about: {
     title: 'About Sovereign Kapitix - Trading Without the Complexity',
     description:
-      'Learn about Sovereign Kapitix, an AI-assisted trading platform offering automated analysis, bank-grade security, and 24/7 support for Australian traders.',
+      'Learn about Sovereign Kapitix, an AI-assisted trading platform offering automated analysis, strong encryption, and support for Australian traders.',
     keywords: 'about Sovereign Kapitix, Sovereign Kapitix trading platform, automated trading platform australia, AI trading company',
     canonical: `${SITE}/about`,
     robots: 'index, follow, max-image-preview:large, max-snippet:-1',
     type: 'website',
     ogImageAlt: 'About Sovereign Kapitix - automated trading without the complexity',
     schema: [
-      webPage('About Sovereign Kapitix', `${SITE}/about`, 'About the Sovereign Kapitix AI-driven automated trading platform - automated market analysis, bank-grade security, and 24/7 support.'),
+      webPage('About Sovereign Kapitix', `${SITE}/about`, 'About the Sovereign Kapitix AI-assisted trading platform - automated market analysis, encryption, and support for Australian traders.'),
       breadcrumb('About Us', '/about'),
     ],
   },
 
   contact: {
-    title: 'Contact Sovereign Kapitix | 24/7 Australian Support',
+    title: 'Contact Sovereign Kapitix | Australian Support Team',
     description:
-      'Have a question about Sovereign Kapitix or automated trading? Contact our 24/7 support team by email or the registration form - we reply within hours.',
-    keywords: 'contact Sovereign Kapitix, Sovereign Kapitix support, automated trading help, Sovereign Kapitix Australia support',
+      'Have a question about Sovereign Kapitix or AI trading? Contact our support team by phone, email or live chat, or use the registration form.',
+    keywords: 'contact Sovereign Kapitix, Sovereign Kapitix support, AI trading help, Sovereign Kapitix Australia support',
     canonical: `${SITE}/contact`,
     robots: 'index, follow, max-image-preview:large, max-snippet:-1',
     type: 'website',
-    ogImageAlt: 'Contact Sovereign Kapitix support - 24/7 assistance for Australian traders',
+    ogImageAlt: 'Contact Sovereign Kapitix support',
     schema: [
-      webPage('Contact Sovereign Kapitix', `${SITE}/contact`, 'Contact the Sovereign Kapitix support team - email and registration form, available around the clock.'),
+      webPage('Contact Sovereign Kapitix', `${SITE}/contact`, 'Contact the Sovereign Kapitix support team - email and registration form.'),
       breadcrumb('Contact Us', '/contact'),
     ],
   },
 
   faq: {
-    title: 'FAQ - Sovereign Kapitix Automated Trading Platform',
+    title: 'Sovereign Kapitix FAQ: Fees, Safety, Signals & More',
     description:
-      'Answers to the questions people ask most about Sovereign Kapitix: what it costs, how to open an account, and how to spot a fake site. Read the FAQ.',
+      `Answers to common Sovereign Kapitix questions: how it works, ${MIN_DEPOSIT} minimum deposit, fees, withdrawals, AI signals, safety and who can register.`,
     keywords:
-      'Sovereign Kapitix FAQ, Sovereign Kapitix help, automated trading questions, is Sovereign Kapitix legit, Sovereign Kapitix minimum deposit, Sovereign Kapitix withdrawal, how to open a trading account australia',
+      'Sovereign Kapitix FAQ, is Sovereign Kapitix legit, Sovereign Kapitix minimum deposit, Sovereign Kapitix withdrawal, how does Sovereign Kapitix work, is AI trading safe',
     canonical: `${SITE}/faq`,
     robots: 'index, follow, max-image-preview:large, max-snippet:-1',
     type: 'website',
-    ogImageAlt: 'Sovereign Kapitix FAQ - frequently asked questions about the automated trading platform',
+    ogImageAlt: 'Sovereign Kapitix FAQ - fees, safety, signals and more',
     schema: [
-      webPage('FAQ', `${SITE}/faq`, 'Answers to the most common questions about the Sovereign Kapitix automated trading platform - deposits, security, withdrawals, and account safety.'),
+      webPage('Sovereign Kapitix FAQ', `${SITE}/faq`, 'Answers to common questions about Sovereign Kapitix: how it works, fees, withdrawals, AI signals, account safety and who can register.'),
       breadcrumb('FAQ', '/faq'),
-      faqPageSchema(),
+      buildFaqPage(faqGroupItems),
     ],
   },
 
   'how-it-works': {
-    title: 'How Sovereign Kapitix Works | AI Trading in Australia',
+    title: 'How Sovereign Kapitix Works: AI Trading Step by Step',
     description:
-      'See how Sovereign Kapitix works, from your first sign up to your first trade. Five clear steps, no jargon. Open your account today.',
+      `See how Sovereign Kapitix works: sign up, verify, test the free demo, fund from ${MIN_DEPOSIT}, set risk limits and trade with AI signals manually or automatically.`,
     keywords:
-      'how Sovereign Kapitix works, how automated trading works, AI trading platform australia, Sovereign Kapitix sign up',
+      'how does Sovereign Kapitix work, Sovereign Kapitix sign up, Sovereign Kapitix demo account, how AI trading works, how to start AI trading in Australia, AI trading signals explained',
     canonical: `${SITE}/how-it-works`,
     robots: 'index, follow, max-image-preview:large, max-snippet:-1',
     type: 'website',
-    ogImageAlt: 'How Sovereign Kapitix works, from sign up to your first trade',
+    ogImageAlt: 'How Sovereign Kapitix works, step by step',
     schema: [
-      webPage('How Sovereign Kapitix Works', `${SITE}/how-it-works`, 'The five step journey from signing up to placing your first trade on Sovereign Kapitix, plus the two trading modes and what the platform costs.'),
+      webPage('How Sovereign Kapitix Works', `${SITE}/how-it-works`, 'The six-step guide from signing up to your first trade on Sovereign Kapitix, plus how the AI signals work and the risk controls you set.'),
       breadcrumb('How It Works', '/how-it-works'),
     ],
   },
 
-  // The page that answers "is Sovereign Kapitix a scam". The title and
-  // description deliberately do not repeat that phrasing back as a claim about
-  // the platform; they describe what the page contains, which is an honest
-  // review carrying the downsides as well as the benefits.
-  //
-  // The slug is brand-qualified rather than a bare /review. Every brand built
-  // on this template does the same, and the longer slug is what makes it
-  // unambiguous when the page is shared or cited without its domain. The short
-  // /review path is redirected here, never the other way around.
-  'sovereign-kapitix-review': {
-    title: 'Sovereign Kapitix Review | An Honest Look at the Platform',
+  fees: {
+    title: 'Sovereign Kapitix Fees & Minimum Deposit (AU$250) Guide',
     description:
-      'An honest look at Sovereign Kapitix: how it works, what it costs, and the risks you should know before you deposit. Open your free account today.',
+      `Sovereign Kapitix fees explained: ${MIN_DEPOSIT} minimum deposit, no platform commission, no subscription, broker spreads, deposit methods and withdrawal times.`,
     keywords:
-      'Sovereign Kapitix review, is Sovereign Kapitix a scam, Sovereign Kapitix legit, Sovereign Kapitix pros and cons, Sovereign Kapitix minimum deposit',
-    canonical: `${SITE}/sovereign-kapitix-review`,
+      'Sovereign Kapitix fees, Sovereign Kapitix minimum deposit, Sovereign Kapitix withdrawal, Sovereign Kapitix withdrawal time, Sovereign Kapitix deposit methods, trading platform with no platform commission, low minimum deposit trading platform Australia',
+    canonical: `${SITE}/fees`,
     robots: 'index, follow, max-image-preview:large, max-snippet:-1',
     type: 'website',
-    ogImageAlt: 'An honest review of the Sovereign Kapitix trading platform',
+    ogImageAlt: 'Sovereign Kapitix fees and minimum deposit explained',
     schema: [
-      webPage('Sovereign Kapitix Review', `${SITE}/sovereign-kapitix-review`, 'A full review of the Sovereign Kapitix automated trading platform: the costs, the pros and cons, and how to check the site you are on is the real one.'),
-      breadcrumb('Reviews', '/sovereign-kapitix-review'),
+      webPage('Sovereign Kapitix Fees and Minimum Deposit', `${SITE}/fees`, `Every cost of using Sovereign Kapitix: free registration, no subscription, no platform commission, a ${MIN_DEPOSIT} minimum deposit and how withdrawals work.`),
+      breadcrumb('Fees', '/fees'),
+    ],
+  },
+
+  // The page that answers "is Sovereign Kapitix a scam". Article + FAQPage, and
+  // deliberately NOT Review or AggregateRating markup: the operator's brief says
+  // Google treats a business reviewing itself as self-serving, so stars would
+  // not show and the markup would only add risk.
+  'sovereign-kapitix-review': {
+    title: 'Sovereign Kapitix Review 2026: Is It Legit? Fees & Risks',
+    description:
+      `Honest Sovereign Kapitix review for Australians: how it works, ${MIN_DEPOSIT} minimum deposit, fees, supported assets, safety checks, pros and cons, and who it suits.`,
+    keywords:
+      'Sovereign Kapitix review, is Sovereign Kapitix legit, Sovereign Kapitix scam or legit, is Sovereign Kapitix safe, Sovereign Kapitix minimum deposit, Sovereign Kapitix fees, Sovereign Kapitix Australia',
+    canonical: `${SITE}/sovereign-kapitix-review`,
+    robots: 'index, follow, max-image-preview:large, max-snippet:-1',
+    type: 'article',
+    ogImageAlt: 'Sovereign Kapitix review 2026',
+    schema: [
+      {
+        '@context': 'https://schema.org',
+        '@type': 'Article',
+        '@id': `${SITE}/sovereign-kapitix-review#article`,
+        headline: 'Sovereign Kapitix Review 2026: Is It Legit and Worth Trying?',
+        description: `An honest review of the Sovereign Kapitix AI-assisted trading platform: fees, the ${MIN_DEPOSIT} minimum deposit, pros and cons, and how to check it yourself.`,
+        author: { '@id': `${SITE}/#organization` },
+        publisher: { '@id': `${SITE}/#organization` },
+        isPartOf: { '@id': `${SITE}/#website` },
+        inLanguage: 'en-AU',
+      },
+      breadcrumb('Review', '/sovereign-kapitix-review'),
     ],
   },
 
   register: {
-    title: 'Open Your Sovereign Kapitix Account | Free Registration',
-    description: `Open your Sovereign Kapitix account in about two minutes. Registration is free and the minimum deposit is ${MIN_DEPOSIT}. Start today.`,
+    title: 'Sovereign Kapitix Sign Up: Open Your Free Account',
+    description:
+      `Register with Sovereign Kapitix in about two minutes. Free sign-up, free demo account, AI trading signals across ${MARKETS} markets and funding from just ${MIN_DEPOSIT}.`,
     keywords:
-      'Sovereign Kapitix register, open trading account australia, free trading account, Sovereign Kapitix sign up',
+      'Sovereign Kapitix sign up, Sovereign Kapitix register, Sovereign Kapitix registration, Sovereign Kapitix account, open AI trading account Australia, AI trading platform free demo account',
     canonical: `${SITE}/register`,
     robots: 'index, follow, max-image-preview:large, max-snippet:-1',
     type: 'website',
-    ogImageAlt: 'Open your Sovereign Kapitix trading account',
+    ogImageAlt: 'Sign up for a Sovereign Kapitix account',
     schema: [
-      webPage('Open Your Sovereign Kapitix Account', `${SITE}/register`, `Register for a Sovereign Kapitix account. Registration is free and takes about two minutes, with a minimum deposit of ${MIN_DEPOSIT}.`),
-      breadcrumb('Register', '/register'),
+      webPage('Sovereign Kapitix Sign Up', `${SITE}/register`, `Register for a Sovereign Kapitix account. Free sign-up, a free demo account, and funding from ${MIN_DEPOSIT} when you are ready.`),
+      breadcrumb('Sign Up', '/register'),
     ],
   },
 
   terms: {
     title: 'Terms of Use - Sovereign Kapitix Trading Platform',
     description:
-      'Read the Sovereign Kapitix Terms of Use - the rules that govern use of the AI-powered automated trading platform for users in Australia.',
+      'Read the Sovereign Kapitix Terms of Use - the rules that govern use of the AI-assisted automated trading platform for users in Australia.',
     keywords: 'Sovereign Kapitix terms of use, automated trading terms, platform terms',
     canonical: `${SITE}/terms`,
     robots: 'index, follow, max-image-preview:large, max-snippet:-1',

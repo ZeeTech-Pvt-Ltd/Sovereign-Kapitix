@@ -1,14 +1,20 @@
-import { Icon, Check, ArrowRight } from './icons.jsx'
-import { steps, trustStrip } from '../data/content.js'
+import { Icon, ArrowRight } from './icons.jsx'
+import { steps, stepsHead } from '../data/content.js'
 
+// The homepage's three-step summary. The full six-step walkthrough lives on
+// /how-it-works - this section exists to give the shape of the process and hand
+// the reader off to it, not to duplicate it.
 export default function HowItWorks() {
   return (
     <section className="section how" id="how">
       <div className="container">
         <div className="section-head reveal">
-          <span className="eyebrow">Simple by design</span>
-          <h2 className="h2">Get Started in <mark>3 Easy Steps</mark></h2>
-          <p className="lead">A clear, guided path from sign-up to your first trade - with no jargon, no complications, and nothing extra to figure out.</p>
+          <span className="eyebrow">{stepsHead.eyebrow}</span>
+          <h2 className="h2">
+            {stepsHead.title}
+            <mark>{stepsHead.titleMark}</mark>
+          </h2>
+          <p className="lead">{stepsHead.lead}</p>
         </div>
 
         <div className="steps">
@@ -27,12 +33,10 @@ export default function HowItWorks() {
           ))}
         </div>
 
-        <div className="how-strip reveal">
-          {trustStrip.map((t) => (
-            <p key={t}>
-              <span className="tick"><Check size={16} /></span> {t}
-            </p>
-          ))}
+        <div className="how-actions reveal">
+          <a className="btn btn-primary" href="/how-it-works">
+            See the full six-step guide <ArrowRight />
+          </a>
         </div>
       </div>
     </section>

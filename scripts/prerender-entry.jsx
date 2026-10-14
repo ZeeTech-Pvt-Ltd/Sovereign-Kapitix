@@ -21,6 +21,7 @@ const ROUTES = [
   'thank-you',
   'faq',
   'how-it-works',
+  'fees',
   'sovereign-kapitix-review',
   'register',
   '404',

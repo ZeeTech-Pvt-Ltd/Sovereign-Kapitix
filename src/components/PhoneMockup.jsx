@@ -8,7 +8,7 @@
 // claim, and this build cannot evidence one. See the figures note at the top
 // of data/content.js. The win-rate / pairs chips that remain are the same
 // published product claims used across the rest of the site.
-import { SIGNAL_ACCURACY, INSTRUMENTS } from '../data/content.js'
+import { MARKETS } from '../data/content.js'
 
 const VARIANTS = {
   1: {
@@ -31,7 +31,7 @@ const VARIANTS = {
     line: 'M0 138 C50 134 100 118 150 106 C200 94 250 84 280 66 C300 52 312 44 320 38',
     end: [320, 38],
     label: 'Market scan',
-    value: '24/7 analysis',
+    value: 'Continuous analysis',
     chipTl: 'Markets never close',
     chipBr: 'AI scanning',
   },
@@ -116,13 +116,13 @@ export default function PhoneMockup({ variant = 1 }) {
 
           <div className="pm-foot">
             <span>
-              Win rate <b>{SIGNAL_ACCURACY}</b>
+              Markets <b>{MARKETS}</b>
             </span>
             <span>
-              Pairs <b>{INSTRUMENTS}</b>
+              Signals <b>24/5</b>
             </span>
             <span>
-              <b>24/7</b>
+              Support <b>24/5</b>
             </span>
           </div>
         </div>

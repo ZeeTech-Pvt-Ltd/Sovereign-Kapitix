@@ -1,148 +1,159 @@
 import CtaBanner from './CtaBanner.jsx'
-import { Icon, Check } from './icons.jsx'
-import { howPage, trustStrip, MIN_DEPOSIT } from '../data/content.js'
+import FaqAccordion from './FaqAccordion.jsx'
+import { Icon } from './icons.jsx'
+import { howPage } from '../data/pages.js'
 
-// The /how-it-works route. This page was removed once for being a thin
-// restatement of the homepage's "3 Easy Steps" block, so it has to carry more
-// than that block does: the full five step journey, the two trading modes side
-// by side, the cost table, and what a reader needs before they start. If a
-// section here starts to read like the homepage's, it belongs on the homepage
-// and not on both.
+// The /how-it-works route: the six-step walkthrough.
+//
+// The homepage carries a three-step summary; this is the full version, and the
+// brief asks for a jump menu under the intro with an id on every H2 so the
+// steps can surface as sitelinks. Each H2 below carries the id its entry in
+// `howPage.toc` points at - if a section is renamed, rename its toc entry too,
+// or the jump link scrolls nowhere.
 export default function HowItWorksPage() {
+  const p = howPage
+
   return (
     <>
       <section className="terms-hero">
         <div className="container terms-hero-inner reveal">
-          <span className="eyebrow">{howPage.eyebrow}</span>
+          <span className="eyebrow">{p.eyebrow}</span>
           <h1 className="h1">
-            {howPage.title}
-            <mark>{howPage.titleMark}</mark>
+            {p.title}
+            <mark>{p.titleMark}</mark>
           </h1>
-          <p className="lead">{howPage.lead}</p>
         </div>
       </section>
 
-      {/* The five step journey. Numbered because the order matters: the
-          account has to exist before it can be funded. */}
       <section className="section">
-        <div className="container">
-          <div className="flow-grid">
-            {howPage.steps.map((s) => (
-              <article className="flow-step reveal" key={s.no}>
-                <span className="flow-no">{s.no}</span>
-                <div className="step-ico">
-                  <Icon name={s.icon} />
-                </div>
-                <h3>{s.title}</h3>
-                <p>{s.text}</p>
-              </article>
+        <div className="container narrow">
+          <p className="rv-intro">{p.intro}</p>
+          <div className="short-answer reveal">
+            <b>Short answer</b>
+            <p>{p.shortAnswer}</p>
+          </div>
+
+          <nav className="jump-menu reveal" aria-label="On this page">
+            <span className="jump-label">{p.tocTitle}</span>
+            {p.toc.map((t) => (
+              <a key={t.id} href={`#${t.id}`}>{t.label}</a>
             ))}
-          </div>
-        </div>
-      </section>
+          </nav>
 
-      {/* Two modes, side by side, because the choice between them is the one
-          decision a new user actually has to make. */}
-      <section className="section how-modes">
-        <div className="container">
-          <div className="section-head reveal">
-            <span className="eyebrow">{howPage.modes.eyebrow}</span>
-            <h2 className="h2">
-              {howPage.modes.title}
-              <mark>{howPage.modes.titleMark}</mark>
-            </h2>
-            <p className="lead">{howPage.modes.lead}</p>
-          </div>
-
-          <div className="modes-grid">
-            {howPage.modes.cards.map((c) => (
-              <article className="mode-card reveal" key={c.title}>
-                <div className="step-ico">
-                  <Icon name={c.icon} />
-                </div>
-                <h3>{c.title}</h3>
-                <p>{c.text}</p>
-              </article>
-            ))}
-          </div>
-
-          <div className="how-strip reveal">
-            {trustStrip.map((t) => (
-              <p key={t}>
-                <span className="tick"><Check size={16} /></span> {t}
-              </p>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Control and cost share a row on wide screens: both are short lists,
-          and stacking them left a lot of empty space down the middle. */}
-      <section className="section">
-        <div className="container split-two">
-          <div className="reveal">
-            <span className="eyebrow">{howPage.control.eyebrow}</span>
-            <h2 className="h2 h2-sm">
-              {howPage.control.title}
-              <mark>{howPage.control.titleMark}</mark>
-            </h2>
-            <ul className="tick-list">
-              {howPage.control.points.map((p) => (
-                <li key={p}>
-                  <span className="tick"><Check size={15} /></span> {p}
-                </li>
+          <div className="rv-sec" id="steps">
+            <h2>{p.stepsTitle}</h2>
+            <p>{p.stepsLead}</p>
+            <div className="flow-grid flow-grid-3">
+              {p.steps.map((s) => (
+                <article className="flow-step reveal" key={s.no}>
+                  <span className="flow-no">{s.no}</span>
+                  <div className="step-ico"><Icon name={s.icon} /></div>
+                  <h3>{s.title}</h3>
+                  <p>{s.text}</p>
+                </article>
               ))}
-            </ul>
+            </div>
           </div>
 
-          <div className="reveal">
-            <span className="eyebrow">{howPage.costs.eyebrow}</span>
-            <h2 className="h2 h2-sm">
-              {howPage.costs.title}
-              <mark>{howPage.costs.titleMark}</mark>
-            </h2>
-            <div className="caps-grid">
-              {howPage.costs.rows.map((r) => (
-                <div className="cap-row" key={r.k}>
-                  <span className="k">{r.k}</span>
-                  <span className="v">{r.v}</span>
+          <div className="rv-sec" id="signals">
+            <h2>{p.signals.title}</h2>
+            {p.signals.body.map((t) => (
+              <p key={t.slice(0, 30)}>{t}</p>
+            ))}
+            <h3>{p.signals.showsTitle}</h3>
+            <dl className="rv-glance">
+              {p.signals.shows.map((r) => (
+                <div className="rv-glance-row" key={r.k}>
+                  <dt>{r.k}</dt>
+                  <dd>{r.v}</dd>
+                </div>
+              ))}
+            </dl>
+            <p className="rv-note">{p.signals.note}</p>
+          </div>
+
+          <div className="rv-sec" id="modes">
+            <h2>{p.modes.title}</h2>
+            <p>{p.modes.lead}</p>
+            <div className="mode-table">
+              {p.modes.rows.map((r) => (
+                <div className="mode-row" key={r.k}>
+                  <div className="mode-name">{r.k}</div>
+                  <div className="mode-how">{r.v}</div>
+                  <div className="mode-best"><span>Best for</span>{r.best}</div>
                 </div>
               ))}
             </div>
-            <p className="cost-note">
-              {howPage.costs.note}{' '}
-              <a href={howPage.costs.noteLink.href}>{howPage.costs.noteLink.text}</a> {howPage.costs.noteEnd}
+            <p className="rv-note">{p.modes.note}</p>
+          </div>
+
+          <div className="rv-sec" id="risk">
+            <h2>{p.risk.title}</h2>
+            <p>{p.risk.lead}</p>
+            <dl className="rv-glance">
+              {p.risk.items.map((r) => (
+                <div className="rv-glance-row" key={r.k}>
+                  <dt>{r.k}</dt>
+                  <dd>{r.v}</dd>
+                </div>
+              ))}
+            </dl>
+            <p className="rv-note">
+              {p.risk.note} <a href={p.risk.link.href}>{p.risk.link.text}</a> {p.risk.linkEnd}
             </p>
           </div>
-        </div>
-      </section>
 
-      <section className="section how-ready">
-        <div className="container">
-          <div className="section-head reveal">
-            <span className="eyebrow">{howPage.ready.eyebrow}</span>
-            <h2 className="h2">
-              {howPage.ready.title}
-              <mark>{howPage.ready.titleMark}</mark>
-            </h2>
+          <div className="rv-sec" id="money">
+            <h2>{p.money.title}</h2>
+            <dl className="rv-glance">
+              {p.money.rows.map((r) => (
+                <div className="rv-glance-row" key={r.k}>
+                  <dt>{r.k}</dt>
+                  <dd>{r.v}</dd>
+                </div>
+              ))}
+            </dl>
+            <p className="rv-note">
+              {p.money.note} <a href={p.money.link.href}>{p.money.link.text}</a>
+            </p>
           </div>
-          <ul className="tick-list tick-list-center reveal">
-            {howPage.ready.items.map((i) => (
-              <li key={i}>
-                <span className="tick"><Check size={15} /></span> {i}
-              </li>
-            ))}
-          </ul>
+
+          <div className="rv-sec" id="security">
+            <h2>{p.security.title}</h2>
+            <dl className="rv-glance">
+              {p.security.items.map((r) => (
+                <div className="rv-glance-row" key={r.k}>
+                  <dt>{r.k}</dt>
+                  <dd>{r.v}</dd>
+                </div>
+              ))}
+            </dl>
+            <p className="rv-note">
+              {p.security.linkLead} <a href={p.security.link.href}>{p.security.link.text}</a>
+            </p>
+          </div>
+
+          <div className="rv-sec" id="first-week">
+            <h2>{p.firstWeek.title}</h2>
+            <dl className="rv-glance">
+              {p.firstWeek.rows.map((r) => (
+                <div className="rv-glance-row" key={r.k}>
+                  <dt>{r.k}</dt>
+                  <dd>{r.v}</dd>
+                </div>
+              ))}
+            </dl>
+            <p className="rv-note">{p.firstWeek.note}</p>
+          </div>
+
+          <div className="rv-sec" id="faq">
+            <h2>{p.faq.title}</h2>
+            <FaqAccordion items={p.faq.items} idPrefix="hiw-faq" />
+          </div>
         </div>
       </section>
 
-      <CtaBanner
-        eyebrow="Ready when you are"
-        title="Open Your Account and Start Trading Today"
-        text={`Registration is free, it takes about two minutes, and the minimum deposit is ${MIN_DEPOSIT}. Our team is available around the clock if you get stuck.`}
-        cta="Open your free account"
-        href="/register"
-      />
+      <CtaBanner eyebrow={p.cta.eyebrow} title={p.cta.title} text={p.cta.body} cta={p.cta.cta} href="/register" />
     </>
   )
 }

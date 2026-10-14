@@ -4,7 +4,7 @@ import { renderRoute } from './renderRoute.jsx'
 
 // Clean-path routing: "/" -> home, "/about" -> About, anything unknown -> 404.
 // Fragment anchors like "#register" keep working as in-page scroll links.
-const KNOWN_ROUTES = ['about', 'contact', 'terms', 'privacy', 'disclosure', 'thank-you', 'faq', 'how-it-works', 'sovereign-kapitix-review', 'register']
+const KNOWN_ROUTES = ['about', 'contact', 'terms', 'privacy', 'disclosure', 'thank-you', 'faq', 'how-it-works', 'fees', 'sovereign-kapitix-review', 'register']
 
 // Pages that were removed. Any stale link - a bookmark, an old search result,
 // or an older URL - now resolves to the homepage.
@@ -25,7 +25,14 @@ const REMOVED_PAGES = { '/why-invest': '/', '/app': '/' }
 //   /review       - the route shipped briefly under this short slug. The live
 //                   slug is the brand-qualified one, so a link saved in that
 //                   window still lands on the page instead of the 404.
-const LEGACY_PATHS = { '/How-It-Works': '/how-it-works', '/review': '/sovereign-kapitix-review' }
+//   /login        - replaced by /register, per the operator's register brief:
+//                   "Replaces /login. Set a 301 redirect from /login to
+//                   /register." A sign-in page is not being built.
+const LEGACY_PATHS = {
+  '/How-It-Works': '/how-it-works',
+  '/review': '/sovereign-kapitix-review',
+  '/login': '/register',
+}
 
 const getRoute = (path = location.pathname) => {
   const clean = path.split('?')[0].replace(/\/+$/, '')
@@ -91,9 +98,15 @@ export default function App() {
         return
       }
 
-      // In-page scroll links carry a clean "/" href (so the URL bar and the
-      // hover preview stay hash-free) plus a data-scroll target. On route
-      // pages they go home first, since those sections only exist on home.
+      // Scroll links come in two shapes: a clean "/" href plus a data-scroll
+      // target, and a plain "#id". Both resolve the same way - if the target is
+      // on the page the visitor is already on, scroll to it here; only send
+      // them home when it is not.
+      //
+      // Deciding on the target's presence rather than on `route` matters: the
+      // jump menus on /faq and /how-it-works link to sections of their own
+      // page, and the old rule sent every "#" click home first, where those ids
+      // do not exist, so the jump links silently did nothing.
       const scrollTo = a.getAttribute('data-scroll')
       if (scrollTo) {
         e.preventDefault()
@@ -101,7 +114,7 @@ export default function App() {
           if (scrollTo === '#top') window.scrollTo(0, 0)
           else document.querySelector(scrollTo)?.scrollIntoView()
         }
-        if (route === 'home') doScroll()
+        if (route === 'home' || document.querySelector(scrollTo)) doScroll()
         else {
           history.pushState(null, '', '/')
           setRoute('home')
@@ -116,7 +129,7 @@ export default function App() {
           if (href === '#top') window.scrollTo(0, 0)
           else document.querySelector(href)?.scrollIntoView()
         }
-        if (route === 'home') doScroll()
+        if (route === 'home' || document.querySelector(href)) doScroll()
         else {
           history.pushState(null, '', '/')
           setRoute('home')

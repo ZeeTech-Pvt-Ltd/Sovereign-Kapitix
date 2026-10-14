@@ -1,82 +1,59 @@
-import { useRef, useState } from 'react'
-import { ChevronDown } from './icons.jsx'
-import { faq } from '../data/content.js'
+import CtaBanner from './CtaBanner.jsx'
+import FaqAccordion from './FaqAccordion.jsx'
+import { faqGroups, faqPage } from '../data/pages.js'
 
-// Dedicated FAQ page. The full question list lives in `faq` (content.js) -
-// the same single source of truth that feeds the FAQPage JSON-LD, so the
-// structured data never drifts from the rendered answers.
+// The /faq route: 30 questions in seven groups, with a jump menu.
+//
+// Grouped rather than flat because the brief asks for it, and because a single
+// 30-item accordion is a wall. Each group renders its own <FaqAccordion/>, so
+// opening a question in one group cannot leave another group's answer stuck
+// open - the state is per group by construction.
+//
+// The same data feeds the page's FAQPage structured data via src/data/seo.js,
+// so the two cannot drift.
 export default function FaqPage() {
-  const [openIndex, setOpenIndex] = useState(null)
-  const answerRefs = useRef([])
-
-  const toggle = (index) => {
-    const a = answerRefs.current[index]
-    if (!a) return
-
-    if (openIndex !== null && openIndex !== index) {
-      answerRefs.current[openIndex].style.maxHeight = null
-    }
-    if (openIndex === index) {
-      a.style.maxHeight = null
-      setOpenIndex(null)
-    } else {
-      a.style.maxHeight = a.scrollHeight + 'px'
-      setOpenIndex(index)
-    }
-  }
-
   return (
     <>
       <section className="terms-hero">
         <div className="container terms-hero-inner reveal">
-          <span className="eyebrow">Help Centre</span>
+          <span className="eyebrow">{faqPage.eyebrow}</span>
           <h1 className="h1">
-            Frequently Asked <mark>Questions</mark>
+            {faqPage.title}
+            <mark>{faqPage.titleMark}</mark>
           </h1>
-          <p className="lead">
-            Straight answers to the questions people ask most: how the platform works, what it costs, how to open an account, and how to stay safe from lookalike sites.
-          </p>
+          <p className="lead">{faqPage.intro}</p>
         </div>
       </section>
 
-      <section className="section">
+      <section className="section faq-page">
         <div className="container">
-          <div className="faq">
-            {faq.map((item, i) => (
-              <div className={`faq-item ${openIndex === i ? 'open' : ''} reveal`} key={item.q}>
-                <button
-                  type="button"
-                  className="faq-q"
-                  onClick={() => toggle(i)}
-                  aria-expanded={openIndex === i}
-                  aria-controls={`faq-answer-${i}`}
-                  id={`faq-question-${i}`}
-                >
-                  {item.q}
-                  <span className="chev"><ChevronDown /></span>
-                </button>
-                <div
-                  className="faq-a"
-                  id={`faq-answer-${i}`}
-                  role="region"
-                  aria-labelledby={`faq-question-${i}`}
-                  ref={(el) => (answerRefs.current[i] = el)}
-                >
-                  <p>
-                    {item.a}
-                    {item.link && (
-                      <>
-                        {' '}
-                        <a className="faq-more" href={item.link.href}>{item.link.text}</a>
-                      </>
-                    )}
-                  </p>
-                </div>
-              </div>
+          <nav className="jump-menu reveal" aria-label="Jump to a question group">
+            {faqGroups.map((g) => (
+              <a key={g.id} href={`#${g.id}`}>{g.title}</a>
             ))}
+          </nav>
+
+          {faqGroups.map((g) => (
+            <div className="faq-group" id={g.id} key={g.id}>
+              <h2 className="h2 h2-sm">{g.title}</h2>
+              <FaqAccordion items={g.items} idPrefix={`faq-${g.id}`} />
+            </div>
+          ))}
+
+          <div className="still-questions reveal">
+            <h2 className="h2 h2-sm">{faqPage.stillTitle}</h2>
+            <p>{faqPage.stillBody}</p>
           </div>
         </div>
       </section>
+
+      <CtaBanner
+        eyebrow={faqPage.cta.eyebrow}
+        title={faqPage.cta.title}
+        text={faqPage.cta.body}
+        cta={faqPage.cta.cta}
+        href="/register"
+      />
     </>
   )
 }
