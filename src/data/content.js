@@ -51,13 +51,16 @@ export const hero = {
   ctaSecondary: 'See how it works',
 }
 
-// The four-badge strip that sits directly under the form. Every badge restates
-// a fact already on the page, so nothing new is claimed here.
+// The assurance bar under the hero. Every line restates a fact already on the
+// page, so nothing new is claimed here.
+//
+// Layout follows the trust bar on the operator's sibling site: four equal
+// columns, each an icon beside its line, on a full-width banded row.
 export const trustBadges = [
-  'Trades executed via regulated broker partners · No platform commission',
-  'KYC-verified accounts · 2FA on every login · SSL encryption',
-  `Free demo account · ${SUPPORT_HOURS} live support`,
-  'Card payment · Bank transfer · E-wallet · Withdrawals typically within 1 business day',
+  { icon: 'shield', text: 'Trades executed via regulated broker partners · No platform commission' },
+  { icon: 'lock', text: 'KYC-verified accounts · 2FA on every login · SSL encryption' },
+  { icon: 'headset', text: `Free demo account · ${SUPPORT_HOURS} live support` },
+  { icon: 'wallet', text: 'Card payment · Bank transfer · E-wallet · Withdrawals typically within 1 business day' },
 ]
 
 // The four figures the operator supplied, given their own strip directly under

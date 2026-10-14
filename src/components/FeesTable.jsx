@@ -59,9 +59,10 @@ export default function FeesTable() {
           ))}
         </div>
 
+        {/* One button, pointing at the sign-up page. The "See the full fee
+            breakdown" link beside it has been removed. */}
         <div className="fees-actions reveal">
-          <a className="btn-link" href={feesTable.link.href}>{feesTable.link.text}</a>
-          <a className="btn btn-primary" href="/" data-scroll="#register">
+          <a className="btn btn-primary" href="/register">
             {feesTable.cta} <ArrowRight />
           </a>
         </div>

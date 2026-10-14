@@ -64,9 +64,9 @@ export function renderRoute(route) {
   return (
     <Layout routeName="home">
       <Hero />
-      {/* Ticker sits immediately under the hero, then the trust panel. */}
+      {/* Ticker sits immediately under the hero, then the assurance bar. */}
       <Ticker />
-      <div className="container"><TrustStrip /></div>
+      <TrustStrip />
       <WhatIsKapitix />
       <HowItWorks />
       <Features />

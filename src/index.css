@@ -1412,14 +1412,6 @@ html.js .reveal[data-revealed] { opacity: 1; transform: none; }
    ========================================================= */
 
 /* ---------- Hero trust strip ---------- */
-.trust-strip {
-  display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 12px 22px;
-  margin: -34px auto 0; position: relative; z-index: 2;
-  background: #fff; border: 1px solid var(--line); border-radius: var(--r-md);
-  box-shadow: var(--shadow-sm); padding: 20px 26px;
-}
-.trust-strip li { display: flex; gap: 10px; align-items: flex-start; font-size: 13.5px; line-height: 1.5; color: #2F3B3A; }
-.trust-strip .tick { width: 20px; height: 20px; margin-top: 1px; }
 
 /* ---------- Shared small pieces ---------- */
 .section-note { margin-top: 24px; color: var(--muted); font-size: 14.5px; line-height: 1.7; }
@@ -1520,8 +1512,7 @@ html.js .reveal[data-revealed] { opacity: 1; transform: none; }
   .mode-row { grid-template-columns: 1fr; gap: 8px; }
 }
 @media (max-width: 640px) {
-  .trust-strip { margin-top: -20px; padding: 18px 20px; }
-  .fees-actions, .faq-actions { flex-direction: column; align-items: stretch; }
+    .fees-actions, .faq-actions { flex-direction: column; align-items: stretch; }
   .fees-actions .btn, .faq-actions .btn { justify-content: center; }
   .jump-menu { padding: 14px 16px; gap: 8px; }
 }
@@ -1691,14 +1682,12 @@ html.js .reveal[data-revealed] { opacity: 1; transform: none; }
 .setup-rows { margin-top: 4px; }
 
 /* ---------- Trust strip: slim bar under the stat panel ---------- */
-.trust-strip { margin: 22px auto 0; padding: 18px 24px; gap: 10px 20px; box-shadow: none; background: var(--primary-lightest); }
 
 @media (max-width: 1024px) {
   .whatis-split { grid-template-columns: 1fr; gap: 30px; }
 }
 @media (max-width: 640px) {
-  .trust-strip { margin-top: 16px; }
-  .signal-fields { grid-template-columns: 1fr; }
+    .signal-fields { grid-template-columns: 1fr; }
   .signal-asset b { font-size: 21px; }
 }
 
@@ -1819,24 +1808,6 @@ html.js .reveal[data-revealed] { opacity: 1; transform: none; }
 }
 .how-ready { background: radial-gradient(44rem 30rem at 100% 0%, rgba(29, 78, 216, .06), transparent 60%); }
 
-/* ---------- Trust strip ----------
-   Was a bare row of tick + sentence on a tinted slab, pulled tight against
-   whatever sat above it. Now a proper panel: white, bordered, generous
-   padding, real space above and below, and each item on its own footprint so
-   the four read as one set rather than a run-on line. */
-.trust-strip {
-  display: grid; grid-template-columns: repeat(2, 1fr);
-  gap: 18px 30px;
-  margin: 38px auto 42px; padding: 30px 34px;
-  background: #fff; border: 1px solid var(--line);
-  border-radius: var(--r-lg); box-shadow: var(--shadow-sm);
-}
-.trust-strip li {
-  display: flex; gap: 13px; align-items: flex-start;
-  font-size: 13.5px; line-height: 1.55; color: var(--muted);
-}
-.trust-strip .tick { width: 26px; height: 26px; margin-top: 1px; }
-
 /* ---------- Fee table: 4 columns ----------
    A grid of loose cells did not read as a fee schedule. This is a real table:
    a header row, then one row per pair of facts, so each row carries four
@@ -1861,14 +1832,12 @@ html.js .reveal[data-revealed] { opacity: 1; transform: none; }
 .fee-line dd { color: var(--muted); font-size: 14px; line-height: 1.55; }
 
 @media (max-width: 1024px) {
-  .trust-strip { grid-template-columns: 1fr; gap: 16px; padding: 26px 24px; }
-  .fee-head, .fee-line { grid-template-columns: minmax(130px, 0.9fr) 1.4fr; }
+    .fee-head, .fee-line { grid-template-columns: minmax(130px, 0.9fr) 1.4fr; }
   .fee-head span:nth-child(n+3) { display: none; }
   .fee-line dt:nth-child(n+3), .fee-line dd:nth-child(n+3) { grid-column: auto; }
 }
 @media (max-width: 640px) {
-  .trust-strip { margin: 28px auto 32px; padding: 22px 20px; }
-  .fee-head, .fee-line { grid-template-columns: 1fr; gap: 5px; padding: 14px 18px; }
+    .fee-head, .fee-line { grid-template-columns: 1fr; gap: 5px; padding: 14px 18px; }
   .fee-head { display: none; }
 }
 
@@ -1910,3 +1879,30 @@ html.js .reveal[data-revealed] { opacity: 1; transform: none; }
 /* FAQ action row: one filled button, centred. The secondary "Create my free
    account" link that sat beside it has been removed. */
 .faq-actions { justify-content: center; }
+
+/* ---------- Assurance bar ----------
+   Layout mirrors the trust bar on the operator's sibling site: a full-width
+   banded row, four equal columns, each item a card with an icon beside its
+   line. Values below are that bar's, adapted to this site's light palette -
+   it sits on a dark background there, so the card fill and icon colour are the
+   only things that change. */
+.trust-bar { border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); background: #fff; }
+.trust-bar-row {
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  gap: 14px; align-items: stretch; padding: 30px 0;
+}
+.trust-bar-item {
+  display: flex; align-items: center; gap: 13px;
+  padding: 20px 18px; font-size: 13.5px; font-weight: 500; line-height: 1.5;
+  color: var(--muted);
+  background: var(--primary-lightest);
+  border: 1px solid var(--line); border-radius: 10px;
+}
+.tb-ico { flex: 0 0 auto; color: var(--primary); display: grid; place-items: center; }
+
+@media (max-width: 1024px) { .trust-bar-row { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 640px) { .trust-bar-row { grid-template-columns: 1fr; padding: 22px 0; gap: 10px; } }
+
+/* The risk section sat on plain white, which left it reading as a gap between
+   two tinted bands. A soft warm tint matches its amber accents. */
+.risks-sec { background: linear-gradient(180deg, #FBF9F4 0%, #FFFFFF 65%); }
