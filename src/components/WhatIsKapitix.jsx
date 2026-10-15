@@ -28,10 +28,10 @@ export default function WhatIsKapitix() {
           <div className="whatis-figure reveal">
             <img
               className="whatis-img"
-              src="/btc_minimal_trading.webp"
-              alt="A Bitcoin and Australian dollar price chart on a desktop monitor, with an order book and a buy panel beside it"
-              width="637"
-              height="546"
+              src="/what-is-trading.webp"
+              alt="A Bitcoin and Australian dollar price chart on a desktop monitor, with an order book and a portfolio panel beside it"
+              width="1152"
+              height="928"
               loading="lazy"
               decoding="async"
             />

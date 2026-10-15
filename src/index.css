@@ -1631,4 +1631,4 @@ html.js .reveal[data-revealed] { opacity: 1; transform: none; }
    the wrappers only need to size them. Intrinsic width/height are set on the
    elements themselves to keep the layout from shifting as they load. */
 .whatis-img, .feat-img { display: block; width: 100%; height: auto; border-radius: var(--r-lg); }
-.whatis-img { max-width: 637px; }
+.whatis-img { max-width: 1152px; }
