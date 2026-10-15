@@ -1,9 +1,14 @@
+'use client'
+
+// Client component: it holds state and attaches DOM listeners. Its parent stays
+// a server component and renders it as a client boundary.
+
 import { useState } from 'react'
 import CtaBanner from './CtaBanner.jsx'
 import PhoneNumberInput from './PhoneNumberInput.jsx'
 import { ArrowRight, Icon } from './icons.jsx'
 import { submitLead } from '../lib/submitLead.js'
-import { navigateTo } from '../lib/navigate.js'
+import { useRouter } from 'next/navigation'
 import { usePhoneField } from '../lib/usePhoneField.js'
 import { hasTrunkPrefix } from '../lib/phoneFormat.js'
 
@@ -17,6 +22,7 @@ const info = [
 ]
 
 export default function Contact() {
+  const router = useRouter()
   const [status, setStatus] = useState('idle') // idle | sending | err
   const [errMsg, setErrMsg] = useState('')
   // Same phone behaviour as the homepage form - IP-detected country, number
@@ -45,7 +51,7 @@ export default function Contact() {
       // submitLead normalizes the endpoint's { status, message } envelope into
       // { ok, message }. Read only `ok` here - see the header comment in
       // src/lib/submitLead.js for the wire format.
-      if (res?.ok) navigateTo('/thank-you')
+      if (res?.ok) router.push('/thank-you')
       else {
         setStatus('err')
         setErrMsg(res?.message || 'Something went wrong. Please try again.')

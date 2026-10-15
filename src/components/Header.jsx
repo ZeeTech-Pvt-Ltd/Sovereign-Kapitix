@@ -1,9 +1,22 @@
+'use client'
+
+// Client component: scroll position, the mobile menu, and the active-nav
+// scroll-spy all live in the browser.
+//
+// It used to take the route as a prop from renderRoute's Layout. An App Router
+// layout cannot receive that, so the route is derived from the pathname here -
+// through the same getRoute the old router used, so the active-nav rules are
+// unchanged.
+
 import { useEffect, useMemo, useState } from 'react'
+import { usePathname } from 'next/navigation'
 import Logo from './Logo.jsx'
 import useScrollSpy from '../hooks/useScrollSpy.js'
 import { nav } from '../data/content.js'
+import { getRoute } from '../lib/routes.js'
 
-export default function Header({ route = 'home' }) {
+export default function Header() {
+  const route = getRoute(usePathname())
   const [scrolled, setScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
   const ids = useMemo(() => ['top', 'how', 'experience', 'priorities', 'portfolio'], [])

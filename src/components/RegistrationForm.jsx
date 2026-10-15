@@ -1,9 +1,14 @@
+'use client'
+
+// Client component: it holds state and attaches DOM listeners. Its parent stays
+// a server component and renders it as a client boundary.
+
 import { useRef, useState } from 'react'
 import { ArrowRight } from './icons.jsx'
 import { Visa, Mastercard, PayPal, GooglePay, BankTransfer } from './PayLogos.jsx'
 import PhoneNumberInput from './PhoneNumberInput.jsx'
 import { submitLead } from '../lib/submitLead.js'
-import { navigateTo } from '../lib/navigate.js'
+import { useRouter } from 'next/navigation'
 import { usePhoneField } from '../lib/usePhoneField.js'
 import { hasTrunkPrefix } from '../lib/phoneFormat.js'
 
@@ -34,6 +39,7 @@ const payMethods = [
 ]
 
 export default function RegistrationForm() {
+  const router = useRouter()
   const [errors, setErrors] = useState({})
   const [message, setMessage] = useState({ kind: '', text: '' })
   const [processing, setProcessing] = useState(false)
@@ -114,7 +120,7 @@ export default function RegistrationForm() {
       // { ok, message }. Read only `ok` here - see the header comment in
       // src/lib/submitLead.js for the wire format.
       if (res?.ok) {
-        navigateTo('/thank-you')
+        router.push('/thank-you')
       } else {
         setMessage({ kind: 'err', text: res?.message || 'Something went wrong. Please try again.' })
       }

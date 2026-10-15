@@ -1,3 +1,8 @@
+'use client'
+
+// Client component: it holds state and attaches DOM listeners. Its parent stays
+// a server component and renders it as a client boundary.
+
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { countries } from '../data/countries.js'
 import { formatNational, getPhoneFormat } from '../lib/phoneFormat.js'

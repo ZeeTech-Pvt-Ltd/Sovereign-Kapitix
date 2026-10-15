@@ -1,24 +1,20 @@
 {
-  "name": "react-app",
+  "name": "sovereign-kapitix",
   "private": true,
   "version": "0.0.0",
-  "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "node scripts/build.mjs",
-    "lint": "oxlint",
-    "preview": "vite preview"
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "oxlint"
   },
   "dependencies": {
+    "next": "^16.4.1",
     "react": "^19.2.8",
     "react-dom": "^19.2.8"
   },
   "devDependencies": {
-    "@types/react": "^19.2.18",
-    "@types/react-dom": "^19.2.4",
-    "@vitejs/plugin-react": "^6.1.0",
     "oxlint": "^1.79.0",
-    "sharp": "^0.35.4",
-    "vite": "^8.2.2"
+    "sharp": "^0.35.4"
   }
 }

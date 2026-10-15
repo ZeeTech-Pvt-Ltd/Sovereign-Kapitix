@@ -1,0 +1,16 @@
+import ThankYou from '../../src/components/ThankYou.jsx'
+import JsonLd from '../_components/JsonLd.jsx'
+import { buildMetadata } from '../../src/data/metadata.js'
+
+// The route config in src/data/seo.js is the single source for the head tags,
+// exactly as it was for scripts/build.mjs and Seo.jsx before it.
+export const metadata = buildMetadata('thank-you')
+
+export default function Page() {
+  return (
+    <>
+      <JsonLd route="thank-you" />
+      <ThankYou />
+    </>
+  )
+}
