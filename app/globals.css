@@ -369,7 +369,6 @@ body.menu-open { overflow: hidden; }
 .step .btn-link { margin-top: 18px; }
 .how-strip .tick { flex: 0 0 auto; }
 
-.exp-row.reverse .exp-visual { order: -1; }
 .exp-row.reveal { transition-duration: .4s; }
 .exp-copy .h3 { font-size: 22px; }
 
@@ -578,43 +577,10 @@ html.js .reveal[data-revealed] { opacity: 1; transform: none; }
 .about-chip.one { top: -10px; left: -45px; }
 .about-chip.two { bottom: 26px; right: -45px; }
 
-/* Trading visual (About hero) - original SVG/CSS dashboard in brand colours */
-.tv-card {
-  position: relative; width: 100%; border-radius: 22px; border: 1px solid var(--line);
-  background: #fff; box-shadow: var(--shadow-lg); padding: 20px 22px 18px;
-}
-.tv-head { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
-.tv-brand { display: inline-flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 700; color: var(--ink); letter-spacing: .02em; }
-.tv-brand::before { content: ''; width: 9px; height: 9px; border-radius: 50%; background: var(--grad); }
-.tv-live { display: inline-flex; align-items: center; gap: 6px; font-size: 11.5px; font-weight: 700; color: var(--green); }
-.tv-live .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--green); animation: pulse 1.6s infinite; }
-.tv-body { display: flex; align-items: flex-end; justify-content: space-between; gap: 12px; flex-wrap: wrap; margin-top: 18px; }
-.tv-label { font-size: 12.5px; font-weight: 600; color: var(--muted); }
-.tv-bal { font-size: 31px; font-weight: 800; color: var(--ink); letter-spacing: -.01em; line-height: 1.1; }
-.tv-pct { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 700; color: var(--green); background: rgba(21, 128, 61, .12); border-radius: 999px; padding: 7px 12px; margin-bottom: 2px; }
-.tv-chart { position: relative; margin-top: 14px; }
-.tv-chart svg { width: 100%; height: auto; display: block; }
-.tv-path { fill: none; stroke: var(--primary-light); stroke-width: 3; stroke-linecap: round; stroke-dasharray: 900; stroke-dashoffset: 900; animation: tvDraw 1.8s .3s ease forwards; }
-.tv-target { fill: none; stroke: var(--green); stroke-width: 2; stroke-dasharray: 4 5; opacity: .75; }
-.tv-dot { fill: var(--primary-light); animation: pulse 1.6s infinite; }
-.tv-halo { fill: none; stroke: var(--primary-light); stroke-width: 2; opacity: .45; transform-box: fill-box; transform-origin: center; animation: tvRing 1.8s ease-out infinite; }
-.tv-coin {
-  position: absolute; top: -14px; right: -12px; width: 54px; height: 54px; border-radius: 50%;
-  background: radial-gradient(circle at 32% 28%, #93C5FD, var(--primary-light) 38%, var(--primary) 72%, var(--primary-dark));
-  box-shadow: 0 12px 22px rgba(29, 78, 216, .38), inset 0 -4px 10px rgba(30, 58, 138, .35), inset 0 3px 6px rgba(255, 255, 255, .5);
-  display: grid; place-items: center; color: #fff; font-weight: 800; font-size: 22px;
-  animation: coinFloat 4s ease-in-out infinite;
-}
-.tv-candles { display: flex; gap: 6px; margin-top: 14px; padding: 12px 14px; background: var(--primary-lightest); border: 1px solid var(--line); border-radius: 14px; }
-.tv-candle { position: relative; flex: 1 1 0; min-width: 4px; height: 62px; }
-.tv-candle i { position: absolute; left: 50%; transform: translateX(-50%); border-radius: 3px; }
 .tv-candle .b { width: 68%; }
 .tv-candle .w { width: 2px; }
 .tv-up .b, .tv-up .w { background: linear-gradient(180deg, var(--green-light), var(--green)); }
 .tv-dn .b, .tv-dn .w { background: #D0656B; }
-.tv-foot { display: flex; gap: 8px 22px; flex-wrap: wrap; margin-top: 16px; padding-top: 14px; border-top: 1px dashed var(--line); }
-.tv-stat { font-size: 12px; font-weight: 600; color: var(--muted); }
-.tv-stat b { color: var(--ink); font-weight: 700; }
 
 /* Platform capability cards - replaced the numeric stats strip. Reuses the
    .about-pillar card so it matches the design system. */
@@ -652,110 +618,12 @@ html.js .reveal[data-revealed] { opacity: 1; transform: none; }
 .about-mission-item h3 { font-size: 17px; margin-bottom: 6px; }
 .about-mission-item p { color: var(--muted); font-size: 14.5px; }
 
-.about-story { display: grid; gap: 48px; max-width: 980px; margin-inline: auto; }
-.about-story-row { display: grid; grid-template-columns: 1fr 1fr; gap: 44px; align-items: center; }
-.about-story-row.reverse .about-story-media { order: 2; }
-/* About story imagery - a device mockup drawn in CSS and inline SVG rather
-   than a bitmap. Nothing here is a photograph or a third-party asset, so the
-   artwork stays sharp at any size and adds no image weight to the page.
-   Deliberately unpanelled: no background, border, radius or shadow, so the
-   device floats directly on the page. min-height keeps the copy column
-   vertically centred against the tall device. */
-.about-story-media {
-  position: relative; display: grid; place-items: center; min-height: 560px;
-}
 
-/* ---------- PhoneMockup ---------- */
-.pm { position: relative; display: grid; place-items: center; width: 100%; padding: 40px 20px; }
-.pm-glow {
-  position: absolute; inset: 12% 18%;
-  background: radial-gradient(58% 52% at 50% 42%, rgba(59, 130, 246, .22), transparent 72%);
-  filter: blur(4px); pointer-events: none;
-}
-.pm-phone {
-  position: relative; width: 100%; max-width: 234px; aspect-ratio: 9 / 19.2;
-  border-radius: 36px; padding: 9px;
-  background: linear-gradient(158deg, #123B37, var(--primary-darker) 62%);
-  box-shadow: var(--shadow-lg);
-}
-.pm-notch {
-  position: absolute; top: 17px; left: 50%; transform: translateX(-50%); z-index: 2;
-  width: 72px; height: 6px; border-radius: 999px; background: rgba(255, 255, 255, .18);
-}
-.pm-screen {
-  position: relative; height: 100%; border-radius: 27px; overflow: hidden;
-  background: linear-gradient(180deg, var(--primary-lightest), #fff 40%);
-  display: flex; flex-direction: column; gap: 11px; padding: 26px 14px 14px;
-}
-.pm-status {
-  display: flex; align-items: center; justify-content: space-between;
-  font-size: 10px; font-weight: 700; color: var(--primary-darker);
-}
-.pm-bars { display: flex; align-items: flex-end; gap: 2px; height: 9px; }
-.pm-bars i { display: block; width: 2.5px; border-radius: 1px; background: var(--primary); }
-.pm-bars i:nth-child(1) { height: 3px; }
-.pm-bars i:nth-child(2) { height: 5px; }
-.pm-bars i:nth-child(3) { height: 7px; }
-.pm-bars i:nth-child(4) { height: 9px; }
 
-.pm-bal { display: grid; gap: 2px; }
-.pm-bal span {
-  font-size: 10.5px; font-weight: 800; letter-spacing: .09em;
-  text-transform: uppercase; color: var(--muted);
-}
-.pm-bal b { font-size: 19px; font-weight: 800; letter-spacing: -.02em; color: var(--primary-darker); }
 
-.pm-chart { width: 100%; height: auto; }
-.pm-line { fill: none; stroke: var(--primary); stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; }
-.pm-end { fill: var(--primary); }
 
-/* Signal rows. These take up the slack in the flex column, so the screen
-   fills the device instead of stranding the chart above a band of white. */
-.pm-signals {
-  flex: 1 1 auto; display: flex; flex-direction: column;
-  justify-content: space-evenly; gap: 5px; padding: 2px 0;
-}
-.pm-sig { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
-.pm-sig-pair { font-size: 10px; font-weight: 700; letter-spacing: .02em; color: var(--primary-darker); }
-.pm-sig-tag {
-  font-size: 8.5px; font-weight: 800; letter-spacing: .07em;
-  padding: 2.5px 7px; border-radius: 999px;
-}
-.pm-sig-tag.is-buy { color: var(--green); background: rgba(21, 128, 61, .11); }
-.pm-sig-tag.is-sell { color: var(--accent); background: rgba(166, 124, 26, .14); }
 
-.pm-foot {
-  margin-top: auto; display: flex; gap: 6px;
-  border-top: 1px solid var(--line); padding-top: 10px;
-}
-.pm-foot span {
-  flex: 1; display: grid; gap: 1px; text-align: center;
-  font-size: 9px; line-height: 1.3; color: var(--muted);
-}
-.pm-foot b { font-size: 11.5px; font-weight: 800; color: var(--primary-dark); }
 
-/* Floating status chips either side of the device. Inset from the frame edge
-   so they never collide with the panel border. */
-.pm-chip {
-  position: absolute; z-index: 3;
-  display: inline-flex; align-items: center; gap: 7px;
-  background: #fff; border: 1px solid var(--line); border-radius: 999px;
-  padding: 7px 13px; font-size: 11.5px; font-weight: 700; color: var(--primary-dark);
-  box-shadow: var(--shadow-sm); white-space: nowrap;
-}
-.pm-chip-tl { top: 26px; left: 18px; }
-.pm-chip-br { bottom: 30px; right: 18px; }
-.pm-dot {
-  width: 7px; height: 7px; border-radius: 50%; background: var(--green);
-  box-shadow: 0 0 0 3px rgba(21, 128, 61, .16);
-}
-.about-story-copy { display: grid; gap: 10px; justify-items: start; }
-.about-story-step {
-  font-size: 13px; font-weight: 800; letter-spacing: .12em; color: var(--primary-dark);
-  background: #fff; border: 1px solid rgba(29, 78, 216, .18); padding: 6px 12px; border-radius: 999px;
-}
-.about-story-copy h3 { font-size: 22px; }
-.about-story-copy p { color: var(--muted); font-size: 15px; }
 
 .about-badges { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; }
 .about-badges span {
@@ -907,19 +775,10 @@ html.js .reveal[data-revealed] { opacity: 1; transform: none; }
   .about-cards { padding: 0 0 56px; }
   .about-section { padding: 56px 0; }
   .about-cards-grid, .about-mission, .about-pillars, .about-security { grid-template-columns: 1fr; }
-  .about-story-row { grid-template-columns: 1fr; gap: 18px; }
-  .about-story-row.reverse .about-story-media { order: 0; }
-  .about-story-media { min-height: 470px; }
-  .pm { padding: 30px 16px; }
-  .pm-chip { font-size: 11px; padding: 6px 11px; }
-  .pm-chip-tl { top: 16px; left: 12px; }
-  .pm-chip-br { bottom: 18px; right: 12px; }
   .about-chip { font-size: 12px; padding: 7px 12px 7px 8px; }
   .about-chip .ico { width: 26px; height: 26px; }
   .about-chip.one { top: 10px; left: 8px; }
   .about-chip.two { bottom: 14px; right: 8px; }
-  .tv-bal { font-size: 26px; }
-  .tv-coin { width: 46px; height: 46px; font-size: 19px; }
 }
 /* Very small phones: the phone field and the 2-column name fields carry
    intrinsic min-widths that force the form card wider than the 320-360px

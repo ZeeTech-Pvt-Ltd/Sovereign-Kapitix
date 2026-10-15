@@ -1,6 +1,4 @@
 import CtaBanner from './CtaBanner.jsx'
-import PhoneMockup from './PhoneMockup.jsx'
-import TradingVisual from './TradingVisual.jsx'
 import { Check, ArrowRight, Icon } from './icons.jsx'
 
 // Platform capabilities, in place of the numeric stats strip that used to sit
@@ -78,39 +76,6 @@ const mission = [
   },
 ]
 
-// The walkthrough in the "Our Story" slot. What used to live here was an
-// invented company timeline - six founders, 12 launch currencies, first-month
-// trader counts - none of which this build can evidence. Rather than delete
-// the section, it now describes the five stages of actually using the
-// platform, each illustrated by a PhoneMockup. Every sentence is something
-// the platform does, so a reader can check it against the rest of the site.
-const story = [
-  {
-    step: '01',
-    title: 'Open your account',
-    text: 'Sign up with your name, email and phone number, then complete KYC and AML verification. Two-factor authentication is active from the moment the account is created, and there is nothing to install - the platform runs in your browser on any device.',
-  },
-  {
-    step: '02',
-    title: 'Fund it from AU$250',
-    text: 'Deposit by credit card, bank transfer or PayPal. AU$250 is the minimum that activates a trading account, with no subscription fee, registration cost or hidden charge on top of it.',
-  },
-  {
-    step: '03',
-    title: 'Let the engine read the market',
-    text: 'The AI watches live market data around the clock - crypto, forex, equities and commodities - and turns what it finds into signals. Crypto never closes, so the analysis keeps running through the night and across weekends.',
-  },
-  {
-    step: '04',
-    title: 'Trade automatically, or yourself',
-    text: 'Act on a signal yourself, or let the engine place the trade on your behalf. You can switch between the two whenever you like, and every automated action stays visible in your account.',
-  },
-  {
-    step: '05',
-    title: 'Track everything in one place',
-    text: 'Trades, signals and balances sit behind a single dashboard on desktop, tablet or mobile. You keep full control of the account and can withdraw at any time.',
-  },
-]
 
 // TODO: the original set claimed SSL certification, GDPR compliance, and
 // availability in "98+ countries" - none of it evidenced. Add only
@@ -150,7 +115,14 @@ export default function About() {
           </div>
 
           <div className="about-visual reveal">
-            <TradingVisual />
+            <img
+              className="about-hero-img"
+              src="/about-us-hero.webp"
+              alt="The Sovereign Kapitix trading workspace, showing a Bitcoin price chart, a buy and sell panel and the account sidebar"
+              width="2128"
+              height="1606"
+              decoding="async"
+            />
             <span className="about-chip one">
               <span className="ico"><Icon name="chart" size={16} /></span>
               Continuous Automated Analysis
@@ -226,33 +198,6 @@ export default function About() {
         </div>
       </section>
 
-      {/* Story */}
-      <section className="section about-section">
-        <div className="container">
-          <div className="section-head reveal">
-            <span className="eyebrow">Our Story</span>
-            <h2 className="h2">From signing up to your first trade</h2>
-            <p className="lead">
-              What using the platform actually looks like, step by step.
-            </p>
-          </div>
-
-          <div className="about-story">
-            {story.map((s, i) => (
-              <div className={`about-story-row ${i % 2 ? 'reverse' : ''} reveal`} key={s.step}>
-                <div className="about-story-media">
-                  <PhoneMockup variant={i + 1} />
-                </div>
-                <div className="about-story-copy">
-                  <span className="about-story-step">{s.step}</span>
-                  <h3>{s.title}</h3>
-                  <p>{s.text}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* Security */}
       <section className="section about-section">

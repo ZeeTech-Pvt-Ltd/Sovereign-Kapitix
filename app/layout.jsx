@@ -38,7 +38,13 @@ const GA_ID = 'G-2K32GJQKWT'
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en-AU">
+    // suppressHydrationWarning is required here, not decorative. The
+    // beforeInteractive script below adds `js` to this element before React
+    // hydrates, so the client's <html> carries a class the server's did not and
+    // React logs a hydration mismatch on every page. This is the documented fix
+    // for exactly this case: it suppresses attribute mismatches on this one
+    // element only, and does nothing to any descendant.
+    <html lang="en-AU" suppressHydrationWarning>
       <head>
         <link rel="icon" href={FAVICON} />
 
