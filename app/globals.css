@@ -560,6 +560,7 @@ html.js .reveal[data-revealed] { opacity: 1; transform: none; }
   background:
     radial-gradient(50rem 34rem at 108% -10%, rgba(59, 130, 246, .09), transparent 60%),
     linear-gradient(180deg, var(--primary-lightest) 0%, #fff 55%);
+  border-bottom: 1px solid var(--line);
 }
 .about-hero-inner { display: grid; grid-template-columns: 1.05fr .95fr; gap: 56px; align-items: center; }
 .about-hero-copy { display: grid; gap: 20px; justify-items: start; }
@@ -584,7 +585,10 @@ html.js .reveal[data-revealed] { opacity: 1; transform: none; }
 
 /* Platform capability cards - replaced the numeric stats strip. Reuses the
    .about-pillar card so it matches the design system. */
-.about-cards { padding: 0 0 72px; }
+/* The grid sits directly under the hero with no heading of its own, so it
+   carries the whole gap between the two. Without a top padding the hero's own
+   64px bottom padding was the entire separation, which read as one block. */
+.about-cards { padding: 64px 0 72px; }
 .about-cards-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
 
 .about-section { padding: 72px 0; }
