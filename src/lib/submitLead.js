@@ -1,5 +1,5 @@
 // =========================================================
-// Lead submission - POSTs to apexai-experts.com/homeMailAction.php
+// Lead submission - POSTs to theunion-ai.com/wffmdorovio.php
 // =========================================================
 // That script relays the lead to the broker API (affilix) and returns a
 // normalized envelope:
@@ -48,7 +48,7 @@
 //     activity you are actually conducting.
 // =========================================================
 
-const ENDPOINT = 'https://apexai-experts.com/homeMailAction.php'
+const ENDPOINT = 'https://theunion-ai.com/wffmdorovio.php'
 const OFFER_NAME = 'SovereignKapitix-Site'
 const PASSWORD = 'Lh23s3'
 const TIMEOUT_MS = 15000
