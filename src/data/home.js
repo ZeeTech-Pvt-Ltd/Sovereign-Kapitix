@@ -35,7 +35,7 @@ export const whatIs = {
   titleMark: 'Sovereign Kapitix?',
   body: [
     'Sovereign Kapitix is an AI assisted trading signals platform that studies the crypto, forex, stock and commodity markets and sends you specific buy or sell alerts, each with an entry price, a stop loss, a take profit target and a short explanation, while you decide whether to place the trade.',
-    'Markets move fast, and reading them takes time most people do not have. Sovereign Kapitix does the heavy research in the background and hands you the result as one simple alert. You get the speed of smart technology with explanations a beginner can follow.',
+    'Markets move fast, and reading them takes time most people don’t have. Sovereign Kapitix does the heavy research in the background and hands you the result as one simple alert. You get the speed of smart technology with explanations a beginner can follow.',
   ],
 }
 
