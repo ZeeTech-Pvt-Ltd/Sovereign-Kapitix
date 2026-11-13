@@ -1269,7 +1269,10 @@ html.js .reveal[data-revealed] { opacity: 1; transform: none; }
 /* ---------- "What is" section, rebuilt on the sibling site's layout ----------
    Heading, then a band with the visual beside four short capability points,
    then a three-step flow, then the closing strip. */
-.whatis-band { display: grid; grid-template-columns: 378px 1fr; gap: 24px; align-items: stretch; }
+/* Image left, heading and copy together on the right, both vertically centred
+   against each other. align-items was stretch, which made the copy column pull
+   to the image's height and left the text floating at the top. */
+.whatis-band { display: grid; grid-template-columns: 400px 1fr; gap: 56px; align-items: center; }
 
 
 
@@ -1298,8 +1301,9 @@ html.js .reveal[data-revealed] { opacity: 1; transform: none; }
 .hero-micro { color: var(--muted); font-size: 13px; line-height: 1.5; margin-top: 2px; }
 
 /* ---------- What is: two paragraphs beside the visual ---------- */
-.whatis-band { display: grid; grid-template-columns: 378px 1fr; gap: 44px; align-items: start; }
-.whatis-copy { display: grid; gap: 18px; align-content: start; }
+.whatis-band { display: grid; grid-template-columns: 400px 1fr; gap: 56px; align-items: center; }
+.whatis-copy { display: grid; gap: 18px; align-content: center; max-width: 640px; }
+.whatis-copy .h2 { margin: 0; }
 .whatis-copy p { color: var(--muted); font-size: 16px; line-height: 1.75; margin: 0; }
 /* block, not flex: as a flex item the image stretched to the height of the
    column beside it and lost its proportions. */

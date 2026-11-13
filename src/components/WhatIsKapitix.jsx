@@ -1,24 +1,17 @@
 import { whatIs } from '../data/home.js'
 
-// The definitional block: the document's two paragraphs, with the product
-// screenshot beside them. The four capability points and the three step flow
-// that used to sit here are gone - the document does not carry them, and the
-// signal process has its own section immediately after this one.
+// Image on the left, heading and both paragraphs together on the right.
+//
+// The heading used to sit in its own centred .section-head block above the
+// grid, which left it aligned with neither column and made the section read as
+// two unrelated pieces. It belongs to the copy, so it sits with the copy.
 export default function WhatIsKapitix() {
   return (
     <section className="section whatis" id="what">
       <div className="container">
-        <div className="section-head reveal">
-          <h2 className="h2">
-            {whatIs.title}
-            <mark>{whatIs.titleMark}</mark>
-          </h2>
-        </div>
-
         <div className="whatis-band">
           <div className="whatis-figure reveal">
             <img
-              className="about-hero-img"
               src="/what-is-trading.webp"
               alt="A Bitcoin and Australian dollar price chart on a desktop monitor, with an order book and a portfolio panel beside it"
               width="1152"
@@ -29,6 +22,10 @@ export default function WhatIsKapitix() {
           </div>
 
           <div className="whatis-copy reveal">
+            <h2 className="h2">
+              {whatIs.title}
+              <mark>{whatIs.titleMark}</mark>
+            </h2>
             {whatIs.body.map((p) => (
               <p key={p.slice(0, 30)}>{p}</p>
             ))}
