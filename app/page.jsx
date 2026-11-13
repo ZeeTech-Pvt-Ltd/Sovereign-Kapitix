@@ -3,6 +3,7 @@ import TrustStrip from '../src/components/TrustStrip.jsx'
 import WhatIsKapitix from '../src/components/WhatIsKapitix.jsx'
 import HowItWorks from '../src/components/HowItWorks.jsx'
 import Features from '../src/components/Features.jsx'
+import Markets from '../src/components/Markets.jsx'
 import Legit from '../src/components/Legit.jsx'
 import Protected from '../src/components/Protected.jsx'
 import FeesTable from '../src/components/FeesTable.jsx'
@@ -30,6 +31,7 @@ export default function Page() {
       <WhatIsKapitix />
       <HowItWorks />
       <Features />
+      <Markets />
       <Legit />
       <Protected />
       <FeesTable />

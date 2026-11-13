@@ -244,6 +244,20 @@ export const feesTable = {
 // The mid-page risk section. The brief asks for it here rather than only in the
 // footer: "a plain-English risk section mid-page (not only in the footer) reads
 // as honest, lifts trust and matches ASIC expectations."
+// The four asset classes the platform covers. Copy supplied by the operator.
+export const markets = {
+  eyebrow: 'Markets',
+  title: 'The Markets You Can ',
+  titleMark: 'Trade',
+  lead: 'Four asset classes behind one account, watched around the clock.',
+  cards: [
+    { icon: 'chart', title: 'Crypto', text: 'Trade ideas on top digital assets such as Bitcoin and Ethereum.' },
+    { icon: 'gauge', title: 'Forex', text: 'Signals on heavily traded pairs built around USD, EUR and GBP.' },
+    { icon: 'candles', title: 'Stocks', text: 'Setups on shares of major companies worldwide.' },
+    { icon: 'layers', title: 'Commodities', text: 'Alerts on price swings in gold, silver and oil.' },
+  ],
+}
+
 export const risks = {
   eyebrow: 'The honest risks',
   title: 'What to Expect from ',
