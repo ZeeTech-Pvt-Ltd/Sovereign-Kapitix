@@ -6,7 +6,8 @@
 // Nothing here invents facts: all claims come from content.js
 // and pages.js, both of which are operator-supplied.
 // =========================================================
-import { faq, MIN_DEPOSIT, MARKETS } from './content.js'
+import { MIN_DEPOSIT, MARKETS } from './content.js'
+import { faq as homeFaq } from './home.js'
 import { faqGroups } from './pages.js'
 
 // Single source of truth for the origin. Every absolute URL on the site -
@@ -112,7 +113,7 @@ export const seo = {
       organization,
       website,
       webPage('Sovereign Kapitix AI Trading Platform for Australia', `${SITE}/`, `Sovereign Kapitix is an AI-assisted trading platform for Australian residents, with a ${MIN_DEPOSIT} minimum deposit.`),
-      buildFaqPage(faq),
+      buildFaqPage(homeFaq),
     ],
   },
 

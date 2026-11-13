@@ -1,13 +1,14 @@
 import Hero from '../src/components/Hero.jsx'
-import TrustStrip from '../src/components/TrustStrip.jsx'
 import WhatIsKapitix from '../src/components/WhatIsKapitix.jsx'
-import HowItWorks from '../src/components/HowItWorks.jsx'
-import Features from '../src/components/Features.jsx'
+import Signals from '../src/components/Signals.jsx'
+import Comparison from '../src/components/Comparison.jsx'
+import Highlights from '../src/components/Highlights.jsx'
+import WhyUs from '../src/components/WhyUs.jsx'
+import GetStarted from '../src/components/GetStarted.jsx'
 import Markets from '../src/components/Markets.jsx'
-import Legit from '../src/components/Legit.jsx'
-import Protected from '../src/components/Protected.jsx'
-import FeesTable from '../src/components/FeesTable.jsx'
-import Risks from '../src/components/Risks.jsx'
+import Features from '../src/components/Features.jsx'
+import WhoItsFor from '../src/components/WhoItsFor.jsx'
+import Security from '../src/components/Security.jsx'
 import HomeFaq from '../src/components/HomeFaq.jsx'
 import FinalCta from '../src/components/FinalCta.jsx'
 import JsonLd from './_components/JsonLd.jsx'
@@ -15,27 +16,24 @@ import { buildMetadata } from '../src/data/metadata.js'
 
 export const metadata = buildMetadata('home')
 
-// Section order follows the operator's homepage brief: the form and its trust
-// strip first, then what the platform is, the three-step summary, the features,
-// the "is it legit" section, the fee table and the risk section - and only then
-// the closing CTA.
-//
-// The risk section sits above the final CTA on purpose. A reader should meet
-// the downside of trading before the last invitation to deposit, not after.
+// Section order is the operator's document, top to bottom. Section 12 of that
+// document is Testimonials, which it explicitly says to keep hidden until real
+// reviews exist - so it is not rendered here.
 export default function Page() {
   return (
     <>
       <JsonLd route="home" />
       <Hero />
-      <TrustStrip />
       <WhatIsKapitix />
-      <HowItWorks />
-      <Features />
+      <Signals />
+      <Comparison />
+      <Highlights />
+      <WhyUs />
+      <GetStarted />
       <Markets />
-      <Legit />
-      <Protected />
-      <FeesTable />
-      <Risks />
+      <Features />
+      <WhoItsFor />
+      <Security />
       <HomeFaq />
       <FinalCta />
     </>

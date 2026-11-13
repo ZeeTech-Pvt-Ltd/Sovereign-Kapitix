@@ -1,33 +1,24 @@
-import { Icon, ArrowRight } from './icons.jsx'
-import { whatis } from '../data/content.js'
+import { whatIs } from '../data/home.js'
 
-// The definitional block.
-//
-// Structure follows the equivalent section on the operator's sibling site
-// (haveningry.com, "What is Haveningry?"): a heading with a one-line answer,
-// four short capability points beside a visual, a three-step flow, then a
-// closing strip on a tinted card.
-//
-// The for / not-for pair that used to sit between the flow and the closing
-// strip has been removed at the operator request, along with its copy. The
-// source wording is in the homepage brief at .arttmp/briefs/ if it is ever
-// wanted back.
+// The definitional block: the document's two paragraphs, with the product
+// screenshot beside them. The four capability points and the three step flow
+// that used to sit here are gone - the document does not carry them, and the
+// signal process has its own section immediately after this one.
 export default function WhatIsKapitix() {
   return (
     <section className="section whatis" id="what">
       <div className="container">
-        <div className="whatis-head reveal">
+        <div className="section-head reveal">
           <h2 className="h2">
-            {whatis.title}
-            <mark>{whatis.titleMark}</mark>
+            {whatIs.title}
+            <mark>{whatIs.titleMark}</mark>
           </h2>
-          <p className="lead">{whatis.lead}</p>
         </div>
 
         <div className="whatis-band">
           <div className="whatis-figure reveal">
             <img
-              className="whatis-img"
+              className="about-hero-img"
               src="/what-is-trading.webp"
               alt="A Bitcoin and Australian dollar price chart on a desktop monitor, with an order book and a portfolio panel beside it"
               width="1152"
@@ -37,40 +28,11 @@ export default function WhatIsKapitix() {
             />
           </div>
 
-          {/* The four points and the signal flow sit in one column, the flow
-              directly under the points it describes - it used to be a separate
-              full-width row further down, which read as its own section. */}
-          <div className="whatis-right">
-            <div className="whatis-points reveal">
-              {whatis.items.map((it) => (
-                <article className="whatis-point" key={it.title}>
-                  <span className="wp-ico"><Icon name={it.icon} size={20} /></span>
-                  <div>
-                    <h3>{it.title}</h3>
-                    <p>{it.text}</p>
-                  </div>
-                </article>
-              ))}
-            </div>
-
-            <div className="whatis-flow reveal">
-              <ol>
-                {whatis.flow.map((s) => (
-                  <li key={s.text}>
-                    <span className="wf-ico"><Icon name={s.icon} size={17} /></span>
-                    {s.text}
-                  </li>
-                ))}
-              </ol>
-            </div>
+          <div className="whatis-copy reveal">
+            {whatIs.body.map((p) => (
+              <p key={p.slice(0, 30)}>{p}</p>
+            ))}
           </div>
-        </div>
-
-        <div className="whatis-cta reveal">
-          <p>{whatis.cta.text}</p>
-          <a className="btn btn-tint" href={whatis.cta.href}>
-            {whatis.cta.button} <ArrowRight size={16} />
-          </a>
         </div>
       </div>
     </section>
